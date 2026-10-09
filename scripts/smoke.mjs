@@ -5,7 +5,7 @@
 import puppeteer from 'puppeteer'
 import { mkdirSync } from 'node:fs'
 
-const URL = process.env.URL || 'http://localhost:5173/'
+const URL = process.env.URL || 'http://localhost:5173/app.html'
 const OUT = 'screenshots'
 mkdirSync(OUT, { recursive: true })
 

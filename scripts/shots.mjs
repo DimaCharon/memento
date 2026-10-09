@@ -5,7 +5,7 @@ const browser = await puppeteer.launch({ args: ['--no-sandbox','--disable-dev-sh
 const page = await browser.newPage()
 await page.setViewport({ width: 1460, height: 980, deviceScaleFactor: 2 })
 mkdirSync('screenshots', { recursive: true })
-await page.goto('http://localhost:5173/', { waitUntil: 'networkidle2' })
+await page.goto('http://localhost:5173/app.html', { waitUntil: 'networkidle2' })
 await page.evaluate(() => localStorage.clear())
 await page.reload({ waitUntil: 'networkidle2' })
 await new Promise(r=>setTimeout(r,700))

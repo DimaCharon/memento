@@ -1,6 +1,7 @@
 import { defineConfig, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import type { IncomingMessage, ServerResponse } from 'node:http'
+import { fileURLToPath } from 'node:url'
 
 /**
  * Локальный шлюз для коннекторов.
@@ -104,6 +105,15 @@ function gateway(): Plugin {
 
 export default defineConfig({
   plugins: [react(), gateway()],
+  build: {
+    rollupOptions: {
+      input: {
+        // index.html — сайт-эмулятор Android, app.html — само приложение Memento
+        main: fileURLToPath(new URL('./index.html', import.meta.url)),
+        app: fileURLToPath(new URL('./app.html', import.meta.url)),
+      },
+    },
+  },
   server: { host: '0.0.0.0', port: 5173, strictPort: false, allowedHosts: true },
   preview: { host: '0.0.0.0', port: 4173, strictPort: false, allowedHosts: true },
 })

@@ -119,6 +119,42 @@ def find_all(root, name):
     return out
 
 
+def check_gradient_angles(z):
+    """Угол градиента обязан быть кратен 45.
+
+    На Android 8 и ниже GradientDrawable падает с XmlPullParserException, если это не так,
+    и приложение не открывается. Проверяем уже упакованные drawable внутри APK.
+    """
+    import struct
+    total = 0
+    bad = []
+    for name in z.namelist():
+        if not name.startswith("res/") or not name.endswith(".xml"):
+            continue
+        data = z.read(name)
+        if data[:2] != b"\x03\x00":
+            continue
+        try:
+            root = parse_binary_xml(data)
+        except Exception:
+            continue
+        stack = [root]
+        while stack:
+            el = stack.pop()
+            stack.extend(el.get("children", []))
+            if el["name"] != "gradient":
+                continue
+            angle = el["attrs"].get("android:angle")
+            if not isinstance(angle, int):
+                continue
+            total += 1
+            value = struct.unpack("<f", struct.pack("<I", angle & 0xFFFFFFFF))[0]
+            if value % 45 != 0:
+                bad.append((name, value))
+    print("градиентов проверено:", total, "| с углом не кратным 45:", bad if bad else "нет")
+    return bad
+
+
 def main(paths):
     ok = True
     for path in paths:

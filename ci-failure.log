@@ -1,4 +1,4 @@
-run: 38130515459 step failed
+run: 38130654498 step failed
 === ci-test.log ===
 To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.11.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
 Daemon will be stopped at the end of the build 
@@ -37,7 +37,7 @@ or from Android Studio, click: `Refactor` > `Migrate BuildConfig to Gradle Build
 > Task :app:generateDebugAssets UP-TO-DATE
 > Task :app:mergeDebugAssets
 > Task :app:processDebugResources FAILED
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_2-1791712964056.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_2-1791713109322.json
 
 FAILURE: Build failed with an exception.
 
@@ -266,7 +266,7 @@ error: failed linking references.
 	... 2 more
 
 
-BUILD FAILED in 12s
+BUILD FAILED in 13s
 20 actionable tasks: 7 executed, 13 from cache
 
 === ci-build.log ===
@@ -293,8 +293,8 @@ or from Android Studio, click: `Refactor` > `Migrate BuildConfig to Gradle Build
 > Task :app:expandReleaseL8ArtProfileWildcards FROM-CACHE
 > Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
 > Task :app:checkReleaseDuplicateClasses
-> Task :app:generateReleaseResValues FROM-CACHE
 > Task :app:dataBindingMergeDependencyArtifactsRelease
+> Task :app:generateReleaseResValues FROM-CACHE
 > Task :app:generateReleaseResources FROM-CACHE
 > Task :app:mergeReleaseResources FROM-CACHE
 > Task :app:packageReleaseResources FROM-CACHE
@@ -336,7 +336,7 @@ or from Android Studio, click: `Refactor` > `Migrate BuildConfig to Gradle Build
 > Task :app:generateSafeResources FROM-CACHE
 > Task :app:processReleaseResources FAILED
 > Task :app:mergeSafeResources FROM-CACHE
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_3-1791712976670.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_3-1791713122763.json
 
 FAILURE: Build failed with an exception.
 
@@ -567,3 +567,15 @@ error: failed linking references.
 
 BUILD FAILED in 12s
 41 actionable tasks: 23 executed, 18 from cache
+
+=== ci-verify.log ===
+========================================================================
+APK: app/build/outputs/apk/release/*.apk
+Traceback (most recent call last):
+  File "/home/runner/work/memento/memento/tools/verify_apk.py", line 235, in <module>
+    sys.exit(main(sys.argv[1:]))
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/memento/memento/tools/verify_apk.py", line 127, in main
+    with open(path, "rb") as f:
+         ^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'app/build/outputs/apk/release/*.apk'

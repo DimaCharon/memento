@@ -58,7 +58,6 @@
                 android:layout_weight="1"
                 android:background="@drawable/sel_segment"
                 android:gravity="center"
-                android:selected="true"
                 android:text="@string/filter_active"
                 android:textColor="@color/sel_chip_text"
                 android:textSize="13.5sp" />
@@ -89,7 +88,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_marginEnd="8dp"
-                android:selected="true"
                 android:text="@string/filter_all" />
 
             <TextView

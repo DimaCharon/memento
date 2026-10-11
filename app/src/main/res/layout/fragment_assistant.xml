@@ -145,7 +145,7 @@
             android:background="@drawable/bg_btn_light"
             android:clickable="true"
             android:focusable="true"
-            android:foreground="@drawable/ripple_round">
+            android:foreground="@drawable/bg_ripple_round">
 
             <ImageView
                 android:layout_width="22dp"

@@ -70,6 +70,9 @@ jobs:
           MEMENTO_KEY_PASSWORD: ${{ secrets.MEMENTO_KEY_PASSWORD }}
           MEMENTO_KEY_ALIAS: ${{ secrets.MEMENTO_KEY_ALIAS }}
 
+      - name: Проверка ссылок на ресурсы
+        run: python3 tools/check_resources.py
+
       - name: Юнит-тесты и проверки (логика, разметка, ресурсы)
         run: |
           set -o pipefail

@@ -71,14 +71,22 @@ jobs:
           MEMENTO_KEY_ALIAS: ${{ secrets.MEMENTO_KEY_ALIAS }}
 
       - name: Юнит-тесты и проверки (логика, разметка, ресурсы)
-        run: gradle --no-daemon --stacktrace testDebugUnitTest 2>&1 | tee ci-test.log
+        run: |
+          set -o pipefail
+          gradle --no-daemon --stacktrace testDebugUnitTest 2>&1 | tee ci-test.log
 
       - name: Сборка APK (release + safe)
-        run: gradle --no-daemon --stacktrace assembleRelease assembleSafe 2>&1 | tee ci-build.log
+        run: |
+          set -o pipefail
+          gradle --no-daemon --stacktrace assembleRelease assembleSafe 2>&1 | tee ci-build.log
 
       - name: Проверка структуры APK
         if: hashFiles('tools/verify_apk.py') != ''
-        run: python3 tools/verify_apk.py app/build/outputs/apk/release/*.apk app/build/outputs/apk/safe/*.apk 2>&1 | tee ci-verify.log
+        run: |
+          set -o pipefail
+          APKS=$(find app/build/outputs/apk -name "*.apk" | tr "\n" " ")
+          echo "проверяю: $APKS"
+          python3 tools/verify_apk.py $APKS 2>&1 | tee ci-verify.log
 
       - name: Что собралось
         run: |

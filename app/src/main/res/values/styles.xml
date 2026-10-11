@@ -76,7 +76,7 @@
     </style>
 
     <!-- ===================== Кнопки ===================== -->
-    <style name="Btn.Primary">
+    <style name="Btn.Primary" parent="">
         <item name="android:background">@drawable/bg_btn_light</item>
         <item name="android:textColor">@color/accentOn</item>
         <item name="android:textSize">15sp</item>
@@ -87,7 +87,7 @@
         <item name="android:letterSpacing">0.01</item>
     </style>
 
-    <style name="Btn.Ghost">
+    <style name="Btn.Ghost" parent="">
         <item name="android:background">@drawable/bg_btn_ghost</item>
         <item name="android:textColor">@color/txt</item>
         <item name="android:textSize">14sp</item>
@@ -98,7 +98,7 @@
         <item name="android:stateListAnimator">@null</item>
     </style>
 
-    <style name="Btn.Link">
+    <style name="Btn.Link" parent="">
         <item name="android:background">@drawable/bg_ripple_round</item>
         <item name="android:textColor">@color/accentStrong</item>
         <item name="android:textSize">13sp</item>
@@ -184,7 +184,7 @@
         <item name="android:scaleType">fitCenter</item>
     </style>
 
-    <style name="Widget.Card">
+    <style name="Widget.Card" parent="">
         <item name="android:background">@drawable/bg_widget_card</item>
         <item name="android:padding">14dp</item>
     </style>

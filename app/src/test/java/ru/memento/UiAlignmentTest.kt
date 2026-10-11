@@ -23,7 +23,8 @@ class UiAlignmentTest {
     private fun inflate(layout: Int, ctx: Context = themed()): View =
         LayoutInflater.from(ctx).inflate(layout, null, false)
 
-    private fun at(view: View, x: Int): Int = (view.left + view.right) / 2
+    /** Центр view по горизонтали. */
+    private fun at(view: View): Int = (view.left + view.right) / 2
     private fun ay(view: View): Int = (view.top + view.bottom) / 2
 
     @Test

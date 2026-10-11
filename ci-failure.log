@@ -1,4 +1,4 @@
-run: 38132552817 step failed
+run: 38132827322 step failed
 === ci-test.log ===
 To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.11.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
 Daemon will be stopped at the end of the build 
@@ -16,78 +16,56 @@ or from Android Studio, click: `Refactor` > `Migrate BuildConfig to Gradle Build
 > Task :app:preDebugBuild UP-TO-DATE
 > Task :app:dataBindingMergeDependencyArtifactsDebug
 > Task :app:generateDebugResValues FROM-CACHE
-> Task :app:generateDebugResources FROM-CACHE
-> Task :app:mergeDebugResources FROM-CACHE
-> Task :app:packageDebugResources FROM-CACHE
-> Task :app:parseDebugLocalResources FROM-CACHE
-> Task :app:dataBindingGenBaseClassesDebug FROM-CACHE
+> Task :app:generateDebugResources
+> Task :app:packageDebugResources
 > Task :app:generateDebugBuildConfig FROM-CACHE
 > Task :app:mapDebugSourceSetPaths
 > Task :app:checkDebugAarMetadata
+> Task :app:parseDebugLocalResources
 > Task :app:createDebugCompatibleScreenManifests
 > Task :app:extractDeepLinksDebug FROM-CACHE
 > Task :app:processDebugMainManifest FROM-CACHE
 > Task :app:processDebugManifest FROM-CACHE
 > Task :app:processDebugManifestForPackage FROM-CACHE
-> Task :app:processDebugResources FROM-CACHE
-> Task :app:compileDebugKotlin FROM-CACHE
 > Task :app:javaPreCompileDebug FROM-CACHE
-> Task :app:compileDebugJavaWithJavac FROM-CACHE
 > Task :app:preDebugUnitTestBuild UP-TO-DATE
 > Task :app:javaPreCompileDebugUnitTest FROM-CACHE
-> Task :app:bundleDebugClassesToCompileJar
-> Task :app:bundleDebugClassesToRuntimeJar
 > Task :app:mergeDebugShaders
 > Task :app:compileDebugShaders NO-SOURCE
 > Task :app:generateDebugAssets UP-TO-DATE
 > Task :app:mergeDebugAssets
+> Task :app:mergeDebugResources
+> Task :app:dataBindingGenBaseClassesDebug FROM-CACHE
+> Task :app:processDebugResources
 > Task :app:packageDebugUnitTestForUnitTest
 > Task :app:generateDebugUnitTestConfig
+
+> Task :app:compileDebugKotlin
+w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ai/Nlu.kt:251:199 Condition is always 'true'.
+w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ui/MainActivity.kt:99:9 'fun overridePendingTransition(p0: Int, p1: Int): Unit' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/widget/TodayWidgetProvider.kt:48:19 'fun setRemoteAdapter(p0: Int, p1: Intent!): Unit' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/widget/TodayWidgetProvider.kt:78:21 'fun notifyAppWidgetViewDataChanged(p0: Int, p1: Int): Unit' is deprecated. Deprecated in Java.
+
+> Task :app:compileDebugJavaWithJavac
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:bundleDebugClassesToRuntimeJar
 > Task :app:processDebugJavaRes
-
 > Task :app:compileDebugUnitTestKotlin
-w: file:///home/runner/work/memento/memento/app/src/test/java/ru/memento/StructureTest.kt:19:19 Java type mismatch: inferred type is 'java.io.File?', but 'java.io.File' was expected.
-
 > Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
 > Task :app:processDebugUnitTestJavaRes
 
 > Task :app:testDebugUnitTest
 
-StoreTest > демо-данные создают пять событий на сегодня FAILED
-    java.lang.AssertionError: сегодня 2026-10-11, а в базе [2026-10-11, 2026-10-12, 2026-10-14]; сегодня нашлось 4
-        at org.junit.Assert.fail(Assert.java:89)
-        at org.junit.Assert.assertTrue(Assert.java:42)
-        at ru.memento.StoreTest.демо-данные создают пять событий на сегодня(StoreTest.kt:24)
-
-StoreTest > статистика дня считает выполненные FAILED
-    java.lang.AssertionError: всего за сегодня: 4 expected:<5> but was:<4>
-        at org.junit.Assert.fail(Assert.java:89)
-        at org.junit.Assert.failNotEquals(Assert.java:835)
-        at org.junit.Assert.assertEquals(Assert.java:120)
-        at ru.memento.StoreTest.статистика дня считает выполненные(StoreTest.kt:36)
-
-UiAlignmentTest > галочка стоит по центру строки напоминания FAILED
-    java.lang.AssertionError: галочка должна быть по центру строки: центр галочки 39, центр строки 108, галочка 0..78
-        at org.junit.Assert.fail(Assert.java:89)
-        at org.junit.Assert.assertTrue(Assert.java:42)
-        at ru.memento.UiAlignmentTest.галочка стоит по центру строки напоминания(UiAlignmentTest.kt:95)
-
-UiAlignmentTest > время и заголовок в строке стоят на одной оси FAILED
-    java.lang.AssertionError: заголовок правее времени
-        at org.junit.Assert.fail(Assert.java:89)
-        at org.junit.Assert.assertTrue(Assert.java:42)
-        at ru.memento.UiAlignmentTest.время и заголовок в строке стоят на одной оси(UiAlignmentTest.kt:111)
-
 UiAlignmentTest > четыре вкладки навигации симметричны относительно плюса FAILED
     java.lang.AssertionError: Главная и Профиль должны быть на равном расстоянии (486 vs 414): ширина 1233, центры: Главная 130, Календарь 355, Напоминания 805, Профиль 1030, центр экрана 616
         at org.junit.Assert.fail(Assert.java:89)
         at org.junit.Assert.assertTrue(Assert.java:42)
-        at ru.memento.UiAlignmentTest.четыре вкладки навигации симметричны относительно плюса(UiAlignmentTest.kt:54)
+        at ru.memento.UiAlignmentTest.четыре вкладки навигации симметричны относительно плюса(UiAlignmentTest.kt:75)
 
-66 tests completed, 5 failed
+66 tests completed, 1 failed
 
 > Task :app:testDebugUnitTest FAILED
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_3-1791715011878.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_3-1791715289490.json
 
 FAILURE: Build failed with an exception.
 
@@ -264,8 +242,8 @@ Caused by: org.gradle.api.internal.exceptions.MarkedVerificationException: There
 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
 
 
-BUILD FAILED in 46s
-30 actionable tasks: 14 executed, 16 from cache
+BUILD FAILED in 57s
+30 actionable tasks: 21 executed, 9 from cache
 
 === ci-build.log ===
 

@@ -98,6 +98,30 @@ class UiAlignmentTest {
     }
 
     @Test
+    fun `кольцо галочки и зелёная отметка видимы в отрисовке`() {
+        listOf(R.drawable.bg_check_off, R.drawable.bg_check_on).forEach { res ->
+            val drawable = androidx.core.content.ContextCompat.getDrawable(TestSupport.ctx(), res)!!
+            val size = TestSupport.px(26)
+            val bmp = android.graphics.Bitmap.createBitmap(size, size, android.graphics.Bitmap.Config.ARGB_8888)
+            val canvas = android.graphics.Canvas(bmp)
+            drawable.setBounds(0, 0, size, size)
+            drawable.draw(canvas)
+            var bright = 0
+            for (y in 0 until size) {
+                for (x in 0 until size) {
+                    val c = bmp.getPixel(x, y)
+                    if (android.graphics.Color.red(c) + android.graphics.Color.green(c) + android.graphics.Color.blue(c) > 250) bright++
+                }
+            }
+            val share = bright * 100.0 / (size * size)
+            assertTrue(
+                "слишком мало видимых пикселей в ${TestSupport.ctx().resources.getResourceEntryName(res)}: $bright ($share%)",
+                bright > size * size / 30,
+            )
+        }
+    }
+
+    @Test
     fun `галочки в списке выровнены по правому краю`() {
         val checks = mutableListOf<Int>()
         listOf("Проверить статус заказа", "Встреча с командой", "Тренировка").forEach { title ->

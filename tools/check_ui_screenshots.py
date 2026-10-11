@@ -112,8 +112,8 @@ def home():
     # 3) галочки списка: светлые кольца в правой колонке карточки «Сегодня»
     col_from, col_to = int(w * 0.82), int(w * 0.95)
     rows_flags = []
-    for y in range(int(h * 0.34), int(h * 0.72)):
-        cnt = sum(1 for x in range(col_from, col_to) if sum(px[x, y]) > 330)
+    for y in range(int(h * 0.30), int(h * 0.72)):
+        cnt = sum(1 for x in range(col_from, col_to) if sum(px[x, y]) > 250)
         rows_flags.append(cnt >= 2)
     rings = groups_of(rows_flags, min_width=6, merge_gap=20)
     print("     полосы галочек:", [(int(a), int(b)) for a, b, _ in rings])

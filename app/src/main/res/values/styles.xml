@@ -122,11 +122,6 @@
         <item name="android:minHeight">32dp</item>
     </style>
 
-    <style name="Memento.Check" parent="Widget.Material3.CompoundButton.CheckBox">
-        <item name="android:button">@drawable/sel_check</item>
-        <item name="buttonTint">@null</item>
-    </style>
-
     <!-- ===================== Чипы ===================== -->
     <style name="Chip">
         <item name="android:background">@drawable/sel_chip</item>

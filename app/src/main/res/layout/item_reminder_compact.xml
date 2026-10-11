@@ -28,9 +28,8 @@
         android:textColor="@color/txt"
         android:textSize="14sp" />
 
-    <CheckBox
+    <ru.memento.ui.view.MementoCheck
         android:id="@+id/row_check"
-        style="@style/Memento.Check"
         android:layout_width="@dimen/check_size"
         android:layout_height="@dimen/check_size"
         android:layout_marginStart="6dp"

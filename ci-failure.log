@@ -1,4 +1,4 @@
-run: 38135032872 step failed
+run: 38138118614 step failed
 === ci-test.log ===
 To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.11.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
 Daemon will be stopped at the end of the build 
@@ -18,36 +18,56 @@ or from Android Studio, click: `Refactor` > `Migrate BuildConfig to Gradle Build
 > Task :app:generateDebugResValues FROM-CACHE
 > Task :app:generateDebugResources
 > Task :app:packageDebugResources
-> Task :app:generateDebugBuildConfig FROM-CACHE
-> Task :app:parseDebugLocalResources
-> Task :app:checkDebugAarMetadata
+> Task :app:generateDebugBuildConfig
 > Task :app:mapDebugSourceSetPaths
+> Task :app:parseDebugLocalResources
 > Task :app:createDebugCompatibleScreenManifests
+> Task :app:checkDebugAarMetadata
 > Task :app:extractDeepLinksDebug FROM-CACHE
-> Task :app:processDebugMainManifest FROM-CACHE
-> Task :app:processDebugManifest FROM-CACHE
-> Task :app:processDebugManifestForPackage FROM-CACHE
+> Task :app:mergeDebugResources
+> Task :app:processDebugMainManifest
+> Task :app:dataBindingGenBaseClassesDebug
+> Task :app:processDebugManifest
 > Task :app:javaPreCompileDebug FROM-CACHE
 > Task :app:preDebugUnitTestBuild UP-TO-DATE
 > Task :app:javaPreCompileDebugUnitTest FROM-CACHE
+> Task :app:processDebugManifestForPackage
 > Task :app:mergeDebugShaders
 > Task :app:compileDebugShaders NO-SOURCE
 > Task :app:generateDebugAssets UP-TO-DATE
-> Task :app:mergeDebugResources
 > Task :app:mergeDebugAssets
-> Task :app:dataBindingGenBaseClassesDebug
 > Task :app:processDebugResources
 > Task :app:packageDebugUnitTestForUnitTest
 > Task :app:generateDebugUnitTestConfig
 
-> Task :app:compileDebugKotlin FAILED
-e: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ui/view/MementoCheck.kt:35:42 Unresolved reference 'ripple_round'.
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_3-1791717495614.json
+> Task :app:compileDebugKotlin
+w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ai/Nlu.kt:251:199 Condition is always 'true'.
+w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ui/MainActivity.kt:144:9 'fun overridePendingTransition(p0: Int, p1: Int): Unit' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/widget/TodayWidgetProvider.kt:48:19 'fun setRemoteAdapter(p0: Int, p1: Intent!): Unit' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/widget/TodayWidgetProvider.kt:78:21 'fun notifyAppWidgetViewDataChanged(p0: Int, p1: Int): Unit' is deprecated. Deprecated in Java.
+
+> Task :app:compileDebugJavaWithJavac
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:processDebugJavaRes
+> Task :app:bundleDebugClassesToRuntimeJar
+
+> Task :app:compileDebugUnitTestKotlin FAILED
+e: file:///home/runner/work/memento/memento/app/src/test/java/ru/memento/OldDeviceTest.kt:95:42 Unresolved reference 'Factory'.
+e: file:///home/runner/work/memento/memento/app/src/test/java/ru/memento/OldDeviceTest.kt:97:64 'operator' modifier is required on 'FirNamedFunctionSymbol kotlin/compareTo' in 'compareTo'.
+e: file:///home/runner/work/memento/memento/app/src/test/java/ru/memento/OldDeviceTest.kt:100:15 Cannot infer type for this parameter. Please specify it explicitly.
+e: file:///home/runner/work/memento/memento/app/src/test/java/ru/memento/OldDeviceTest.kt:100:21 Argument type mismatch: actual type is 'android.content.Context', but 'kotlin.Function1<T, kotlin.Unit>' was expected.
+e: file:///home/runner/work/memento/memento/app/src/test/java/ru/memento/OldDeviceTest.kt:100:26 Too many arguments for 'fun <T> T.apply(block: T.() -> Unit): T
+    [R|Contract description]
+     <
+        CallsInPlace(block, EXACTLY_ONCE)
+    >'.
+e: file:///home/runner/work/memento/memento/app/src/test/java/ru/memento/OldDeviceTest.kt:153:15 Expression 'available' of type 'kotlin.Boolean' cannot be invoked as a function. Function 'invoke()' is not found.
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_3-1791720513921.json
 
 FAILURE: Build failed with an exception.
 
 * What went wrong:
-Execution failed for task ':app:compileDebugKotlin'.
+Execution failed for task ':app:compileDebugUnitTestKotlin'.
 > A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
    > Compilation error. See log for more details
 
@@ -57,7 +77,7 @@ Execution failed for task ':app:compileDebugKotlin'.
 > Get more help at https://help.gradle.org.
 
 * Exception is:
-org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:compileDebugKotlin'.
+org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:compileDebugUnitTestKotlin'.
 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:130)
 	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:293)
 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:128)
@@ -251,15 +271,15 @@ Caused by: org.jetbrains.kotlin.gradle.tasks.CompilationErrorException: Compilat
 	... 2 more
 
 
-BUILD FAILED in 29s
-23 actionable tasks: 15 executed, 8 from cache
+BUILD FAILED in 42s
+28 actionable tasks: 24 executed, 4 from cache
 
 === ci-build.log ===
 
 === ci-verify.log ===
 
 === ci-ui.log ===
-картинок для проверки: 8
+картинок для проверки: 58
 проверяю screenshots/01-главная.png: 1233×2673
   OK   «+» по центру: x=613.5, центр экрана 616.5
   OK   «+» достаточно крупный: высота 147px
@@ -268,9 +288,9 @@ BUILD FAILED in 29s
   OK   ближние вкладки симметричны: 222 и 228 px от центра
   OK   дальние вкладки симметричны: 448 и 454 px от центра
   OK   шаг вкладок одинаков: 226 и 226 px
-     полосы галочек: [(41, 118)]
-  ПЛОХО видимых галочек в списке: 1 (нужно 4-5)
+     полосы галочек: [(34, 63), (148, 225), (322, 399), (496, 573), (670, 747), (844, 921)]
+  OK   видимых галочек в списке: 6 (нужно 4-5)
   OK   07-новое-напоминание.png: картинка не пустая (разброс яркости 45.3)
   OK   05-профиль.png: картинка не пустая (разброс яркости 25.6)
   OK   02-виджеты.png: картинка не пустая (разброс яркости 24.7)
-ИТОГ: есть замечания
+ИТОГ: вёрстка ровная

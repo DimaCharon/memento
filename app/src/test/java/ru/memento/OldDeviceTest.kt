@@ -87,13 +87,19 @@ class OldDeviceTest {
         TestSupport.seed()
         val ctx = TestSupport.ctx()
         val manager = AppWidgetManager.getInstance(ctx)
-        TodayWidgetProvider.update(ctx, manager, 1)
-        ProgressWidgetProvider.update(ctx, manager, 2)
+        // В тестовой среде виджет нужно сначала «поставить» на рабочий стол
+        val shadow = org.robolectric.Shadows.shadowOf(manager)
+        val id = shadow.createWidget(TodayWidgetProvider::class.java, R.layout.widget_today)
+        val id2 = shadow.createWidget(ProgressWidgetProvider::class.java, R.layout.widget_progress)
+        TodayWidgetProvider.update(ctx, manager, id)
+        ProgressWidgetProvider.update(ctx, manager, id2)
         TodayWidgetProvider.refresh(ctx)
         ProgressWidgetProvider.refresh(ctx)
+        assertTrue("виджет должен обновиться без ошибок", manager.getAppWidgetIds(
+            android.content.ComponentName(ctx, TodayWidgetProvider::class.java)).isNotEmpty())
 
         // Список виджета: строки строятся нашими данными
-        val factory = ru.memento.widget.Factory(ctx, 1)
+        val factory = ru.memento.widget.Factory(ctx, id)
         factory.onDataSetChanged()
         assertTrue("в виджете должны быть дела", factory.count > 0)
         val row = factory.getViewAt(0)

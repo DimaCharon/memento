@@ -140,7 +140,10 @@ class StructureTest {
         assertTrue("нет release сборки", gradle.contains("release"))
         assertTrue("нет резервной сборки safe", gradle.contains("safe"))
         assertTrue("нет задачи collectApks", gradle.contains("collectApks"))
-        assertEquals("1", Regex("versionCode\\s*=\\s*(\\d+)").find(
-            File(root(), "version.properties").readText())?.groupValues?.get(1))
+        val vp = File(root(), "version.properties").readText()
+        val code = Regex("versionCode\\s*=\\s*(\\d+)").find(vp)?.groupValues?.get(1)?.toIntOrNull() ?: 0
+        val name = Regex("versionName\\s*=\\s*([\\d.]+)").find(vp)?.groupValues?.get(1) ?: ""
+        assertTrue("versionCode должен быть положительным, а есть $code", code >= 1)
+        assertTrue("versionName должен быть вида 1.0.1, а есть '$name'", Regex("\\d+\\.\\d+\\.\\d+").matches(name))
     }
 }

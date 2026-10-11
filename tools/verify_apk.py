@@ -266,6 +266,9 @@ def main(paths):
             comp = info["resources.arsc"].compress_type
             check(comp == zipfile.ZIP_STORED, "resources.arsc без сжатия (STORED)")
 
+        # Градиенты: угол обязан быть кратен 45, иначе Android 8 и ниже не загрузит drawable
+        check(not check_gradient_angles(z), "все углы градиентов кратны 45 (запуск на Android 8 и ниже)")
+
         total_compressed = sum(i.compress_size for i in z.infolist())
         print("полезный размер (сжатый): %.2f МБ" % (total_compressed / 1048576))
     print("=" * 72)

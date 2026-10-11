@@ -22,7 +22,6 @@ import ru.memento.ui.MainActivity
 import ru.memento.ui.ReminderSheetActivity
 import ru.memento.widget.ProgressWidgetProvider
 import ru.memento.widget.TodayWidgetProvider
-import ru.memento.widget.TodayWidgetService
 
 /**
  * Прогон на старых телефонах: Android 8.0 (API 26) и 9.0 (API 28) — как Samsung A8 2018.
@@ -92,12 +91,13 @@ class OldDeviceTest {
         ProgressWidgetProvider.refresh(ctx)
 
         // Список виджета: строки строятся нашими данными
-        val factory = TodayWidgetService.Factory(ctx, 1)
+        val factory = ru.memento.widget.Factory(ctx, 1)
         factory.onDataSetChanged()
         assertTrue("в виджете должны быть дела", factory.count > 0)
         val row = factory.getViewAt(0)
         assertNotNull("строка виджета должна собираться", row)
         row!!.apply(ctx, FrameLayout(ctx))
+        assertTrue(factory.getCount() > 0)
     }
 
     @Test
@@ -150,7 +150,7 @@ class OldDeviceTest {
     @Test
     fun `голосовой ввод создаётся без падения`() {
         val input = ru.memento.voice.VoiceInput(TestSupport.ctx())
-        input.available()
+        println("распознавание речи доступно: ${input.available}")
         input.release()
     }
 

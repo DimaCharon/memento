@@ -1,4 +1,4 @@
-run: 38131552180 step failed
+run: 38131966274 step failed
 === ci-test.log ===
 To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.11.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
 Daemon will be stopped at the end of the build 
@@ -20,9 +20,9 @@ or from Android Studio, click: `Refactor` > `Migrate BuildConfig to Gradle Build
 > Task :app:packageDebugResources
 > Task :app:generateDebugBuildConfig FROM-CACHE
 > Task :app:mapDebugSourceSetPaths
-> Task :app:checkDebugAarMetadata
 > Task :app:createDebugCompatibleScreenManifests
 > Task :app:extractDeepLinksDebug FROM-CACHE
+> Task :app:checkDebugAarMetadata
 > Task :app:parseDebugLocalResources
 > Task :app:processDebugMainManifest FROM-CACHE
 > Task :app:processDebugManifest FROM-CACHE
@@ -30,38 +30,40 @@ or from Android Studio, click: `Refactor` > `Migrate BuildConfig to Gradle Build
 > Task :app:javaPreCompileDebug FROM-CACHE
 > Task :app:preDebugUnitTestBuild UP-TO-DATE
 > Task :app:javaPreCompileDebugUnitTest FROM-CACHE
-> Task :app:mergeDebugResources
 > Task :app:mergeDebugShaders
-> Task :app:dataBindingGenBaseClassesDebug
 > Task :app:compileDebugShaders NO-SOURCE
 > Task :app:generateDebugAssets UP-TO-DATE
 > Task :app:mergeDebugAssets
+> Task :app:mergeDebugResources
+> Task :app:dataBindingGenBaseClassesDebug
 > Task :app:processDebugResources
 > Task :app:packageDebugUnitTestForUnitTest
 > Task :app:generateDebugUnitTestConfig
 
-> Task :app:compileDebugKotlin FAILED
-e: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ai/Nlu.kt:238:43 None of the following candidates is applicable:
-fun String.replace(oldChar: Char, newChar: Char, ignoreCase: Boolean = ...): String
-fun String.replace(oldValue: String, newValue: String, ignoreCase: Boolean = ...): String
-e: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ai/Nlu.kt:242:43 None of the following candidates is applicable:
-fun String.replace(oldChar: Char, newChar: Char, ignoreCase: Boolean = ...): String
-fun String.replace(oldValue: String, newValue: String, ignoreCase: Boolean = ...): String
-e: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ai/Nlu.kt:247:23 None of the following candidates is applicable:
-fun String.replace(oldChar: Char, newChar: Char, ignoreCase: Boolean = ...): String
-fun String.replace(oldValue: String, newValue: String, ignoreCase: Boolean = ...): String
-e: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ai/Nlu.kt:248:22 None of the following candidates is applicable:
-fun String.replace(oldChar: Char, newChar: Char, ignoreCase: Boolean = ...): String
-fun String.replace(oldValue: String, newValue: String, ignoreCase: Boolean = ...): String
-e: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/notify/Notifier.kt:125:91 Unresolved reference 'label'.
-e: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ui/MainActivity.kt:66:40 Unresolved reference 'bottomMargin'.
-e: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ui/adapter/CalendarAdapter.kt:68:76 Unresolved reference 'dotRes'.
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_3-1791713998646.json
+> Task :app:compileDebugKotlin
+w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ai/Nlu.kt:251:199 Condition is always 'true'.
+w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ui/MainActivity.kt:99:9 'fun overridePendingTransition(p0: Int, p1: Int): Unit' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/widget/TodayWidgetProvider.kt:48:19 'fun setRemoteAdapter(p0: Int, p1: Intent!): Unit' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/widget/TodayWidgetProvider.kt:78:21 'fun notifyAppWidgetViewDataChanged(p0: Int, p1: Int): Unit' is deprecated. Deprecated in Java.
+
+> Task :app:compileDebugJavaWithJavac
+> Task :app:bundleDebugClassesToRuntimeJar
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:processDebugJavaRes
+
+> Task :app:compileDebugUnitTestKotlin FAILED
+e: file:///home/runner/work/memento/memento/app/src/test/java/ru/memento/UiAlignmentTest.kt:36:47 No value passed for parameter 'x'.
+e: file:///home/runner/work/memento/memento/app/src/test/java/ru/memento/UiAlignmentTest.kt:37:25 No value passed for parameter 'x'.
+e: file:///home/runner/work/memento/memento/app/src/test/java/ru/memento/UiAlignmentTest.kt:46:32 No value passed for parameter 'x'.
+e: file:///home/runner/work/memento/memento/app/src/test/java/ru/memento/UiAlignmentTest.kt:47:35 No value passed for parameter 'x'.
+e: file:///home/runner/work/memento/memento/app/src/test/java/ru/memento/UiAlignmentTest.kt:48:36 No value passed for parameter 'x'.
+e: file:///home/runner/work/memento/memento/app/src/test/java/ru/memento/UiAlignmentTest.kt:49:34 No value passed for parameter 'x'.
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_3-1791714429611.json
 
 FAILURE: Build failed with an exception.
 
 * What went wrong:
-Execution failed for task ':app:compileDebugKotlin'.
+Execution failed for task ':app:compileDebugUnitTestKotlin'.
 > A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
    > Compilation error. See log for more details
 
@@ -71,7 +73,7 @@ Execution failed for task ':app:compileDebugKotlin'.
 > Get more help at https://help.gradle.org.
 
 * Exception is:
-org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:compileDebugKotlin'.
+org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:compileDebugUnitTestKotlin'.
 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:130)
 	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:293)
 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:128)
@@ -265,8 +267,8 @@ Caused by: org.jetbrains.kotlin.gradle.tasks.CompilationErrorException: Compilat
 	... 2 more
 
 
-BUILD FAILED in 19s
-23 actionable tasks: 15 executed, 8 from cache
+BUILD FAILED in 44s
+28 actionable tasks: 20 executed, 8 from cache
 
 === ci-build.log ===
 

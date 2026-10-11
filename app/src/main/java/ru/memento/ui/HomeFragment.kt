@@ -129,9 +129,10 @@ class HomeFragment : Fragment() {
 
         // Виджет «Сегодня» и «Расписание на день»
         b.homeTodayList.adapter = if (store.settings.widgetLayout == "4x4") dayAdapter else todayAdapter
-        (if (store.settings.widgetLayout == "4x4") dayAdapter else todayAdapter).submit(if (store.settings.widgetLayout == "4x4") today else today.sortedWith(compareBy({ it.done }, { Ru.timeToMinutes(it.time) })))
+        val chronological = today.sortedBy { Ru.timeToMinutes(it.time) }
+        (if (store.settings.widgetLayout == "4x4") dayAdapter else todayAdapter).submit(chronological)
         if (store.settings.widgetLayout == "4x4") b.homeTodayList.visibility = View.GONE else b.homeTodayList.visibility = View.VISIBLE
-        b.homeTodayCount.text = if (today.isEmpty()) ctx.getString(R.string.no_reminders) else Ru.remindersWord(left)
+        b.homeTodayCount.text = if (today.isEmpty()) ctx.getString(R.string.no_reminders) else Ru.remindersWord(today.size)
         b.homeTodayEmpty.visibility = if (today.isEmpty()) View.VISIBLE else View.GONE
         b.homeDayTotal.text = Ru.remindersWord(left)
 

@@ -62,8 +62,12 @@ class MainActivity : AppCompatActivity() {
         ViewCompat.setOnApplyWindowInsetsListener(b.root) { _, insets ->
             val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             b.content.updatePadding(top = bars.top)
-            b.navBar.root.updatePadding(bottom = bars.bottom)
-            b.fab.updateLayoutParams<android.view.ViewGroup.MarginLayoutParams> { bottomMargin = dimen(R.dimen.fab_margin_bottom) + bars.bottom }
+            b.navHost.updateLayoutParams<android.view.ViewGroup.MarginLayoutParams> {
+                bottomMargin = dimen(R.dimen.nav_bottom) + bars.bottom
+            }
+            b.fab.updateLayoutParams<android.view.ViewGroup.MarginLayoutParams> {
+                bottomMargin = dimen(R.dimen.fab_margin_bottom) + bars.bottom
+            }
             insets
         }
         ViewCompat.requestApplyInsets(b.root)

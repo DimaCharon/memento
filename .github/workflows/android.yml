@@ -80,6 +80,15 @@ jobs:
         if: hashFiles('tools/verify_apk.py') != ''
         run: python3 tools/verify_apk.py app/build/outputs/apk/release/*.apk app/build/outputs/apk/safe/*.apk
 
+      - name: Что собралось
+        run: |
+          echo "--- outputs ---"
+          find app/build/outputs -name "*.apk" -printf "%p  %k KB\n" 2>/dev/null || echo "(нет apk)"
+          echo "--- screenshots ---"
+          ls -l app/build/screenshots 2>/dev/null || echo "(нет скриншотов)"
+          echo "--- tests ---"
+          find app/build/test-results -name "*.xml" | head -20 || true
+
       - name: Артефакты сборки
         uses: actions/upload-artifact@v4
         with:
@@ -98,13 +107,28 @@ jobs:
           git config user.email "ci@users.noreply.github.com"
           mkdir -p apk screenshots
           rm -f apk/*.apk
-          cp app/build/outputs/apk/release/*.apk apk/ 2>/dev/null || true
-          cp app/build/outputs/apk/safe/*.apk apk/ 2>/dev/null || true
+          if ! ls app/build/outputs/apk/release/*.apk >/dev/null 2>&1; then
+            echo "::error::release APK не собран"
+            exit 1
+          fi
+          cp app/build/outputs/apk/release/*.apk apk/
+          cp app/build/outputs/apk/safe/*.apk apk/
           if [ -d app/build/screenshots ]; then
             cp app/build/screenshots/*.png screenshots/ 2>/dev/null || true
           fi
-          ls -lh apk || true
-          git add -A apk screenshots
+          {
+            echo "run: $GITHUB_RUN_ID"
+            echo "commit: $GITHUB_SHA"
+            echo "date: $(date -u)"
+            echo "--- apk ---"
+            ls -l apk
+            echo "--- sha256 ---"
+            sha256sum apk/*.apk
+            echo "--- screenshots ---"
+            ls -l screenshots 2>/dev/null || echo "(нет)"
+          } > ci-report.txt
+          ls -lh apk
+          git add -A apk screenshots ci-report.txt
           if git diff --cached --quiet; then
             echo "Нечего публиковать"
           else

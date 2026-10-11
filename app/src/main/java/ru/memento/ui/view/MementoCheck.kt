@@ -32,7 +32,7 @@ class MementoCheck @JvmOverloads constructor(
 
     init {
         scaleType = ScaleType.FIT_CENTER
-        setBackgroundResource(R.drawable.ripple_round)
+        setBackgroundResource(R.drawable.bg_ripple_round)
         isClickable = true
         isFocusable = true
         sync()

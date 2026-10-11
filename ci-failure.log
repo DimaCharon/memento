@@ -1,4 +1,4 @@
-run: 38133431462 step failed
+run: 38134497772 step failed
 === ci-test.log ===
 To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.11.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
 Daemon will be stopped at the end of the build 
@@ -16,322 +16,66 @@ or from Android Studio, click: `Refactor` > `Migrate BuildConfig to Gradle Build
 > Task :app:preDebugBuild UP-TO-DATE
 > Task :app:dataBindingMergeDependencyArtifactsDebug
 > Task :app:generateDebugResValues FROM-CACHE
-> Task :app:generateDebugResources FROM-CACHE
-> Task :app:mergeDebugResources FROM-CACHE
-> Task :app:packageDebugResources FROM-CACHE
-> Task :app:parseDebugLocalResources FROM-CACHE
-> Task :app:dataBindingGenBaseClassesDebug FROM-CACHE
+> Task :app:generateDebugResources
+> Task :app:packageDebugResources
 > Task :app:generateDebugBuildConfig FROM-CACHE
 > Task :app:mapDebugSourceSetPaths
-> Task :app:checkDebugAarMetadata
 > Task :app:createDebugCompatibleScreenManifests
+> Task :app:checkDebugAarMetadata
 > Task :app:extractDeepLinksDebug FROM-CACHE
+> Task :app:parseDebugLocalResources
 > Task :app:processDebugMainManifest FROM-CACHE
 > Task :app:processDebugManifest FROM-CACHE
 > Task :app:processDebugManifestForPackage FROM-CACHE
-> Task :app:processDebugResources FROM-CACHE
-> Task :app:compileDebugKotlin FROM-CACHE
 > Task :app:javaPreCompileDebug FROM-CACHE
-> Task :app:compileDebugJavaWithJavac FROM-CACHE
 > Task :app:preDebugUnitTestBuild UP-TO-DATE
 > Task :app:javaPreCompileDebugUnitTest FROM-CACHE
-> Task :app:bundleDebugClassesToCompileJar
-> Task :app:bundleDebugClassesToRuntimeJar
 > Task :app:mergeDebugShaders
 > Task :app:compileDebugShaders NO-SOURCE
 > Task :app:generateDebugAssets UP-TO-DATE
 > Task :app:mergeDebugAssets
+> Task :app:mergeDebugResources
+> Task :app:dataBindingGenBaseClassesDebug FROM-CACHE
+> Task :app:processDebugResources
 > Task :app:packageDebugUnitTestForUnitTest
 > Task :app:generateDebugUnitTestConfig
+
+> Task :app:compileDebugKotlin
+w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ai/Nlu.kt:251:199 Condition is always 'true'.
+w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ui/MainActivity.kt:103:9 'fun overridePendingTransition(p0: Int, p1: Int): Unit' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/widget/TodayWidgetProvider.kt:48:19 'fun setRemoteAdapter(p0: Int, p1: Intent!): Unit' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/widget/TodayWidgetProvider.kt:78:21 'fun notifyAppWidgetViewDataChanged(p0: Int, p1: Int): Unit' is deprecated. Deprecated in Java.
+
+> Task :app:compileDebugJavaWithJavac
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:bundleDebugClassesToRuntimeJar
 > Task :app:processDebugJavaRes
 > Task :app:compileDebugUnitTestKotlin
 > Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
 > Task :app:processDebugUnitTestJavaRes
 > Task :app:testDebugUnitTest
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_3-1791715895280.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_3-1791716957326.json
 
-BUILD SUCCESSFUL in 37s
-30 actionable tasks: 14 executed, 16 from cache
+BUILD SUCCESSFUL in 45s
+30 actionable tasks: 21 executed, 9 from cache
 
 === ci-build.log ===
-To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.11.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
-Daemon will be stopped at the end of the build 
-
-> Configure project :app
-WARNING: The option setting 'android.defaults.buildfeatures.buildconfig=true' is deprecated.
-The current default is 'false'.
-It will be removed in version 9.0 of the Android Gradle plugin.
-To keep using this feature, add the following to your module-level build.gradle files:
-    android.buildFeatures.buildConfig = true
-or from Android Studio, click: `Refactor` > `Migrate BuildConfig to Gradle Build Files`.
-
-> Task :app:preBuild UP-TO-DATE
-> Task :app:preReleaseBuild UP-TO-DATE
-> Task :app:mergeReleaseJniLibFolders
-> Task :app:mergeReleaseNativeLibs NO-SOURCE
-> Task :app:stripReleaseDebugSymbols NO-SOURCE
-> Task :app:extractReleaseNativeSymbolTables NO-SOURCE
-> Task :app:mergeReleaseNativeDebugMetadata NO-SOURCE
-> Task :app:mergeReleaseArtProfile
-> Task :app:buildKotlinToolingMetadata
-> Task :app:expandReleaseL8ArtProfileWildcards FROM-CACHE
-> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
-> Task :app:checkReleaseDuplicateClasses
-> Task :app:dataBindingMergeDependencyArtifactsRelease
-> Task :app:generateReleaseResValues FROM-CACHE
-> Task :app:generateReleaseResources
-> Task :app:packageReleaseResources
-> Task :app:parseReleaseLocalResources FROM-CACHE
-> Task :app:generateReleaseBuildConfig FROM-CACHE
-> Task :app:mapReleaseSourceSetPaths
-> Task :app:checkReleaseAarMetadata
-> Task :app:createReleaseCompatibleScreenManifests
-> Task :app:extractDeepLinksRelease FROM-CACHE
-> Task :app:processReleaseMainManifest FROM-CACHE
-> Task :app:processReleaseManifest FROM-CACHE
-> Task :app:processReleaseManifestForPackage FROM-CACHE
-> Task :app:javaPreCompileRelease FROM-CACHE
-> Task :app:extractProguardFiles
-> Task :app:mergeReleaseStartupProfile
-> Task :app:mergeReleaseShaders
-> Task :app:compileReleaseShaders NO-SOURCE
-> Task :app:generateReleaseAssets UP-TO-DATE
-> Task :app:mergeReleaseAssets
-> Task :app:compressReleaseAssets FROM-CACHE
-> Task :app:extractReleaseVersionControlInfo
-> Task :app:collectReleaseDependencies
-> Task :app:sdkReleaseDependencyData
-> Task :app:validateSigningRelease
-> Task :app:writeReleaseAppMetadata
-> Task :app:writeReleaseSigningConfigVersions
-> Task :app:preSafeBuild UP-TO-DATE
-> Task :app:mergeSafeJniLibFolders
-> Task :app:mergeSafeNativeLibs NO-SOURCE
-> Task :app:stripSafeDebugSymbols NO-SOURCE
-> Task :app:extractSafeNativeSymbolTables NO-SOURCE
-> Task :app:mergeSafeNativeDebugMetadata NO-SOURCE
-> Task :app:mergeSafeArtProfile
-> Task :app:expandSafeL8ArtProfileWildcards FROM-CACHE
-> Task :app:checkSafeDuplicateClasses
-> Task :app:dataBindingMergeDependencyArtifactsSafe
-> Task :app:generateSafeResValues FROM-CACHE
-> Task :app:generateSafeResources
-> Task :app:mergeReleaseResources
-> Task :app:dataBindingGenBaseClassesRelease FROM-CACHE
-> Task :app:packageSafeResources
-> Task :app:parseSafeLocalResources FROM-CACHE
-> Task :app:generateSafeBuildConfig FROM-CACHE
-> Task :app:checkSafeAarMetadata
-> Task :app:mapSafeSourceSetPaths
-> Task :app:createSafeCompatibleScreenManifests
-> Task :app:extractDeepLinksSafe FROM-CACHE
-> Task :app:processSafeMainManifest FROM-CACHE
-> Task :app:processSafeManifest FROM-CACHE
-> Task :app:processSafeManifestForPackage FROM-CACHE
-> Task :app:javaPreCompileSafe FROM-CACHE
-> Task :app:desugarSafeFileDependencies FROM-CACHE
-> Task :app:mergeSafeStartupProfile
-> Task :app:mergeSafeResources
-> Task :app:processReleaseResources
-> Task :app:mergeExtDexSafe
-> Task :app:dataBindingGenBaseClassesSafe FROM-CACHE
-> Task :app:convertLinkedResourcesToProtoRelease
-> Task :app:mergeSafeShaders
-> Task :app:compileSafeShaders NO-SOURCE
-> Task :app:generateSafeAssets UP-TO-DATE
-> Task :app:mergeSafeAssets
-> Task :app:compressSafeAssets FROM-CACHE
-> Task :app:extractSafeVersionControlInfo
-> Task :app:collectSafeDependencies
-> Task :app:sdkSafeDependencyData
-> Task :app:validateSigningSafe
-> Task :app:writeSafeAppMetadata
-> Task :app:writeSafeSigningConfigVersions
-> Task :app:processSafeResources
-> Task :app:optimizeSafeResources
-
-> Task :app:compileSafeKotlin
-w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ai/Nlu.kt:251:199 Condition is always 'true'.
-w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ui/MainActivity.kt:99:9 'fun overridePendingTransition(p0: Int, p1: Int): Unit' is deprecated. Deprecated in Java.
-w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/widget/TodayWidgetProvider.kt:48:19 'fun setRemoteAdapter(p0: Int, p1: Intent!): Unit' is deprecated. Deprecated in Java.
-w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/widget/TodayWidgetProvider.kt:78:21 'fun notifyAppWidgetViewDataChanged(p0: Int, p1: Int): Unit' is deprecated. Deprecated in Java.
-
-> Task :app:compileReleaseKotlin
-w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ai/Nlu.kt:251:199 Condition is always 'true'.
-w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ui/MainActivity.kt:99:9 'fun overridePendingTransition(p0: Int, p1: Int): Unit' is deprecated. Deprecated in Java.
-w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/widget/TodayWidgetProvider.kt:48:19 'fun setRemoteAdapter(p0: Int, p1: Intent!): Unit' is deprecated. Deprecated in Java.
-w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/widget/TodayWidgetProvider.kt:78:21 'fun notifyAppWidgetViewDataChanged(p0: Int, p1: Int): Unit' is deprecated. Deprecated in Java.
-
-> Task :app:compileReleaseJavaWithJavac
-> Task :app:mergeReleaseGeneratedProguardFiles
-> Task :app:processReleaseJavaRes
-> Task :app:expandReleaseArtProfileWildcards
-> Task :app:mergeReleaseJavaResource
-> Task :app:compileSafeJavaWithJavac
-> Task :app:dexBuilderSafe
-> Task :app:processSafeJavaRes
-> Task :app:mergeSafeGlobalSynthetics
-> Task :app:mergeSafeJavaResource
-> Task :app:mergeDexSafe
-> Task :app:l8DexDesugarLibSafe
-> Task :app:compileSafeArtProfile
-> Task :app:packageSafe
-> Task :app:createSafeApkListingFileRedirect
-> Task :app:assembleSafe
-> Task :app:minifyReleaseWithR8
-> Task :app:l8DexDesugarLibRelease
-> Task :app:compileReleaseArtProfile
-> Task :app:shrinkReleaseRes
-> Task :app:convertShrunkResourcesToBinaryRelease
-> Task :app:optimizeReleaseResources
-> Task :app:packageRelease
-> Task :app:createReleaseApkListingFileRedirect
-> Task :app:assembleRelease
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_4-1791715933300.json
-
-BUILD SUCCESSFUL in 2m 31s
-93 actionable tasks: 70 executed, 23 from cache
 
 === ci-verify.log ===
-========================================================================
-APK: app/build/outputs/apk/safe/app-safe.apk
-размер: 4.63 МБ
-sha256: cca2e161e3a1d5957cb7eba23795f834
-файлов в архиве: 1079
-classes.dex: ['classes.dex', 'classes2.dex', 'classes3.dex']
-resources.arsc: True
-package: ru.memento | versionName: 1.0.0 | versionCode: 1
-minSdk: None | targetSdk: None
-разрешения (15):
-    android.permission.ACCESS_NETWORK_STATE
-    android.permission.FOREGROUND_SERVICE
-    android.permission.FOREGROUND_SERVICE_DATA_SYNC
-    android.permission.INTERNET
-    android.permission.POST_NOTIFICATIONS
-    android.permission.RECEIVE_BOOT_COMPLETED
-    android.permission.RECORD_AUDIO
-    android.permission.REORDER_TASKS
-    android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS
-    android.permission.SCHEDULE_EXACT_ALARM
-    android.permission.SET_ALARM
-    android.permission.USE_EXACT_ALARM
-    android.permission.VIBRATE
-    android.permission.WAKE_LOCK
-    ru.memento.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
-проверки:
-  ✔ package = ru.memento
-  ✘ minSdk = 24 (Android 7.0+, тянет любые телефоны)
-  ✘ targetSdk = 35
-компоненты: activity=3 service=2 receiver=7 provider=1
-    ru.memento.ui.MainActivity
-    ru.memento.ui.ReminderSheetActivity
-    ru.memento.ui.AboutActivity
-    ru.memento.service.AiTaskService
-    ru.memento.widget.TodayWidgetService
-    ru.memento.alarm.ReminderReceiver
-    ru.memento.alarm.ActionReceiver
-    ru.memento.alarm.BootReceiver
-    ru.memento.widget.TodayWidgetProvider
-    ru.memento.widget.ProgressWidgetProvider
-    ru.memento.widget.WidgetActionReceiver
-    androidx.profileinstaller.ProfileInstallReceiver
-    androidx.startup.InitializationProvider
-  ✔ есть launcher-активность (ru.memento.ui.MainActivity)
-  ✔ объявлен ru.memento.ui.MainActivity
-  ✔ объявлен ru.memento.ui.ReminderSheetActivity
-  ✔ объявлен ru.memento.service.AiTaskService
-  ✔ объявлен ru.memento.widget.TodayWidgetService
-  ✔ объявлен ru.memento.alarm.ReminderReceiver
-  ✔ объявлен ru.memento.alarm.ActionReceiver
-  ✔ объявлен ru.memento.alarm.BootReceiver
-  ✔ объявлен ru.memento.widget.TodayWidgetProvider
-  ✔ объявлен ru.memento.widget.ProgressWidgetProvider
-  ✔ объявлен ru.memento.widget.WidgetActionReceiver
-  ✔ разрешение android.permission.POST_NOTIFICATIONS
-  ✔ разрешение android.permission.RECORD_AUDIO
-  ✔ разрешение android.permission.SCHEDULE_EXACT_ALARM
-  ✔ разрешение android.permission.USE_EXACT_ALARM
-  ✔ разрешение android.permission.FOREGROUND_SERVICE
-  ✔ разрешение android.permission.FOREGROUND_SERVICE_DATA_SYNC
-  ✔ разрешение android.permission.RECEIVE_BOOT_COMPLETED
-  ✔ разрешение android.permission.INTERNET
-  ✔ разрешение android.permission.WAKE_LOCK
-  ✔ AiTaskService: задан foregroundServiceType (1)
-  ✔ виджеты с провайдерами: ['ru.memento.widget.TodayWidgetProvider', 'ru.memento.widget.ProgressWidgetProvider']
-  ✔ виджет ru.memento.widget.TodayWidgetProvider ссылается на appwidget-provider
-  ✔ виджет ru.memento.widget.ProgressWidgetProvider ссылается на appwidget-provider
-  ✔ APK подписан (v1=False, v2/v3=True)
-  ✔ resources.arsc без сжатия (STORED)
-полезный размер (сжатый): 4.50 МБ
-========================================================================
-APK: app/build/outputs/apk/release/app-release.apk
-размер: 2.27 МБ
-sha256: 8183e6ab0140bc2bb2843808f4deaf0d
-файлов в архиве: 1078
-classes.dex: ['classes.dex', 'classes2.dex']
-resources.arsc: True
-package: ru.memento | versionName: 1.0.0 | versionCode: 1
-minSdk: None | targetSdk: None
-разрешения (15):
-    android.permission.ACCESS_NETWORK_STATE
-    android.permission.FOREGROUND_SERVICE
-    android.permission.FOREGROUND_SERVICE_DATA_SYNC
-    android.permission.INTERNET
-    android.permission.POST_NOTIFICATIONS
-    android.permission.RECEIVE_BOOT_COMPLETED
-    android.permission.RECORD_AUDIO
-    android.permission.REORDER_TASKS
-    android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS
-    android.permission.SCHEDULE_EXACT_ALARM
-    android.permission.SET_ALARM
-    android.permission.USE_EXACT_ALARM
-    android.permission.VIBRATE
-    android.permission.WAKE_LOCK
-    ru.memento.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
-проверки:
-  ✔ package = ru.memento
-  ✘ minSdk = 24 (Android 7.0+, тянет любые телефоны)
-  ✘ targetSdk = 35
-компоненты: activity=3 service=2 receiver=7 provider=1
-    ru.memento.ui.MainActivity
-    ru.memento.ui.ReminderSheetActivity
-    ru.memento.ui.AboutActivity
-    ru.memento.service.AiTaskService
-    ru.memento.widget.TodayWidgetService
-    ru.memento.alarm.ReminderReceiver
-    ru.memento.alarm.ActionReceiver
-    ru.memento.alarm.BootReceiver
-    ru.memento.widget.TodayWidgetProvider
-    ru.memento.widget.ProgressWidgetProvider
-    ru.memento.widget.WidgetActionReceiver
-    androidx.profileinstaller.ProfileInstallReceiver
-    androidx.startup.InitializationProvider
-  ✔ есть launcher-активность (ru.memento.ui.MainActivity)
-  ✔ объявлен ru.memento.ui.MainActivity
-  ✔ объявлен ru.memento.ui.ReminderSheetActivity
-  ✔ объявлен ru.memento.service.AiTaskService
-  ✔ объявлен ru.memento.widget.TodayWidgetService
-  ✔ объявлен ru.memento.alarm.ReminderReceiver
-  ✔ объявлен ru.memento.alarm.ActionReceiver
-  ✔ объявлен ru.memento.alarm.BootReceiver
-  ✔ объявлен ru.memento.widget.TodayWidgetProvider
-  ✔ объявлен ru.memento.widget.ProgressWidgetProvider
-  ✔ объявлен ru.memento.widget.WidgetActionReceiver
-  ✔ разрешение android.permission.POST_NOTIFICATIONS
-  ✔ разрешение android.permission.RECORD_AUDIO
-  ✔ разрешение android.permission.SCHEDULE_EXACT_ALARM
-  ✔ разрешение android.permission.USE_EXACT_ALARM
-  ✔ разрешение android.permission.FOREGROUND_SERVICE
-  ✔ разрешение android.permission.FOREGROUND_SERVICE_DATA_SYNC
-  ✔ разрешение android.permission.RECEIVE_BOOT_COMPLETED
-  ✔ разрешение android.permission.INTERNET
-  ✔ разрешение android.permission.WAKE_LOCK
-  ✔ AiTaskService: задан foregroundServiceType (1)
-  ✔ виджеты с провайдерами: ['ru.memento.widget.TodayWidgetProvider', 'ru.memento.widget.ProgressWidgetProvider']
-  ✔ виджет ru.memento.widget.TodayWidgetProvider ссылается на appwidget-provider
-  ✔ виджет ru.memento.widget.ProgressWidgetProvider ссылается на appwidget-provider
-  ✔ APK подписан (v1=False, v2/v3=True)
-  ✔ resources.arsc без сжатия (STORED)
-полезный размер (сжатый): 2.14 МБ
-========================================================================
-ИТОГ: ЕСТЬ ОШИБКИ
+
+=== ci-ui.log ===
+картинок для проверки: 8
+проверяю screenshots/01-главная.png: 1233×2673
+  OK   «+» по центру: x=613.5, центр экрана 616.5
+  OK   «+» достаточно крупный: высота 147px
+     элементы панели: [(112, 219), (318, 465), (532, 699), (748, 935), (1006, 1128)]
+  OK   вкладок по бокам от «+»: 4 (нужно 4)
+  OK   ближние вкладки симметричны: 222 и 228 px от центра
+  OK   дальние вкладки симметричны: 448 и 454 px от центра
+  OK   шаг вкладок одинаков: 226 и 226 px
+     полосы галочек: [(41, 118)]
+  ПЛОХО видимых галочек в списке: 1 (нужно 4-5)
+  OK   07-новое-напоминание.png: картинка не пустая (разброс яркости 45.3)
+  OK   05-профиль.png: картинка не пустая (разброс яркости 25.6)
+  OK   02-виджеты.png: картинка не пустая (разброс яркости 24.7)
+ИТОГ: есть замечания

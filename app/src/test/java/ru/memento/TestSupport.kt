@@ -61,6 +61,7 @@ object TestSupport {
         dir.mkdirs()
         val out = File(dir, name)
         FileOutputStream(out).use { bmp.compress(Bitmap.CompressFormat.PNG, 100, it) }
+        println("[скриншот] ${out.absolutePath} — ${out.length()} байт (каталог ${dir.absolutePath})")
         return out
     }
 

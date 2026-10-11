@@ -137,6 +137,11 @@ jobs:
           fi
           cp app/build/outputs/apk/release/*.apk apk/
           cp app/build/outputs/apk/safe/*.apk apk/
+          echo "--- где картинки ---"
+          find . -name "*.png" -not -path "./.git/*" -printf "%p %s байт\n" | head -20 || true
+          mkdir -p screenshots
+          find . -name "*.png" -not -path "./.git/*" -not -path "./screenshots/*" -exec cp {} screenshots/ \; 2>/dev/null || true
+          echo "--- скриншоты ---"
           ls -l screenshots 2>/dev/null || echo "(скриншоты не созданы)"
           {
             echo "run: $GITHUB_RUN_ID"
@@ -148,6 +153,8 @@ jobs:
             sha256sum apk/*.apk
             echo "--- screenshots ---"
             ls -l screenshots 2>/dev/null || echo "(нет)"
+            echo "--- tests ---"
+            python3 tools/test_summary.py 2>&1 || true
           } > ci-report.txt
           ls -lh apk
           VN=$(grep -oP 'versionName=\K.*' version.properties | tr -d '\r')

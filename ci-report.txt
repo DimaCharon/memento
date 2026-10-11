@@ -1,72 +1,24 @@
-run: 38135633041
-commit: 72c5be6e836f31b5127b03562e5cb2c294d3a4f0
-date: Sun Oct 11 11:28:54 UTC 2026
+run: 38139498662
+commit: 4137ed6d712af6fb6f0a1a9763847f8f83adb3f3
+date: Sun Oct 11 12:33:29 UTC 2026
 --- apk ---
-total 7072
--rw-r--r-- 1 runner runner 2381448 Oct 11 11:28 app-release.apk
--rw-r--r-- 1 runner runner 4856263 Oct 11 11:28 app-safe.apk
+total 7324
+-rw-r--r-- 1 runner runner 2630928 Oct 11 12:33 app-release.apk
+-rw-r--r-- 1 runner runner 4865111 Oct 11 12:33 app-safe.apk
 --- sha256 ---
-a6e57645e6b3dcce0d99f0cb7ac137452cbf32861bcb1089c53380195dcda8c7  apk/app-release.apk
-5d3e25f2f79991580ff399de7fb396f1d007878ff53f5139aba0353e3d271458  apk/app-safe.apk
+ff245397968295e68e35507260eb73f80ab1827eed990ad5eb291a787bf5ec16  apk/app-release.apk
+52f78b06cd9fe1ed92ac1bb3175c34dda7a8183890ce0d6a3167d40eda092562  apk/app-safe.apk
 --- screenshots ---
-total 2980
--rw-r--r-- 1 runner runner 475016 Oct 11 11:28 01-главная.png
--rw-r--r-- 1 runner runner 394654 Oct 11 11:28 02-виджеты.png
--rw-r--r-- 1 runner runner 402108 Oct 11 11:28 03-календарь.png
--rw-r--r-- 1 runner runner 455556 Oct 11 11:28 04-напоминания.png
--rw-r--r-- 1 runner runner 438325 Oct 11 11:28 05-профиль.png
--rw-r--r-- 1 runner runner 349867 Oct 11 11:28 06-ассистент.png
--rw-r--r-- 1 runner runner 176485 Oct 11 11:28 07-новое-напоминание.png
--rw-r--r-- 1 runner runner  23538 Oct 11 11:28 08-виджет.png
--rw-r--r-- 1 runner runner  45113 Oct 11 11:28 09-уведомление.png
--rw-r--r-- 1 runner runner  30807 Oct 11 11:28 10-уведомление-агента.png
--rw-r--r-- 1 runner runner    112 Oct 11 11:27 abc_ab_share_pack_mtrl_alpha.9.png
--rw-r--r-- 1 runner runner    227 Oct 11 11:27 abc_btn_check_to_on_mtrl_000.png
--rw-r--r-- 1 runner runner    404 Oct 11 11:27 abc_btn_check_to_on_mtrl_015.png
--rw-r--r-- 1 runner runner    464 Oct 11 11:27 abc_btn_radio_to_on_mtrl_000.png
--rw-r--r-- 1 runner runner    563 Oct 11 11:27 abc_btn_radio_to_on_mtrl_015.png
--rw-r--r-- 1 runner runner   1062 Oct 11 11:27 abc_btn_switch_to_on_mtrl_00001.9.png
--rw-r--r-- 1 runner runner   1249 Oct 11 11:27 abc_btn_switch_to_on_mtrl_00012.9.png
--rw-r--r-- 1 runner runner    107 Oct 11 11:27 abc_cab_background_top_mtrl_alpha.9.png
--rw-r--r-- 1 runner runner    171 Oct 11 11:27 abc_ic_commit_search_api_mtrl_alpha.png
--rw-r--r-- 1 runner runner     76 Oct 11 11:27 abc_list_divider_mtrl_alpha.9.png
--rw-r--r-- 1 runner runner    106 Oct 11 11:27 abc_list_focused_holo.9.png
--rw-r--r-- 1 runner runner     93 Oct 11 11:27 abc_list_longpressed_holo.9.png
--rw-r--r-- 1 runner runner     90 Oct 11 11:27 abc_list_pressed_holo_dark.9.png
--rw-r--r-- 1 runner runner     90 Oct 11 11:27 abc_list_pressed_holo_light.9.png
--rw-r--r-- 1 runner runner    108 Oct 11 11:27 abc_list_selector_disabled_holo_dark.9.png
--rw-r--r-- 1 runner runner    108 Oct 11 11:27 abc_list_selector_disabled_holo_light.9.png
--rw-r--r-- 1 runner runner    615 Oct 11 11:27 abc_menu_hardkey_panel_mtrl_mult.9.png
--rw-r--r-- 1 runner runner   1026 Oct 11 11:27 abc_popup_background_mtrl_mult.9.png
--rw-r--r-- 1 runner runner    201 Oct 11 11:27 abc_scrubber_control_off_mtrl_alpha.png
--rw-r--r-- 1 runner runner    196 Oct 11 11:27 abc_scrubber_control_to_pressed_mtrl_000.png
--rw-r--r-- 1 runner runner    272 Oct 11 11:27 abc_scrubber_control_to_pressed_mtrl_005.png
--rw-r--r-- 1 runner runner    102 Oct 11 11:27 abc_scrubber_primary_mtrl_alpha.9.png
--rw-r--r-- 1 runner runner     96 Oct 11 11:27 abc_scrubber_track_mtrl_alpha.9.png
--rw-r--r-- 1 runner runner    230 Oct 11 11:27 abc_spinner_mtrl_am_alpha.9.png
--rw-r--r-- 1 runner runner    318 Oct 11 11:27 abc_switch_track_mtrl_alpha.9.png
--rw-r--r-- 1 runner runner     93 Oct 11 11:27 abc_tab_indicator_mtrl_alpha.9.png
--rw-r--r-- 1 runner runner    278 Oct 11 11:27 abc_text_select_handle_left_mtrl.png
--rw-r--r-- 1 runner runner    396 Oct 11 11:27 abc_text_select_handle_middle_mtrl.png
--rw-r--r-- 1 runner runner    262 Oct 11 11:27 abc_text_select_handle_right_mtrl.png
--rw-r--r-- 1 runner runner     88 Oct 11 11:27 abc_textfield_activated_mtrl_alpha.9.png
--rw-r--r-- 1 runner runner     91 Oct 11 11:27 abc_textfield_default_mtrl_alpha.9.png
--rw-r--r-- 1 runner runner     86 Oct 11 11:27 abc_textfield_search_activated_mtrl_alpha.9.png
--rw-r--r-- 1 runner runner     87 Oct 11 11:27 abc_textfield_search_default_mtrl_alpha.9.png
--rw-r--r-- 1 runner runner    313 Oct 11 11:27 ic_call_answer.png
--rw-r--r-- 1 runner runner    313 Oct 11 11:27 ic_call_answer_low.png
--rw-r--r-- 1 runner runner    205 Oct 11 11:27 ic_call_answer_video.png
--rw-r--r-- 1 runner runner    205 Oct 11 11:27 ic_call_answer_video_low.png
--rw-r--r-- 1 runner runner    238 Oct 11 11:27 ic_call_decline.png
--rw-r--r-- 1 runner runner    238 Oct 11 11:27 ic_call_decline_low.png
--rw-r--r-- 1 runner runner  15079 Oct 11 11:27 ic_launcher.png
--rw-r--r-- 1 runner runner  15079 Oct 11 11:27 ic_launcher_foreground.png
--rw-r--r-- 1 runner runner  15079 Oct 11 11:27 ic_launcher_round.png
--rw-r--r-- 1 runner runner    176 Oct 11 11:27 notification_bg_low_normal.9.png
--rw-r--r-- 1 runner runner    181 Oct 11 11:27 notification_bg_low_pressed.9.png
--rw-r--r-- 1 runner runner    176 Oct 11 11:27 notification_bg_normal.9.png
--rw-r--r-- 1 runner runner    180 Oct 11 11:27 notification_bg_normal_pressed.9.png
--rw-r--r-- 1 runner runner   1099 Oct 11 11:27 notification_oversize_large_icon_bg.png
--rw-r--r-- 1 runner runner    107 Oct 11 11:27 notify_panel_notification_icon_bg.png
+total 2760
+-rw-r--r-- 1 runner runner 480238 Oct 11 12:30 01-главная.png
+-rw-r--r-- 1 runner runner 394654 Oct 11 12:30 02-виджеты.png
+-rw-r--r-- 1 runner runner 403095 Oct 11 12:30 03-календарь.png
+-rw-r--r-- 1 runner runner 456963 Oct 11 12:30 04-напоминания.png
+-rw-r--r-- 1 runner runner 438325 Oct 11 12:30 05-профиль.png
+-rw-r--r-- 1 runner runner 349867 Oct 11 12:30 06-ассистент.png
+-rw-r--r-- 1 runner runner 176184 Oct 11 12:30 07-новое-напоминание.png
+-rw-r--r-- 1 runner runner  23538 Oct 11 12:30 08-виджет.png
+-rw-r--r-- 1 runner runner  45113 Oct 11 12:30 09-уведомление.png
+-rw-r--r-- 1 runner runner  30807 Oct 11 12:30 10-уведомление-агента.png
 --- tests ---
-тестов: 69, упало: 0, ошибок: 0, пропущено: 0
+тестов: 95, упало: 0, ошибок: 0, пропущено: 0

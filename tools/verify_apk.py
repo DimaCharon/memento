@@ -139,7 +139,13 @@ def main(paths):
         a = man["attrs"]
         print("package:", a.get("package"), "| versionName:", a.get("android:versionName"),
               "| versionCode:", a.get("android:versionCode"))
-        print("minSdk:", a.get("android:minSdkVersion"), "| targetSdk:", a.get("android:targetSdkVersion"))
+        sdk = find_all(man, "uses-sdk")
+        sdk_attrs = sdk[0]["attrs"] if sdk else {}
+        sdk_attrs.update({k: v for k, v in a.items() if k.endswith("SdkVersion")})
+        min_sdk = sdk_attrs.get("android:minSdkVersion")
+        target_sdk = sdk_attrs.get("android:targetSdkVersion")
+        print("uses-sdk:", sdk_attrs)
+        print("minSdk:", min_sdk, "| targetSdk:", target_sdk)
 
         perms = sorted(p["attrs"].get("android:name", "") for p in find_all(man, "uses-permission"))
         print("разрешения (%d):" % len(perms))
@@ -155,8 +161,8 @@ def main(paths):
 
         print("проверки:")
         check(a.get("package") == "ru.memento", "package = ru.memento")
-        check(a.get("android:minSdkVersion") == 24, "minSdk = 24 (Android 7.0+, тянет любые телефоны)")
-        check(a.get("android:targetSdkVersion") == 35, "targetSdk = 35")
+        check(min_sdk == 24, "minSdk = 24 (Android 7.0+, тянет любые телефоны)")
+        check(target_sdk == 35, "targetSdk = 35 (Android 15)")
 
         activities = find_all(man, "activity")
         services = find_all(man, "service")

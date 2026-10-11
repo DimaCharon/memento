@@ -11,15 +11,21 @@
         android:layout_height="match_parent" />
 
     <!-- Нижняя навигация: 4 вкладки, центральная кнопка «+» лежит поверх, ровно по центру -->
-    <include
-        android:id="@+id/nav_bar"
-        layout="@layout/view_bottom_nav"
+    <FrameLayout
+        android:id="@+id/nav_host"
         android:layout_width="match_parent"
         android:layout_height="@dimen/nav_height"
         android:layout_gravity="bottom|center_horizontal"
         android:layout_marginStart="@dimen/nav_side"
         android:layout_marginEnd="@dimen/nav_side"
-        android:layout_marginBottom="@dimen/nav_bottom" />
+        android:layout_marginBottom="@dimen/nav_bottom">
+
+        <include
+            android:id="@+id/nav_bar"
+            layout="@layout/view_bottom_nav"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
 
     <FrameLayout
         android:id="@+id/fab"

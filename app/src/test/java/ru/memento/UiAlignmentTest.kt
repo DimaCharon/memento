@@ -65,13 +65,14 @@ class UiAlignmentTest {
         val root = ActivityMainRoot.build()
         TestSupport.layoutAt(root.view)
         val center = root.view.width / 2
-        val home = Math.abs(at(root.navHome) - center)
-        val profile = Math.abs(at(root.navProfile) - center)
-        val calendar = Math.abs(at(root.navCalendar) - center)
-        val alerts = Math.abs(at(root.navAlerts) - center)
+        fun x(v: View) = xIn(v, root.view) + v.width / 2
+        val home = Math.abs(x(root.navHome) - center)
+        val profile = Math.abs(x(root.navProfile) - center)
+        val calendar = Math.abs(x(root.navCalendar) - center)
+        val alerts = Math.abs(x(root.navAlerts) - center)
         val w = root.view.width
-        val report = "ширина $w, центры: Главная ${at(root.navHome)}, Календарь ${at(root.navCalendar)}, " +
-            "Напоминания ${at(root.navAlerts)}, Профиль ${at(root.navProfile)}, центр экрана $center"
+        val report = "ширина $w, центры: Главная ${x(root.navHome)}, Календарь ${x(root.navCalendar)}, " +
+            "Напоминания ${x(root.navAlerts)}, Профиль ${x(root.navProfile)}, центр экрана $center"
         assertTrue("Главная и Профиль должны быть на равном расстоянии ($home vs $profile): $report", Math.abs(home - profile) <= 2)
         assertTrue("Календарь и Напоминания должны быть на равном расстоянии ($calendar vs $alerts): $report", Math.abs(calendar - alerts) <= 2)
         assertTrue("соседние вкладки идут с равным шагом: $report", Math.abs((home - calendar) - (alerts - profile)) <= 3)
@@ -91,8 +92,8 @@ class UiAlignmentTest {
     fun `плюс приподнят над панелью как на макете`() {
         val root = ActivityMainRoot.build()
         TestSupport.layoutAt(root.view)
-        val fabTop = root.view.height - root.fab.bottom
-        val navTop = root.view.height - root.navBar.top
+        val fabTop = root.view.height - (yIn(root.fab, root.view) + root.fab.height)
+        val navTop = root.view.height - yIn(root.navBar, root.view)
         assertTrue("верх «+» должен быть рядом с верхом панели: $fabTop vs $navTop", fabTop <= navTop + TestSupport.px(4))
     }
 

@@ -170,7 +170,7 @@ jobs:
             echo "::warning::не удалось опубликовать коммит"
             return 0
           }
-          { echo "run: $GITHUB_RUN_ID step failed"; echo "=== ci-test.log ==="; tail -c 40000 ci-test.log 2>/dev/null; echo; echo "=== ci-build.log ==="; tail -c 40000 ci-build.log 2>/dev/null; echo; echo "=== ci-verify.log ==="; cat ci-verify.log 2>/dev/null; } > ci-failure.log
+          { echo "run: $GITHUB_RUN_ID step failed"; echo "=== ci-test.log ==="; tail -c 40000 ci-test.log 2>/dev/null; echo; echo "=== ci-build.log ==="; tail -c 40000 ci-build.log 2>/dev/null; echo; echo "=== ci-verify.log ==="; cat ci-verify.log 2>/dev/null; } > ci-failure.log || true
           git add -f ci-failure.log
           publish "ci: лог падения сборки [skip ci]"
 

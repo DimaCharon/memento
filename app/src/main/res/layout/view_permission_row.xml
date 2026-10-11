@@ -30,7 +30,7 @@
 
     <TextView
         android:id="@+id/perm_btn"
-        style="@style/Btn.Link"
+        style="@style/MementoBtnLink"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:text="@string/perm_grant" />

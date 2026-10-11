@@ -77,7 +77,7 @@
 
         <TextView
             android:id="@+id/ntf_snooze"
-            style="@style/Btn.Ghost"
+            style="@style/MementoBtnGhost"
             android:layout_width="0dp"
             android:layout_height="42dp"
             android:layout_weight="1"
@@ -86,7 +86,7 @@
 
         <TextView
             android:id="@+id/ntf_done"
-            style="@style/Btn.Ghost"
+            style="@style/MementoBtnGhost"
             android:layout_width="0dp"
             android:layout_height="42dp"
             android:layout_marginStart="8dp"

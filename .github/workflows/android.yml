@@ -153,7 +153,11 @@ jobs:
           { echo "run: $GITHUB_RUN_ID step failed"; echo "=== ci-test.log ==="; tail -c 40000 ci-test.log 2>/dev/null; echo; echo "=== ci-build.log ==="; tail -c 40000 ci-build.log 2>/dev/null; echo; echo "=== ci-verify.log ==="; cat ci-verify.log 2>/dev/null; } > ci-failure.log
           git add -f ci-failure.log
           git commit -m "ci: лог падения сборки [skip ci]" || true
-          git push || true
+          for i in 1 2 3; do
+            git pull --rebase --quiet || git rebase --abort || true
+            if git push origin HEAD:$GITHUB_REF_NAME; then break; fi
+            sleep 7
+          done
 
       - name: Итог
         run: |

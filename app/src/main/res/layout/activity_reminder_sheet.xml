@@ -39,7 +39,7 @@
 
                 <TextView
                     android:id="@+id/sheet_cancel"
-                    style="@style/Btn.Link"
+                    style="@style/MementoBtnLink"
                     android:layout_width="wrap_content"
                     android:layout_height="44dp"
                     android:text="@string/cancel" />
@@ -59,7 +59,7 @@
 
                 <TextView
                     android:id="@+id/sheet_save_top"
-                    style="@style/Btn.Link"
+                    style="@style/MementoBtnLink"
                     android:layout_width="wrap_content"
                     android:layout_height="44dp"
                     android:text="@string/ready" />
@@ -492,7 +492,7 @@
 
             <TextView
                 android:id="@+id/sheet_save"
-                style="@style/Btn.Primary"
+                style="@style/MementoBtnPrimary"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:layout_marginTop="18dp"
@@ -500,7 +500,7 @@
 
             <TextView
                 android:id="@+id/sheet_delete"
-                style="@style/Btn.Ghost"
+                style="@style/MementoBtnGhost"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="8dp"

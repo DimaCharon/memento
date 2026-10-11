@@ -127,7 +127,7 @@
 
             <TextView
                 android:id="@+id/hist_read"
-                style="@style/Btn.Link"
+                style="@style/MementoBtnLink"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
                 android:minHeight="36dp"
@@ -135,7 +135,7 @@
 
             <TextView
                 android:id="@+id/hist_clear"
-                style="@style/Btn.Link"
+                style="@style/MementoBtnLink"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
                 android:minHeight="36dp"

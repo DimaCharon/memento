@@ -131,7 +131,7 @@
 
             <TextView
                 android:id="@+id/wg_add_today"
-                style="@style/Btn.Ghost"
+                style="@style/MementoBtnGhost"
                 android:layout_width="0dp"
                 android:layout_height="46dp"
                 android:layout_weight="1"
@@ -139,7 +139,7 @@
 
             <TextView
                 android:id="@+id/wg_add_progress"
-                style="@style/Btn.Ghost"
+                style="@style/MementoBtnGhost"
                 android:layout_width="0dp"
                 android:layout_height="46dp"
                 android:layout_marginStart="8dp"

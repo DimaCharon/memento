@@ -509,7 +509,7 @@
 
             <TextView
                 android:id="@+id/home_agent_btn"
-                style="@style/Btn.Ghost"
+                style="@style/MementoBtnGhost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -518,7 +518,7 @@
 
         <TextView
             android:id="@+id/home_widgets_link"
-            style="@style/Btn.Link"
+            style="@style/MementoBtnLink"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"

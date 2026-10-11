@@ -54,7 +54,8 @@ class StructureTest {
         ).forEach { assertTrue("нет приёмника $it ($receivers)", it in receivers) }
         listOf(
             ".widget.TodayWidgetProvider", ".widget.ProgressWidgetProvider",
-        ).forEach { assertTrue("нет виджета $it ($providers)", it in providers) }
+        ).forEach { assertTrue("нет виджета $it ($receivers)", it in receivers) }
+        assertTrue("не должно быть лишних provider вне виджетов: $providers", providers.isEmpty())
     }
 
     @Test

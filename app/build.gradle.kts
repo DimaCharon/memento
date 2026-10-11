@@ -98,6 +98,13 @@ android {
         unitTests.all {
             it.maxHeapSize = "2g"
             it.systemProperty("memento.screenshots.dir", System.getenv("MEMENTO_SCREENSHOTS_DIR") ?: "${rootProject.projectDir}/screenshots")
+            it.testLogging {
+                events("failed")
+                exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+                showExceptions = true
+                showCauses = true
+                showStackTraces = true
+            }
         }
     }
 

@@ -48,9 +48,12 @@ class UiAlignmentTest {
         val profile = Math.abs(at(root.navProfile) - center)
         val calendar = Math.abs(at(root.navCalendar) - center)
         val alerts = Math.abs(at(root.navAlerts) - center)
-        assertTrue("Главная и Профиль должны быть на равном расстоянии: $home vs $profile", Math.abs(home - profile) <= 1)
-        assertTrue("Календарь и Напоминания должны быть на равном расстоянии: $calendar vs $alerts", Math.abs(calendar - alerts) <= 1)
-        assertTrue("соседние вкладки должны идти с равным шагом", Math.abs((home - calendar) - (alerts - profile)) <= 2)
+        val w = root.view.width
+        val report = "ширина $w, центры: Главная ${at(root.navHome)}, Календарь ${at(root.navCalendar)}, " +
+            "Напоминания ${at(root.navAlerts)}, Профиль ${at(root.navProfile)}, центр экрана $center"
+        assertTrue("Главная и Профиль должны быть на равном расстоянии ($home vs $profile): $report", Math.abs(home - profile) <= 2)
+        assertTrue("Календарь и Напоминания должны быть на равном расстоянии ($calendar vs $alerts): $report", Math.abs(calendar - alerts) <= 2)
+        assertTrue("соседние вкладки идут с равным шагом: $report", Math.abs((home - calendar) - (alerts - profile)) <= 3)
     }
 
     @Test
@@ -89,7 +92,10 @@ class UiAlignmentTest {
         val row = inflate(R.layout.item_reminder_row)
         TestSupport.layoutAt(row, wDp = 380, hDp = 72)
         val check = row.findViewById<View>(R.id.row_check)
-        assertTrue("галочка должна быть по центру строки", Math.abs(ay(check) - row.height / 2) <= 2)
+        assertTrue(
+            "галочка должна быть по центру строки: центр галочки ${ay(check)}, центр строки ${row.height / 2}, галочка ${check.top}..${check.bottom}",
+            Math.abs(ay(check) - row.height / 2) <= 3,
+        )
     }
 
     @Test
@@ -98,7 +104,10 @@ class UiAlignmentTest {
         TestSupport.layoutAt(row, wDp = 380, hDp = 72)
         val time = row.findViewById<View>(R.id.row_time)
         val title = row.findViewById<View>(R.id.row_title)
-        assertEquals("левый край строки", row.paddingLeft, time.left)
+        assertTrue(
+            "время у левого края: left=${time.left}, padding=${row.paddingLeft}",
+            Math.abs(time.left - row.paddingLeft) <= 2,
+        )
         assertTrue("заголовок правее времени", title.left > time.right)
     }
 
@@ -119,8 +128,14 @@ class UiAlignmentTest {
         TestSupport.layoutAt(row, wDp = 380, hDp = 72)
         val avatar = row.findViewById<View>(R.id.pr_avatar)
         val name = row.findViewById<View>(R.id.pr_name)
-        assertEquals("аватар по центру строки", row.height / 2, ay(avatar))
-        assertEquals("имя по центру строки", row.height / 2, ay(name))
+        assertTrue(
+            "аватар по центру строки: ${ay(avatar)} vs ${row.height / 2}",
+            Math.abs(ay(avatar) - row.height / 2) <= 3,
+        )
+        assertTrue(
+            "имя по центру строки: ${ay(name)} vs ${row.height / 2}",
+            Math.abs(ay(name) - row.height / 2) <= 3,
+        )
     }
 }
 

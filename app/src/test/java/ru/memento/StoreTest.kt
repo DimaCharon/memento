@@ -18,18 +18,22 @@ class StoreTest {
     @Test
     fun `демо-данные создают пять событий на сегодня`() {
         val s = TestSupport.seed()
-        assertEquals(6, s.all().size)
+        val all = s.all()
+        assertEquals("всего записей должно быть 6, а есть ${all.map { "${it.date} ${it.title}" }}", 6, all.size)
         val today = s.today()
-        assertTrue("на сегодня должно быть 5 событий, а есть ${today.size}", today.size == 5)
-        assertTrue(today.any { it.done })
+        assertTrue(
+            "сегодня ${Ru.todayISO()}, а в базе ${all.map { it.date }.distinct()}; сегодня нашлось ${today.size}",
+            today.size == 5,
+        )
+        assertTrue("одно демо-дело уже выполнено", today.any { it.done })
     }
 
     @Test
     fun `статистика дня считает выполненные`() {
         val s = TestSupport.seed()
         val (done, total) = s.todayStats()
-        assertEquals(1, done)
-        assertEquals(5, total)
+        assertEquals("выполнено $done из $total (${s.today().map { "${it.time} ${it.title} done=${it.done}" }})", 1, done)
+        assertEquals("всего за сегодня: $total", 5, total)
     }
 
     @Test

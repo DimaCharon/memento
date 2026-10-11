@@ -1,4 +1,15 @@
-node_modules
-dist
-*.tsbuildinfo
+# Сборка Gradle
+.gradle/
+build/
+/app/build/
+local.properties
+captures/
+.cxx/
+
+# IDE
+.idea/
+*.iml
 .DS_Store
+
+# Robolectric
+.robolectric/

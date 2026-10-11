@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Memento</string>
+    <string name="brand_sub">напоминания и ИИ-агенты</string>
+
+    <!-- Нижняя навигация -->
+    <string name="nav_home">Главная</string>
+    <string name="nav_calendar">Календарь</string>
+    <string name="nav_alerts">Напоминания</string>
+    <string name="nav_profile">Профиль</string>
+    <string name="nav_ai">Ассистент</string>
+    <string name="nav_add">Новое напоминание</string>
+
+    <!-- Главная -->
+    <string name="today">Сегодня</string>
+    <string name="tomorrow">Завтра</string>
+    <string name="yesterday">Вчера</string>
+    <string name="widget_today">Сегодня</string>
+    <string name="widget_today_desc">Список напоминаний на сегодня прямо на рабочем столе</string>
+    <string name="widget_next">Следующее</string>
+    <string name="widget_progress">Прогресс дня</string>
+    <string name="widget_progress_desc">Кольцо прогресса: сколько выполнено из всех дел на сегодня</string>
+    <string name="widget_week">Ближайшая неделя</string>
+    <string name="widget_day">Расписание на день</string>
+    <string name="widget_agent">Агент</string>
+    <string name="widget_all">Все напоминания</string>
+    <string name="no_reminders">Пока пусто</string>
+    <string name="no_reminders_hint">Добавьте первое напоминание кнопкой «+»</string>
+    <string name="nothing_today">На сегодня всё выполнено</string>
+    <string name="next_none">Свободное время — планов больше нет</string>
+    <string name="open">Открыть</string>
+    <string name="all_done">Всё сделано</string>
+
+    <!-- Виджеты -->
+    <string name="widgets">Виджеты</string>
+    <string name="widgets_sub">Один тап — и главный экран перестроится</string>
+    <string name="size_2x2">2 × 2</string>
+    <string name="size_4x2">4 × 2</string>
+    <string name="size_4x4">4 × 4</string>
+    <string name="size_2x2_cap">компактно</string>
+    <string name="size_4x2_cap">стандарт</string>
+    <string name="size_4x4_cap">расписание</string>
+    <string name="all_widgets">ВСЕ ВИДЖЕТЫ</string>
+    <string name="widget_preview">Предпросмотр</string>
+    <string name="to_home">На рабочий стол</string>
+    <string name="widget_hint">Удерживайте пустое место на рабочем столе → «Виджеты» → Memento</string>
+    <string name="widget_pin_ok">Виджет добавлен на рабочий стол</string>
+    <string name="widget_pin_unavailable">Ваш лаунчер не разрешил добавить виджет автоматически. Добавьте вручную: удерживайте рабочий стол → «Виджеты» → Memento.</string>
+    <string name="on">вкл</string>
+    <string name="off">выкл</string>
+
+    <!-- Календарь -->
+    <string name="calendar">Календарь</string>
+    <string name="filter_all">Все</string>
+    <string name="filter_active">Активные</string>
+    <string name="filter_done">Выполненные</string>
+    <string name="day_empty">На этот день напоминаний нет</string>
+    <string name="month_total">%1$s · %2$d</string>
+
+    <!-- Напоминания / уведомления -->
+    <string name="reminders">Напоминания</string>
+    <string name="notif_center">Центр уведомлений</string>
+    <string name="mark_read">Прочитано</string>
+    <string name="clear">Очистить</string>
+    <string name="notif_empty">Здесь появятся сработавшие напоминания</string>
+    <string name="notif_empty_hint">Проверьте, что уведомления и «точные будильники» включены</string>
+    <string name="snooze_10">Отложить 10 мин</string>
+    <string name="mark_done">Выполнено</string>
+    <string name="undo">Вернуть</string>
+    <string name="overdue">Просрочено</string>
+    <string name="repeat_prefix">Повтор</string>
+
+    <!-- Профиль -->
+    <string name="profile">Профиль</string>
+    <string name="series">Серия: %1$d · выполнено: %2$d · в плане: %3$d</string>
+    <string name="profiles">ПРОФИЛИ</string>
+    <string name="active_profile">активный</string>
+    <string name="new_profile_hint">Имя нового профиля</string>
+    <string name="create">Создать</string>
+    <string name="settings">НАСТРОЙКИ</string>
+    <string name="setting_name">Имя на главном экране</string>
+    <string name="setting_widget_size">Размер виджета «Сегодня»</string>
+    <string name="setting_theme">Тема</string>
+    <string name="theme_graphite">Графит</string>
+    <string name="theme_coal">Уголь</string>
+    <string name="setting_notifications">Уведомления</string>
+    <string name="setting_notifications_sub">Показывать всплывающие карточки</string>
+    <string name="setting_sound">Звук и вибрация</string>
+    <string name="setting_verification">Проверка агента</string>
+    <string name="setting_verification_sub">Валидатор перечитывает базу после каждой операции</string>
+    <string name="setting_background">Работать при закрытом приложении</string>
+    <string name="setting_background_sub">ИИ-задачи досчитываются в фоне и присылают результат</string>
+    <string name="setting_offline_speech">Офлайн-распознавание речи</string>
+    <string name="setting_offline_speech_sub">Не отправлять голос в облако, если доступен локальный движок</string>
+    <string name="reset_demo">Сбросить демо-данные</string>
+    <string name="reset_demo_sub">Вернуть стартовый набор напоминаний</string>
+    <string name="reset_ok">Демо-данные восстановлены</string>
+    <string name="ai_section">ИИ · XTROUTER</string>
+    <string name="ai_section_sub">OpenAI-совместимый шлюз: api.xkiro.com/v1</string>
+    <string name="api_key">API-ключ</string>
+    <string name="api_key_hint">xtr-…</string>
+    <string name="base_url">Base URL</string>
+    <string name="model">Модель</string>
+    <string name="check_key">Проверить ключ</string>
+    <string name="save">Сохранить</string>
+    <string name="saved">Сохранено</string>
+    <string name="key_ok">Ключ работает. Ответ модели: %1$s</string>
+    <string name="key_missing">Введите API-ключ — он хранится только на телефоне</string>
+    <string name="key_fail">Не удалось: %1$s</string>
+    <string name="key_checking">Проверяю ключ…</string>
+    <string name="use_local">Работать без ключа (локальный движок)</string>
+    <string name="use_local_sub">Разбор фраз, напоминания и уведомления работают офлайн</string>
+    <string name="permissions_section">РАЗРЕШЕНИЯ</string>
+    <string name="perm_notifications">Уведомления</string>
+    <string name="perm_mic">Микрофон</string>
+    <string name="perm_exact">Точные будильники</string>
+    <string name="perm_battery">Не выгружать из памяти</string>
+    <string name="perm_granted">разрешено</string>
+    <string name="perm_denied">запрещено</string>
+    <string name="perm_grant">Разрешить</string>
+    <string name="test_notification">Проверить уведомление</string>
+    <string name="test_notification_sent">Отправил тестовую карточку</string>
+    <string name="about">О приложении</string>
+
+    <!-- Ассистент -->
+    <string name="assistant">Ассистент</string>
+    <string name="assistant_sub">Скажите голосом — сделаю, даже если приложение закрыто</string>
+    <string name="tap_and_speak">Нажмите и говорите</string>
+    <string name="listening">Слушаю…</string>
+    <string name="recognizing">Распознаю…</string>
+    <string name="thinking">Думаю…</string>
+    <string name="voice_stop">Стоп</string>
+    <string name="voice_unavailable">Распознавание речи недоступно. Установите «Google» или «Речь» (Speech Services) — либо напишите текстом.</string>
+    <string name="voice_permission">Нужен доступ к микрофону</string>
+    <string name="voice_offline_hint">Локальное распознавание</string>
+    <string name="type_command">Напиши фразой: «напомни в пятницу в 19:30 ужин с семьёй»</string>
+    <string name="send">Отправить</string>
+    <string name="example_1">Напомни завтра в 9:00 встреча с командой</string>
+    <string name="example_2">Каждый день в 8 утра зарядка</string>
+    <string name="example_3">Что у меня сегодня?</string>
+    <string name="example_4">Отложи тренировку на 30 минут</string>
+    <string name="pipeline">Пайплайн агентов</string>
+    <string name="agent_log">Журнал</string>
+    <string name="voice_queued">Задача принята — досчитаю в фоне, можно закрыть приложение</string>
+    <string name="result_ready">Готово: %1$s</string>
+    <string name="result_failed">Не вышло: %1$s</string>
+
+    <!-- Шторка напоминания -->
+    <string name="new_reminder">Новое напоминание</string>
+    <string name="edit_reminder">Изменить напоминание</string>
+    <string name="cancel">Отмена</string>
+    <string name="ready">Готово</string>
+    <string name="field_title">Название</string>
+    <string name="hint_title">Например: позвонить клиенту</string>
+    <string name="field_date">Дата</string>
+    <string name="chip_today">Сегодня</string>
+    <string name="chip_tomorrow">Завтра</string>
+    <string name="chip_plus2">+2 дня</string>
+    <string name="chip_week">Через неделю</string>
+    <string name="field_time">Время</string>
+    <string name="repeat">Повтор</string>
+    <string name="repeat_none">Не повторять</string>
+    <string name="repeat_daily">Каждый день</string>
+    <string name="repeat_weekdays">По будням</string>
+    <string name="repeat_weekly">Каждую неделю</string>
+    <string name="repeat_monthly">Каждый месяц</string>
+    <string name="notes">Заметки</string>
+    <string name="notes_hint">Что уточнить: контекст, ссылки</string>
+    <string name="place">Место</string>
+    <string name="place_hint">Офис / Онлайн</string>
+    <string name="lead">Уведомление</string>
+    <string name="lead_now">В момент события</string>
+    <string name="lead_5">За 5 минут</string>
+    <string name="lead_10">За 10 минут</string>
+    <string name="lead_30">За 30 минут</string>
+    <string name="lead_60">За 1 час</string>
+    <string name="priority">Приоритет</string>
+    <string name="prio_high">Высокий</string>
+    <string name="prio_medium">Средний</string>
+    <string name="prio_low">Низкий</string>
+    <string name="delete">Удалить</string>
+    <string name="delete_q">Удалить напоминание?</string>
+    <string name="yes_delete">Удалить</string>
+    <string name="reminder_saved">Напоминание сохранено</string>
+    <string name="reminder_deleted">Напоминание удалено</string>
+    <string name="reminder_done_toast">Отмечено выполненным</string>
+    <string name="snoozed_until">Отложено до %1$s</string>
+
+    <!-- Уведомления (системные) -->
+    <string name="channel_reminders">Напоминания</string>
+    <string name="channel_reminders_desc">Карточки сработавших напоминаний с кнопками «Отложить» и «Выполнено»</string>
+    <string name="channel_ai">ИИ-задачи</string>
+    <string name="channel_ai_desc">Прогресс и результат задач ассистента</string>
+    <string name="channel_agent">Агент</string>
+    <string name="channel_agent_desc">Служебные сообщения ИИ-агентов</string>
+    <string name="notif_now">сейчас</string>
+    <string name="notif_in">Memento · %1$s</string>
+    <string name="notif_startat">Начало в %1$s</string>
+    <string name="notif_open">Нажми, чтобы открыть</string>
+    <string name="notif_channel_off">Уведомления выключены в настройках системы</string>
+    <string name="ai_task_title">Ассистент выполняет задачу</string>
+    <string name="ai_task_text">«%1$s»</string>
+    <string name="ai_task_done_title">Ассистент: готово</string>
+
+    <!-- Служебное -->
+    <string name="ok">ОК</string>
+    <string name="close">Закрыть</string>
+    <string name="retry">Повторить</string>
+    <string name="error_network">Нет интернета</string>
+    <string name="about_text">Memento %1$s\nНапоминания, виджеты и голосовой ИИ-ассистент.\nДанные хранятся только на этом телефоне.</string>
+
+    <string-array name="months_gen">
+        <item>января</item><item>февраля</item><item>марта</item><item>апреля</item>
+        <item>мая</item><item>июня</item><item>июля</item><item>августа</item>
+        <item>сентября</item><item>октября</item><item>ноября</item><item>декабря</item>
+    </string-array>
+    <string-array name="months_nom">
+        <item>Январь</item><item>Февраль</item><item>Март</item><item>Апрель</item>
+        <item>Май</item><item>Июнь</item><item>Июль</item><item>Август</item>
+        <item>Сентябрь</item><item>Октябрь</item><item>Ноябрь</item><item>Декабрь</item>
+    </string-array>
+    <string-array name="months_short">
+        <item>янв</item><item>фев</item><item>мар</item><item>апр</item><item>май</item><item>июн</item>
+        <item>июл</item><item>авг</item><item>сен</item><item>окт</item><item>ноя</item><item>дек</item>
+    </string-array>
+    <string-array name="week_short">
+        <item>Пн</item><item>Вт</item><item>Ср</item><item>Чт</item><item>Пт</item><item>Сб</item><item>Вс</item>
+    </string-array>
+    <string-array name="week_full">
+        <item>воскресенье</item><item>понедельник</item><item>вторник</item><item>среда</item>
+        <item>четверг</item><item>пятница</item><item>суббота</item>
+    </string-array>
+
+    <plurals name="plurals_reminders">
+        <item quantity="one">%d напоминание</item>
+        <item quantity="few">%d напоминания</item>
+        <item quantity="many">%d напоминаний</item>
+        <item quantity="other">%d напоминаний</item>
+    </plurals>
+    <plurals name="plurals_min">
+        <item quantity="one">%d минута</item>
+        <item quantity="few">%d минуты</item>
+        <item quantity="many">%d минут</item>
+        <item quantity="other">%d минут</item>
+    </plurals>
+</resources>

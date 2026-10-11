@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.Memento" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/accentStrong</item>
+        <item name="colorOnPrimary">@color/accentOn</item>
+        <item name="colorSecondary">@color/accent</item>
+        <item name="colorSurface">@color/bg1</item>
+        <item name="colorOnSurface">@color/txt</item>
+        <item name="colorError">@color/err</item>
+        <item name="android:colorBackground">@color/bg0</item>
+        <item name="android:textColorPrimary">@color/txt</item>
+        <item name="android:textColorSecondary">@color/txt2</item>
+        <item name="android:textColorHint">@color/txt3</item>
+
+        <item name="android:windowBackground">@drawable/bg_app</item>
+        <item name="android:statusBarColor">@color/transparent</item>
+        <item name="android:navigationBarColor">@color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:enforceStatusBarContrast" tools:targetApi="q">false</item>
+        <item name="android:enforceNavigationBarContrast" tools:targetApi="q">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowAnimationStyle">@style/Anim.Memento</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.Memento.Dialog</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.Memento.Sheet</item>
+    </style>
+
+    <style name="Theme.Memento.Coal" parent="Theme.Memento">
+        <item name="android:windowBackground">@drawable/bg_app_coal</item>
+    </style>
+
+    <!-- Шторка напоминания: снизу вверх, фон затемняется -->
+    <style name="Theme.Memento.Sheet" parent="Theme.Memento">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@color/scrim</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@style/Anim.Memento.Sheet</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+    </style>
+
+    <style name="Anim.Memento" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/fade_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/fade_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
+    </style>
+
+    <style name="Anim.Memento.Sheet" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/sheet_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/fade_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/fade_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/sheet_out</item>
+    </style>
+
+    <style name="ThemeOverlay.Memento.Dialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorSurface">@color/bg1</item>
+        <item name="colorOnSurface">@color/txt</item>
+        <item name="android:background">@drawable/bg_dialog</item>
+        <item name="buttonBarPositiveButtonStyle">@style/DialogButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/DialogButton</item>
+    </style>
+
+    <style name="ThemeOverlay.Memento.Sheet" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="colorSurface">@color/bg1</item>
+        <item name="colorOnSurface">@color/txt</item>
+    </style>
+</resources>

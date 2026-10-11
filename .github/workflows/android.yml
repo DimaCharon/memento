@@ -1,0 +1,122 @@
+name: Android
+
+on:
+  push:
+    branches: ["main", "arena/**", "feature/**", "release/**"]
+    paths-ignore:
+      - "apk/**"
+      - "screenshots/**"
+      - "**/*.md"
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: "Записать APK и скриншоты обратно в репозиторий"
+        type: boolean
+        default: true
+
+concurrency:
+  group: android-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  GRADLE_VERSION: "8.11.1"
+
+jobs:
+  build:
+    name: Сборка и проверки
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: ${{ env.GRADLE_VERSION }}
+          cache-read-only: false
+
+      - name: Кэш Robolectric
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository/org/robolectric
+          key: robolectric-${{ hashFiles('**/build.gradle.kts') }}
+
+      - name: Ключ подписи
+        run: |
+          if [ ! -f keystore/memento.jks ]; then
+            mkdir -p keystore
+            keytool -genkeypair -v -keystore keystore/memento.jks \
+              -storepass "${MEMENTO_STORE_PASSWORD:-memento-pass}" \
+              -keypass "${MEMENTO_KEY_PASSWORD:-memento-pass}" \
+              -alias "${MEMENTO_KEY_ALIAS:-memento}" \
+              -keyalg RSA -keysize 2048 -validity 10000 \
+              -dname "CN=Memento, OU=Mobile, O=Memento, L=Moscow, C=RU"
+            echo "::notice::Создан новый ключ подписи keystore/memento.jks"
+          else
+            echo "Ключ подписи уже в репозитории"
+          fi
+        env:
+          MEMENTO_STORE_PASSWORD: ${{ secrets.MEMENTO_STORE_PASSWORD }}
+          MEMENTO_KEY_PASSWORD: ${{ secrets.MEMENTO_KEY_PASSWORD }}
+          MEMENTO_KEY_ALIAS: ${{ secrets.MEMENTO_KEY_ALIAS }}
+
+      - name: Юнит-тесты и проверки (логика, разметка, ресурсы)
+        run: gradle --no-daemon --stacktrace testDebugUnitTest
+
+      - name: Сборка APK (release + safe)
+        run: gradle --no-daemon --stacktrace assembleRelease assembleSafe
+
+      - name: Проверка структуры APK
+        if: hashFiles('tools/verify_apk.py') != ''
+        run: python3 tools/verify_apk.py app/build/outputs/apk/release/*.apk app/build/outputs/apk/safe/*.apk
+
+      - name: Артефакты сборки
+        uses: actions/upload-artifact@v4
+        with:
+          name: memento-apk
+          path: |
+            app/build/outputs/apk/release/*.apk
+            app/build/outputs/apk/safe/*.apk
+            app/build/screenshots/**
+          if-no-files-found: warn
+
+      - name: Запись APK и скриншотов в репозиторий
+        if: hashFiles('app/src/main/java/ru/memento/ui/MainActivity.kt') != ''
+        run: |
+          set -e
+          git config user.name "Memento CI"
+          git config user.email "ci@users.noreply.github.com"
+          mkdir -p apk screenshots
+          rm -f apk/*.apk
+          cp app/build/outputs/apk/release/*.apk apk/ 2>/dev/null || true
+          cp app/build/outputs/apk/safe/*.apk apk/ 2>/dev/null || true
+          if [ -d app/build/screenshots ]; then
+            cp app/build/screenshots/*.png screenshots/ 2>/dev/null || true
+          fi
+          ls -lh apk || true
+          git add -A apk screenshots
+          if git diff --cached --quiet; then
+            echo "Нечего публиковать"
+          else
+            VN=$(grep -oP 'versionName=\K.*' version.properties | tr -d '\r')
+            git commit -m "build: APK ${VN} (${GITHUB_SHA::7}) [skip ci]"
+            git push
+          fi
+
+      - name: Итог
+        run: |
+          echo "### Memento" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          ls -lh app/build/outputs/apk/release/*.apk app/build/outputs/apk/safe/*.apk 2>/dev/null >> "$GITHUB_STEP_SUMMARY" || true
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo 'Размеры APK и список файлов выше.' >> "$GITHUB_STEP_SUMMARY"

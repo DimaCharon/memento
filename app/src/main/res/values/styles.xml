@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ===================== Текст ===================== -->
+    <style name="T" parent="android:Widget.TextView" />
+
+    <style name="T.H1">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/txt</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:letterSpacing">-0.015</item>
+        <item name="android:lineSpacingMultiplier">1.05</item>
+    </style>
+
+    <style name="T.H2">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/txt</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">-0.01</item>
+    </style>
+
+    <style name="T.Title">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/txt</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="T.Body">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/txt2</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+    </style>
+
+    <style name="T.Small">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/txt3</item>
+    </style>
+
+    <style name="T.Label">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">@color/txt3</item>
+        <item name="android:letterSpacing">0.12</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="T.Mono">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textColor">@color/txt2</item>
+    </style>
+
+    <style name="T.Time">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/txt</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <!-- ===================== Карточки ===================== -->
+    <style name="Card">
+        <item name="android:background">@drawable/bg_card</item>
+        <item name="android:padding">@dimen/card_pad</item>
+        <item name="android:clipToOutline">true</item>
+    </style>
+
+    <style name="Card.Inset">
+        <item name="android:padding">12dp</item>
+    </style>
+
+    <style name="Card.Row">
+        <item name="android:paddingStart">14dp</item>
+        <item name="android:paddingEnd">14dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+    </style>
+
+    <!-- ===================== Кнопки ===================== -->
+    <style name="Btn.Primary">
+        <item name="android:background">@drawable/bg_btn_light</item>
+        <item name="android:textColor">@color/accentOn</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:minHeight">@dimen/hit_min</item>
+        <item name="android:gravity">center</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:letterSpacing">0.01</item>
+    </style>
+
+    <style name="Btn.Ghost">
+        <item name="android:background">@drawable/bg_btn_ghost</item>
+        <item name="android:textColor">@color/txt</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:minHeight">44dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <style name="Btn.Link">
+        <item name="android:background">@drawable/bg_ripple_round</item>
+        <item name="android:textColor">@color/accentStrong</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:minHeight">40dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+    </style>
+
+    <style name="DialogButton" parent="Widget.Material3.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/accentStrong</item>
+    </style>
+
+    <!-- ===================== Переключатели ===================== -->
+    <style name="Memento.Switch" parent="Widget.Material3.CompoundButton.MaterialSwitch">
+        <item name="thumbTintMode">src_atop</item>
+        <item name="trackTint">@color/switch_track</item>
+        <item name="thumbTint">@color/switch_thumb</item>
+        <item name="trackDecorationTint">@color/transparent</item>
+        <item name="android:minWidth">48dp</item>
+        <item name="android:minHeight">32dp</item>
+    </style>
+
+    <style name="Memento.Check" parent="Widget.Material3.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/sel_check</item>
+        <item name="buttonTint">@null</item>
+    </style>
+
+    <!-- ===================== Чипы ===================== -->
+    <style name="Chip">
+        <item name="android:background">@drawable/sel_chip</item>
+        <item name="android:textColor">@color/sel_chip_text</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:minHeight">40dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <style name="Chip.Square">
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+    </style>
+
+    <!-- ===================== Поля ввода ===================== -->
+    <style name="Field">
+        <item name="android:background">@drawable/bg_field</item>
+        <item name="android:textColor">@color/txt</item>
+        <item name="android:textColorHint">@color/txt3</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:minHeight">@dimen/hit_min</item>
+        <item name="android:paddingStart">14dp</item>
+        <item name="android:paddingEnd">14dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+    </style>
+
+    <!-- ===================== Нижняя навигация ===================== -->
+    <style name="NavItem">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/ripple_nav</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <!-- ===================== Прочее ===================== -->
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/divider</item>
+    </style>
+
+    <style name="IconButton">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:background">@drawable/bg_icon_button</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
+    <style name="Widget.Card">
+        <item name="android:background">@drawable/bg_widget_card</item>
+        <item name="android:padding">14dp</item>
+    </style>
+</resources>

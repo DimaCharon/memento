@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Отступы: всё кратно 4dp, чтобы элементы стояли ровно -->
+    <dimen name="s1">4dp</dimen>
+    <dimen name="s2">8dp</dimen>
+    <dimen name="s3">12dp</dimen>
+    <dimen name="s4">16dp</dimen>
+    <dimen name="s5">20dp</dimen>
+    <dimen name="s6">24dp</dimen>
+    <dimen name="s8">32dp</dimen>
+
+    <dimen name="screen_h">20dp</dimen>
+    <dimen name="card_pad">16dp</dimen>
+    <dimen name="card_radius">22dp</dimen>
+    <dimen name="card_radius_s">16dp</dimen>
+    <dimen name="chip_radius">14dp</dimen>
+    <dimen name="btn_radius">16dp</dimen>
+
+    <!-- Нижняя навигация: бар + центральная кнопка «+» -->
+    <dimen name="nav_height">78dp</dimen>
+    <dimen name="nav_icon">24dp</dimen>
+    <dimen name="nav_label">10sp</dimen>
+    <dimen name="fab_size">56dp</dimen>
+    <dimen name="fab_margin_bottom">30dp</dimen>
+    <dimen name="content_bottom_inset">122dp</dimen>
+
+    <dimen name="row_h">56dp</dimen>
+    <dimen name="row_h_tall">64dp</dimen>
+    <dimen name="check_size">26dp</dimen>
+    <dimen name="dot_size">8dp</dimen>
+    <dimen name="icon_box">40dp</dimen>
+    <dimen name="topbar_h">56dp</dimen>
+    <dimen name="hit_min">48dp</dimen>
+    <dimen name="ring_lg">78dp</dimen>
+    <dimen name="ring_sm">54dp</dimen>
+    <dimen name="avatar">52dp</dimen>
+</resources>

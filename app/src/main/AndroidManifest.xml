@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Интернет — для ИИ (api.xkiro.com) -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Напоминания и уведомления -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <uses-permission android:name="android.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.REORDER_TASKS" />
+
+    <!-- Голосовой ввод -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <uses-feature
+        android:name="android.hardware.microphone"
+        android:required="false" />
+
+    <!-- Голосовой ввод: ищем системный распознаватель речи -->
+    <queries>
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
+        <intent>
+            <action android:name="android.speech.action.RECOGNIZE_SPEECH" />
+        </intent>
+    </queries>
+
+    <application
+        android:name=".MementoApp"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="false"
+        android:enableOnBackInvokedCallback="true"
+        android:hardwareAccelerated="true"
+        android:largeHeap="false"
+        android:theme="@style/Theme.Memento"
+        tools:targetApi="34">
+
+        <!-- ===================== Экраны ===================== -->
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:configChanges="orientation|screenSize|keyboardHidden|uiMode|smallestScreenSize|screenLayout"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.ReminderSheetActivity"
+            android:exported="false"
+            android:configChanges="orientation|screenSize|keyboardHidden|uiMode"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.Memento.Sheet"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".ui.AboutActivity"
+            android:exported="false"
+            android:label="@string/about"
+            android:parentActivityName=".ui.MainActivity" />
+
+        <!-- ===================== Службы ===================== -->
+        <!-- ИИ-задачи: работают даже когда приложение закрыто -->
+        <service
+            android:name=".service.AiTaskService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync"
+            android:stopWithTask="false" />
+
+        <!-- Список для виджета «Сегодня» -->
+        <service
+            android:name=".widget.TodayWidgetService"
+            android:exported="false"
+            android:permission="android.permission.BIND_REMOTEVIEWS"
+            android:stopWithTask="false" />
+
+        <!-- ===================== Приёмники ===================== -->
+        <receiver
+            android:name=".alarm.ReminderReceiver"
+            android:exported="false" />
+
+        <receiver
+            android:name=".alarm.ActionReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="ru.memento.action.COMPLETE" />
+                <action android:name="ru.memento.action.SNOOZE" />
+                <action android:name="ru.memento.action.QUEUE_DRAIN" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".alarm.BootReceiver"
+            android:exported="true"
+            android:directBootAware="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.DATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- ===================== Виджеты на рабочий стол ===================== -->
+        <receiver
+            android:name=".widget.TodayWidgetProvider"
+            android:exported="true"
+            android:label="@string/widget_today">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="ru.memento.widget.REFRESH_TODAY" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_today_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widget.ProgressWidgetProvider"
+            android:exported="true"
+            android:label="@string/widget_progress">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="ru.memento.widget.REFRESH_PROGRESS" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_progress_info" />
+        </receiver>
+
+        <!-- Виджет: тап по строке = открыть напоминание -->
+        <receiver
+            android:name=".widget.WidgetActionReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="ru.memento.widget.OPEN_REMINDER" />
+                <action android:name="ru.memento.widget.COMPLETE_TODAY" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

@@ -57,15 +57,33 @@ object TestSupport {
         val h = view.height.coerceAtLeast(1)
         val bmp = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
         view.draw(Canvas(bmp))
-        val dir = File(System.getProperty("memento.screenshots.dir") ?: "screenshots")
-        dir.mkdirs()
+        val dir = screenshotDir()
         val out = File(dir, name)
         FileOutputStream(out).use { bmp.compress(Bitmap.CompressFormat.PNG, 100, it) }
         println("[скриншот] ${out.absolutePath} — ${out.length()} байт (каталог ${dir.absolutePath})")
         return out
     }
 
-    fun screenshotDir(): File = File(System.getProperty("memento.screenshots.dir") ?: "screenshots")
+    private var cleaned = false
+
+    /** Каталог скриншотов: всегда <корень проекта>/screenshots — так его видит и CI, и разработчик. */
+    fun screenshotDir(): File {
+        val prop = System.getProperty("memento.screenshots.dir")
+        val dir = if (!prop.isNullOrBlank()) File(prop) else File(projectRoot(), "screenshots")
+        val target = if (dir.isAbsolute) dir else File(projectRoot(), dir.path)
+        if (!cleaned) {
+            cleaned = true
+            target.listFiles { f -> f.name.matches(Regex("\\d\\d-.*\\.png")) }?.forEach { it.delete() }
+        }
+        target.mkdirs()
+        return target
+    }
+
+    private fun projectRoot(): File {
+        var d = File("").absoluteFile
+        while (d.parentFile != null && !File(d, "settings.gradle.kts").exists()) d = d.parentFile ?: break
+        return d
+    }
 
     fun quietLogs() {
         ShadowLog.stream = null

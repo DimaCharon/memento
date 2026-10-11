@@ -1,0 +1,12 @@
+run: 38133746780
+commit: 2664c7743fe0b0d986352f4148d73010e764ebd3
+date: Sun Oct 11 10:57:24 UTC 2026
+--- apk ---
+total 7072
+-rw-r--r-- 1 runner runner 2381740 Oct 11 10:57 app-release.apk
+-rw-r--r-- 1 runner runner 4855483 Oct 11 10:57 app-safe.apk
+--- sha256 ---
+6bc6f5bfe2f88ac5e7a07593acacb553f8949c2f291bab9360a1457c3499d109  apk/app-release.apk
+4e0f5cb7a1e551908075c90eeeb053a05f04b1d6d294439b2eac8a826c4328d0  apk/app-safe.apk
+--- screenshots ---
+total 0

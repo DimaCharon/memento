@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/nav_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_nav_bar"
+    android:baselineAligned="false"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingStart="6dp"
+    android:paddingEnd="6dp"
+    android:paddingTop="6dp">
+
+    <LinearLayout
+        android:id="@+id/nav_home"
+        style="@style/NavItem">
+
+        <ImageView
+            android:id="@+id/nav_home_icon"
+            android:layout_width="@dimen/nav_icon"
+            android:layout_height="@dimen/nav_icon"
+            android:contentDescription="@string/nav_home"
+            android:src="@drawable/ic_home"
+            android:tint="@color/sel_nav_item" />
+
+        <TextView
+            android:id="@+id/nav_home_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:includeFontPadding="false"
+            android:text="@string/nav_home"
+            android:textColor="@color/sel_nav_item"
+            android:textSize="@dimen/nav_label" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/nav_calendar"
+        style="@style/NavItem">
+
+        <ImageView
+            android:id="@+id/nav_calendar_icon"
+            android:layout_width="@dimen/nav_icon"
+            android:layout_height="@dimen/nav_icon"
+            android:contentDescription="@string/nav_calendar"
+            android:src="@drawable/ic_calendar"
+            android:tint="@color/sel_nav_item" />
+
+        <TextView
+            android:id="@+id/nav_calendar_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:includeFontPadding="false"
+            android:text="@string/nav_calendar"
+            android:textColor="@color/sel_nav_item"
+            android:textSize="@dimen/nav_label" />
+    </LinearLayout>
+
+    <!-- Центральная ячейка: место для кнопки «+». Тап тоже открывает новое напоминание -->
+    <LinearLayout
+        android:id="@+id/nav_center"
+        style="@style/NavItem">
+
+        <View
+            android:layout_width="@dimen/nav_icon"
+            android:layout_height="@dimen/nav_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:includeFontPadding="false"
+            android:visibility="invisible"
+            android:text="@string/nav_add"
+            android:textSize="@dimen/nav_label" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/nav_alerts"
+        style="@style/NavItem">
+
+        <ImageView
+            android:id="@+id/nav_alerts_icon"
+            android:layout_width="@dimen/nav_icon"
+            android:layout_height="@dimen/nav_icon"
+            android:contentDescription="@string/nav_alerts"
+            android:src="@drawable/ic_bell"
+            android:tint="@color/sel_nav_item" />
+
+        <TextView
+            android:id="@+id/nav_alerts_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:includeFontPadding="false"
+            android:text="@string/nav_alerts"
+            android:textColor="@color/sel_nav_item"
+            android:textSize="@dimen/nav_label" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/nav_profile"
+        style="@style/NavItem">
+
+        <ImageView
+            android:id="@+id/nav_profile_icon"
+            android:layout_width="@dimen/nav_icon"
+            android:layout_height="@dimen/nav_icon"
+            android:contentDescription="@string/nav_profile"
+            android:src="@drawable/ic_person"
+            android:tint="@color/sel_nav_item" />
+
+        <TextView
+            android:id="@+id/nav_profile_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:includeFontPadding="false"
+            android:text="@string/nav_profile"
+            android:textColor="@color/sel_nav_item"
+            android:textSize="@dimen/nav_label" />
+    </LinearLayout>
+</LinearLayout>

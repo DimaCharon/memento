@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/wg_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/bg_card_row"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="12dp">
+
+    <ImageView
+        android:id="@+id/wg_icon"
+        android:layout_width="@dimen/icon_box"
+        android:layout_height="@dimen/icon_box"
+        android:background="@drawable/bg_icon_box"
+        android:contentDescription="@string/widgets"
+        android:padding="9dp"
+        android:src="@drawable/ic_grid"
+        android:tint="@color/accentStrong" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/wg_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/widget_today"
+            android:textColor="@color/txt"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/wg_caption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/widget_preview"
+            android:textColor="@color/txt3"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/wg_switch"
+        style="@style/Memento.Switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:clickable="true"
+        android:focusable="false" />
+</LinearLayout>

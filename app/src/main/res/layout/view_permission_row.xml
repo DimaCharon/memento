@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:minHeight="52dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/perm_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/perm_notifications"
+        android:textColor="@color/txt"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/perm_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_pill"
+        android:paddingStart="10dp"
+        android:paddingTop="4dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="4dp"
+        android:text="@string/perm_denied"
+        android:textColor="@color/txt2"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/perm_btn"
+        style="@style/Btn.Link"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="@string/perm_grant" />
+</LinearLayout>

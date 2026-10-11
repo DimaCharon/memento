@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_row"
+    android:layout_width="match_parent"
+    android:layout_height="34dp"
+    android:background="@drawable/bg_widget_item_sel"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingStart="9dp"
+    android:paddingEnd="7dp">
+
+    <TextView
+        android:id="@+id/row_time"
+        android:layout_width="42dp"
+        android:layout_height="wrap_content"
+        android:text="09:00"
+        android:textColor="@color/txt"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/row_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/widget_today"
+        android:textColor="@color/txt"
+        android:textSize="12sp" />
+
+    <View
+        android:id="@+id/row_dot"
+        android:layout_width="6dp"
+        android:layout_height="6dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/dot_medium" />
+
+    <ImageView
+        android:id="@+id/row_check"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:background="@drawable/bg_check_off"
+        android:contentDescription="@string/mark_done"
+        android:padding="4dp"
+        android:src="@drawable/ic_check_small"
+        android:tint="@color/txt3" />
+</LinearLayout>

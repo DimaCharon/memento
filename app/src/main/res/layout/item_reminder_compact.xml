@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/row_root"
+    android:layout_width="match_parent"
+    android:layout_height="52dp"
+    android:background="@drawable/bg_card_row"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingStart="12dp"
+    android:paddingEnd="10dp">
+
+    <TextView
+        android:id="@+id/row_time"
+        style="@style/T.Time"
+        android:layout_width="44dp"
+        android:layout_height="wrap_content"
+        android:text="09:00" />
+
+    <TextView
+        android:id="@+id/row_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/widget_today"
+        android:textColor="@color/txt"
+        android:textSize="14sp" />
+
+    <CheckBox
+        android:id="@+id/row_check"
+        style="@style/Memento.Check"
+        android:layout_width="@dimen/check_size"
+        android:layout_height="@dimen/check_size"
+        android:layout_marginStart="6dp"
+        android:clickable="true"
+        android:focusable="false" />
+</LinearLayout>

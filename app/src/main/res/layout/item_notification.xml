@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ntf_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_card_widget"
+    android:orientation="vertical"
+    android:padding="14dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/ntf_icon"
+            android:layout_width="@dimen/icon_box"
+            android:layout_height="@dimen/icon_box"
+            android:background="@drawable/bg_icon_box"
+            android:contentDescription="@string/app_name"
+            android:padding="9dp"
+            android:src="@drawable/ic_bell"
+            android:tint="@color/txt" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/ntf_when"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/notif_in"
+                android:textColor="@color/txt3"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/ntf_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@string/widget_today"
+                android:textColor="@color/txt"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/ntf_dot"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/dot_medium" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/ntf_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text=""
+        android:textColor="@color/txt2"
+        android:textSize="12.5sp" />
+
+    <LinearLayout
+        android:id="@+id/ntf_actions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/ntf_snooze"
+            style="@style/Btn.Ghost"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_weight="1"
+            android:minHeight="42dp"
+            android:text="@string/snooze_10" />
+
+        <TextView
+            android:id="@+id/ntf_done"
+            style="@style/Btn.Ghost"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:minHeight="42dp"
+            android:text="@string/mark_done" />
+    </LinearLayout>
+</LinearLayout>

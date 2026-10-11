@@ -89,7 +89,7 @@ data class AiTask(
 /** Профиль пользователя (несколько профилей на одном телефоне). */
 data class Profile(
     val id: String,
-    val name: String,
+    var name: String,
 )
 
 /** Настройки приложения. */

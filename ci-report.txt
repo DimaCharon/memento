@@ -1,70 +1,70 @@
-run: 38134064648
-commit: c113c7223e08706fe24e637720380ad810bd3b4d
-date: Sun Oct 11 11:02:42 UTC 2026
+run: 38135309153
+commit: 76abbad829f100a74363c92f5681042ca95cd34e
+date: Sun Oct 11 11:26:15 UTC 2026
 --- apk ---
 total 7072
--rw-r--r-- 1 runner runner 2381740 Oct 11 11:02 app-release.apk
--rw-r--r-- 1 runner runner 4855483 Oct 11 11:02 app-safe.apk
+-rw-r--r-- 1 runner runner 2381448 Oct 11 11:26 app-release.apk
+-rw-r--r-- 1 runner runner 4856263 Oct 11 11:26 app-safe.apk
 --- sha256 ---
-95efaebcbf6e7f57eec8718a2908fe6e77a08c16c60699b3962cdd44ff9b5cc1  apk/app-release.apk
-5031a7eb0b3530fa951fb0c9c199bd4d1cda1eb189590643b59d9d8fc0c9016f  apk/app-safe.apk
+e1ec9bd6268d52b4644866c0494d0c717e36da622601cd4a75054e398d9cb4d2  apk/app-release.apk
+3ab2fba595c7aa42c7ecf7595f493275ac387f2ee8db5c702bbb01d224d9e31a  apk/app-safe.apk
 --- screenshots ---
-total 2868
--rw-r--r-- 1 runner runner 456271 Oct 11 11:02 01-главная.png
--rw-r--r-- 1 runner runner 394654 Oct 11 11:02 02-виджеты.png
--rw-r--r-- 1 runner runner 385143 Oct 11 11:02 03-календарь.png
--rw-r--r-- 1 runner runner 455433 Oct 11 11:02 04-напоминания.png
--rw-r--r-- 1 runner runner 438325 Oct 11 11:02 05-профиль.png
--rw-r--r-- 1 runner runner 349867 Oct 11 11:02 06-ассистент.png
--rw-r--r-- 1 runner runner 176347 Oct 11 11:02 07-новое-напоминание.png
--rw-r--r-- 1 runner runner  23538 Oct 11 11:02 08-виджет.png
--rw-r--r-- 1 runner runner    112 Oct 11 11:02 abc_ab_share_pack_mtrl_alpha.9.png
--rw-r--r-- 1 runner runner    227 Oct 11 11:02 abc_btn_check_to_on_mtrl_000.png
--rw-r--r-- 1 runner runner    404 Oct 11 11:02 abc_btn_check_to_on_mtrl_015.png
--rw-r--r-- 1 runner runner    464 Oct 11 11:02 abc_btn_radio_to_on_mtrl_000.png
--rw-r--r-- 1 runner runner    563 Oct 11 11:02 abc_btn_radio_to_on_mtrl_015.png
--rw-r--r-- 1 runner runner   1062 Oct 11 11:02 abc_btn_switch_to_on_mtrl_00001.9.png
--rw-r--r-- 1 runner runner   1249 Oct 11 11:02 abc_btn_switch_to_on_mtrl_00012.9.png
--rw-r--r-- 1 runner runner    107 Oct 11 11:02 abc_cab_background_top_mtrl_alpha.9.png
--rw-r--r-- 1 runner runner    171 Oct 11 11:02 abc_ic_commit_search_api_mtrl_alpha.png
--rw-r--r-- 1 runner runner     76 Oct 11 11:02 abc_list_divider_mtrl_alpha.9.png
--rw-r--r-- 1 runner runner    106 Oct 11 11:02 abc_list_focused_holo.9.png
--rw-r--r-- 1 runner runner     93 Oct 11 11:02 abc_list_longpressed_holo.9.png
--rw-r--r-- 1 runner runner     90 Oct 11 11:02 abc_list_pressed_holo_dark.9.png
--rw-r--r-- 1 runner runner     90 Oct 11 11:02 abc_list_pressed_holo_light.9.png
--rw-r--r-- 1 runner runner    108 Oct 11 11:02 abc_list_selector_disabled_holo_dark.9.png
--rw-r--r-- 1 runner runner    108 Oct 11 11:02 abc_list_selector_disabled_holo_light.9.png
--rw-r--r-- 1 runner runner    615 Oct 11 11:02 abc_menu_hardkey_panel_mtrl_mult.9.png
--rw-r--r-- 1 runner runner   1026 Oct 11 11:02 abc_popup_background_mtrl_mult.9.png
--rw-r--r-- 1 runner runner    201 Oct 11 11:02 abc_scrubber_control_off_mtrl_alpha.png
--rw-r--r-- 1 runner runner    196 Oct 11 11:02 abc_scrubber_control_to_pressed_mtrl_000.png
--rw-r--r-- 1 runner runner    272 Oct 11 11:02 abc_scrubber_control_to_pressed_mtrl_005.png
--rw-r--r-- 1 runner runner    102 Oct 11 11:02 abc_scrubber_primary_mtrl_alpha.9.png
--rw-r--r-- 1 runner runner     96 Oct 11 11:02 abc_scrubber_track_mtrl_alpha.9.png
--rw-r--r-- 1 runner runner    230 Oct 11 11:02 abc_spinner_mtrl_am_alpha.9.png
--rw-r--r-- 1 runner runner    318 Oct 11 11:02 abc_switch_track_mtrl_alpha.9.png
--rw-r--r-- 1 runner runner     93 Oct 11 11:02 abc_tab_indicator_mtrl_alpha.9.png
--rw-r--r-- 1 runner runner    278 Oct 11 11:02 abc_text_select_handle_left_mtrl.png
--rw-r--r-- 1 runner runner    396 Oct 11 11:02 abc_text_select_handle_middle_mtrl.png
--rw-r--r-- 1 runner runner    262 Oct 11 11:02 abc_text_select_handle_right_mtrl.png
--rw-r--r-- 1 runner runner     88 Oct 11 11:02 abc_textfield_activated_mtrl_alpha.9.png
--rw-r--r-- 1 runner runner     91 Oct 11 11:02 abc_textfield_default_mtrl_alpha.9.png
--rw-r--r-- 1 runner runner     86 Oct 11 11:02 abc_textfield_search_activated_mtrl_alpha.9.png
--rw-r--r-- 1 runner runner     87 Oct 11 11:02 abc_textfield_search_default_mtrl_alpha.9.png
--rw-r--r-- 1 runner runner    313 Oct 11 11:02 ic_call_answer.png
--rw-r--r-- 1 runner runner    313 Oct 11 11:02 ic_call_answer_low.png
--rw-r--r-- 1 runner runner    205 Oct 11 11:02 ic_call_answer_video.png
--rw-r--r-- 1 runner runner    205 Oct 11 11:02 ic_call_answer_video_low.png
--rw-r--r-- 1 runner runner    238 Oct 11 11:02 ic_call_decline.png
--rw-r--r-- 1 runner runner    238 Oct 11 11:02 ic_call_decline_low.png
--rw-r--r-- 1 runner runner  15079 Oct 11 11:02 ic_launcher.png
--rw-r--r-- 1 runner runner  15079 Oct 11 11:02 ic_launcher_foreground.png
--rw-r--r-- 1 runner runner  15079 Oct 11 11:02 ic_launcher_round.png
--rw-r--r-- 1 runner runner    176 Oct 11 11:02 notification_bg_low_normal.9.png
--rw-r--r-- 1 runner runner    181 Oct 11 11:02 notification_bg_low_pressed.9.png
--rw-r--r-- 1 runner runner    176 Oct 11 11:02 notification_bg_normal.9.png
--rw-r--r-- 1 runner runner    180 Oct 11 11:02 notification_bg_normal_pressed.9.png
--rw-r--r-- 1 runner runner   1099 Oct 11 11:02 notification_oversize_large_icon_bg.png
--rw-r--r-- 1 runner runner    107 Oct 11 11:02 notify_panel_notification_icon_bg.png
+total 2900
+-rw-r--r-- 1 runner runner 474022 Oct 11 11:23 01-главная.png
+-rw-r--r-- 1 runner runner 394654 Oct 11 11:23 02-виджеты.png
+-rw-r--r-- 1 runner runner 401491 Oct 11 11:23 03-календарь.png
+-rw-r--r-- 1 runner runner 454958 Oct 11 11:23 04-напоминания.png
+-rw-r--r-- 1 runner runner 438325 Oct 11 11:23 05-профиль.png
+-rw-r--r-- 1 runner runner 349867 Oct 11 11:23 06-ассистент.png
+-rw-r--r-- 1 runner runner 176334 Oct 11 11:23 07-новое-напоминание.png
+-rw-r--r-- 1 runner runner  23538 Oct 11 11:23 08-виджет.png
+-rw-r--r-- 1 runner runner    112 Oct 11 11:26 abc_ab_share_pack_mtrl_alpha.9.png
+-rw-r--r-- 1 runner runner    227 Oct 11 11:26 abc_btn_check_to_on_mtrl_000.png
+-rw-r--r-- 1 runner runner    404 Oct 11 11:26 abc_btn_check_to_on_mtrl_015.png
+-rw-r--r-- 1 runner runner    464 Oct 11 11:26 abc_btn_radio_to_on_mtrl_000.png
+-rw-r--r-- 1 runner runner    563 Oct 11 11:26 abc_btn_radio_to_on_mtrl_015.png
+-rw-r--r-- 1 runner runner   1062 Oct 11 11:26 abc_btn_switch_to_on_mtrl_00001.9.png
+-rw-r--r-- 1 runner runner   1249 Oct 11 11:26 abc_btn_switch_to_on_mtrl_00012.9.png
+-rw-r--r-- 1 runner runner    107 Oct 11 11:26 abc_cab_background_top_mtrl_alpha.9.png
+-rw-r--r-- 1 runner runner    171 Oct 11 11:26 abc_ic_commit_search_api_mtrl_alpha.png
+-rw-r--r-- 1 runner runner     76 Oct 11 11:26 abc_list_divider_mtrl_alpha.9.png
+-rw-r--r-- 1 runner runner    106 Oct 11 11:26 abc_list_focused_holo.9.png
+-rw-r--r-- 1 runner runner     93 Oct 11 11:26 abc_list_longpressed_holo.9.png
+-rw-r--r-- 1 runner runner     90 Oct 11 11:26 abc_list_pressed_holo_dark.9.png
+-rw-r--r-- 1 runner runner     90 Oct 11 11:26 abc_list_pressed_holo_light.9.png
+-rw-r--r-- 1 runner runner    108 Oct 11 11:26 abc_list_selector_disabled_holo_dark.9.png
+-rw-r--r-- 1 runner runner    108 Oct 11 11:26 abc_list_selector_disabled_holo_light.9.png
+-rw-r--r-- 1 runner runner    615 Oct 11 11:26 abc_menu_hardkey_panel_mtrl_mult.9.png
+-rw-r--r-- 1 runner runner   1026 Oct 11 11:26 abc_popup_background_mtrl_mult.9.png
+-rw-r--r-- 1 runner runner    201 Oct 11 11:26 abc_scrubber_control_off_mtrl_alpha.png
+-rw-r--r-- 1 runner runner    196 Oct 11 11:26 abc_scrubber_control_to_pressed_mtrl_000.png
+-rw-r--r-- 1 runner runner    272 Oct 11 11:26 abc_scrubber_control_to_pressed_mtrl_005.png
+-rw-r--r-- 1 runner runner    102 Oct 11 11:26 abc_scrubber_primary_mtrl_alpha.9.png
+-rw-r--r-- 1 runner runner     96 Oct 11 11:26 abc_scrubber_track_mtrl_alpha.9.png
+-rw-r--r-- 1 runner runner    230 Oct 11 11:26 abc_spinner_mtrl_am_alpha.9.png
+-rw-r--r-- 1 runner runner    318 Oct 11 11:26 abc_switch_track_mtrl_alpha.9.png
+-rw-r--r-- 1 runner runner     93 Oct 11 11:26 abc_tab_indicator_mtrl_alpha.9.png
+-rw-r--r-- 1 runner runner    278 Oct 11 11:26 abc_text_select_handle_left_mtrl.png
+-rw-r--r-- 1 runner runner    396 Oct 11 11:26 abc_text_select_handle_middle_mtrl.png
+-rw-r--r-- 1 runner runner    262 Oct 11 11:26 abc_text_select_handle_right_mtrl.png
+-rw-r--r-- 1 runner runner     88 Oct 11 11:26 abc_textfield_activated_mtrl_alpha.9.png
+-rw-r--r-- 1 runner runner     91 Oct 11 11:26 abc_textfield_default_mtrl_alpha.9.png
+-rw-r--r-- 1 runner runner     86 Oct 11 11:26 abc_textfield_search_activated_mtrl_alpha.9.png
+-rw-r--r-- 1 runner runner     87 Oct 11 11:26 abc_textfield_search_default_mtrl_alpha.9.png
+-rw-r--r-- 1 runner runner    313 Oct 11 11:26 ic_call_answer.png
+-rw-r--r-- 1 runner runner    313 Oct 11 11:26 ic_call_answer_low.png
+-rw-r--r-- 1 runner runner    205 Oct 11 11:26 ic_call_answer_video.png
+-rw-r--r-- 1 runner runner    205 Oct 11 11:26 ic_call_answer_video_low.png
+-rw-r--r-- 1 runner runner    238 Oct 11 11:26 ic_call_decline.png
+-rw-r--r-- 1 runner runner    238 Oct 11 11:26 ic_call_decline_low.png
+-rw-r--r-- 1 runner runner  15079 Oct 11 11:26 ic_launcher.png
+-rw-r--r-- 1 runner runner  15079 Oct 11 11:26 ic_launcher_foreground.png
+-rw-r--r-- 1 runner runner  15079 Oct 11 11:26 ic_launcher_round.png
+-rw-r--r-- 1 runner runner    176 Oct 11 11:26 notification_bg_low_normal.9.png
+-rw-r--r-- 1 runner runner    181 Oct 11 11:26 notification_bg_low_pressed.9.png
+-rw-r--r-- 1 runner runner    176 Oct 11 11:26 notification_bg_normal.9.png
+-rw-r--r-- 1 runner runner    180 Oct 11 11:26 notification_bg_normal_pressed.9.png
+-rw-r--r-- 1 runner runner   1099 Oct 11 11:26 notification_oversize_large_icon_bg.png
+-rw-r--r-- 1 runner runner    107 Oct 11 11:26 notify_panel_notification_icon_bg.png
 --- tests ---
-тестов: 66, упало: 0, ошибок: 0, пропущено: 0
+тестов: 67, упало: 0, ошибок: 0, пропущено: 0

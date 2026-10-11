@@ -75,7 +75,7 @@ class UiAlignmentTest {
             "Напоминания ${x(root.navAlerts)}, Профиль ${x(root.navProfile)}, центр экрана $center"
         assertTrue("Главная и Профиль должны быть на равном расстоянии ($home vs $profile): $report", Math.abs(home - profile) <= 2)
         assertTrue("Календарь и Напоминания должны быть на равном расстоянии ($calendar vs $alerts): $report", Math.abs(calendar - alerts) <= 2)
-        assertTrue("соседние вкладки идут с равным шагом: $report", Math.abs((home - calendar) - (alerts - profile)) <= 3)
+        assertTrue("соседние вкладки идут с равным шагом: $report", Math.abs((home - calendar) - (profile - alerts)) <= 3)
     }
 
     @Test

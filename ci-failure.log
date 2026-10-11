@@ -1,4 +1,4 @@
-run: 38131352813 step failed
+run: 38131552180 step failed
 === ci-test.log ===
 To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.11.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
 Daemon will be stopped at the end of the build 
@@ -16,41 +16,54 @@ or from Android Studio, click: `Refactor` > `Migrate BuildConfig to Gradle Build
 > Task :app:preDebugBuild UP-TO-DATE
 > Task :app:dataBindingMergeDependencyArtifactsDebug
 > Task :app:generateDebugResValues FROM-CACHE
-> Task :app:generateDebugResources FROM-CACHE
-> Task :app:mergeDebugResources FROM-CACHE
-> Task :app:packageDebugResources FROM-CACHE
-> Task :app:parseDebugLocalResources FROM-CACHE
-> Task :app:dataBindingGenBaseClassesDebug FROM-CACHE
+> Task :app:generateDebugResources
+> Task :app:packageDebugResources
 > Task :app:generateDebugBuildConfig FROM-CACHE
-> Task :app:checkDebugAarMetadata
 > Task :app:mapDebugSourceSetPaths
+> Task :app:checkDebugAarMetadata
 > Task :app:createDebugCompatibleScreenManifests
 > Task :app:extractDeepLinksDebug FROM-CACHE
+> Task :app:parseDebugLocalResources
 > Task :app:processDebugMainManifest FROM-CACHE
 > Task :app:processDebugManifest FROM-CACHE
 > Task :app:processDebugManifestForPackage FROM-CACHE
 > Task :app:javaPreCompileDebug FROM-CACHE
 > Task :app:preDebugUnitTestBuild UP-TO-DATE
 > Task :app:javaPreCompileDebugUnitTest FROM-CACHE
+> Task :app:mergeDebugResources
 > Task :app:mergeDebugShaders
+> Task :app:dataBindingGenBaseClassesDebug
 > Task :app:compileDebugShaders NO-SOURCE
 > Task :app:generateDebugAssets UP-TO-DATE
 > Task :app:mergeDebugAssets
-> Task :app:processDebugResources FAILED
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_2-1791713796534.json
+> Task :app:processDebugResources
+> Task :app:packageDebugUnitTestForUnitTest
+> Task :app:generateDebugUnitTestConfig
+
+> Task :app:compileDebugKotlin FAILED
+e: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ai/Nlu.kt:238:43 None of the following candidates is applicable:
+fun String.replace(oldChar: Char, newChar: Char, ignoreCase: Boolean = ...): String
+fun String.replace(oldValue: String, newValue: String, ignoreCase: Boolean = ...): String
+e: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ai/Nlu.kt:242:43 None of the following candidates is applicable:
+fun String.replace(oldChar: Char, newChar: Char, ignoreCase: Boolean = ...): String
+fun String.replace(oldValue: String, newValue: String, ignoreCase: Boolean = ...): String
+e: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ai/Nlu.kt:247:23 None of the following candidates is applicable:
+fun String.replace(oldChar: Char, newChar: Char, ignoreCase: Boolean = ...): String
+fun String.replace(oldValue: String, newValue: String, ignoreCase: Boolean = ...): String
+e: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ai/Nlu.kt:248:22 None of the following candidates is applicable:
+fun String.replace(oldChar: Char, newChar: Char, ignoreCase: Boolean = ...): String
+fun String.replace(oldValue: String, newValue: String, ignoreCase: Boolean = ...): String
+e: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/notify/Notifier.kt:125:91 Unresolved reference 'label'.
+e: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ui/MainActivity.kt:66:40 Unresolved reference 'bottomMargin'.
+e: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ui/adapter/CalendarAdapter.kt:68:76 Unresolved reference 'dotRes'.
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_3-1791713998646.json
 
 FAILURE: Build failed with an exception.
 
 * What went wrong:
-Execution failed for task ':app:processDebugResources'.
-> A failure occurred while executing com.android.build.gradle.internal.res.LinkApplicationAndroidResourcesTask$TaskAction
-   > Android resource linking failed
-     ru.memento.app-mergeDebugResources-37:/layout/fragment_assistant.xml:148: error: resource drawable/ripple_round (aka ru.memento.debug:drawable/ripple_round) not found.
-     ru.memento.app-mergeDebugResources-37:/layout/fragment_calendar.xml:79: error: attribute android:selected not found.
-     ru.memento.app-mergeDebugResources-37:/layout/fragment_reminders.xml:64: error: attribute android:selected not found.
-     ru.memento.app-mergeDebugResources-37:/layout/fragment_reminders.xml:93: error: attribute android:selected not found.
-     error: failed linking file resources.
-
+Execution failed for task ':app:compileDebugKotlin'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
 
 * Try:
 > Run with --info or --debug option to get more log output.
@@ -58,7 +71,7 @@ Execution failed for task ':app:processDebugResources'.
 > Get more help at https://help.gradle.org.
 
 * Exception is:
-org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:processDebugResources'.
+org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:compileDebugKotlin'.
 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:130)
 	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:293)
 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:128)
@@ -90,7 +103,7 @@ org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:pro
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
-Caused by: org.gradle.workers.internal.DefaultWorkerExecutor$WorkExecutionException: A failure occurred while executing com.android.build.gradle.internal.res.LinkApplicationAndroidResourcesTask$TaskAction
+Caused by: org.gradle.workers.internal.DefaultWorkerExecutor$WorkExecutionException: A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
 	at org.gradle.workers.internal.DefaultWorkerExecutor$WorkItemExecution.waitForCompletion(DefaultWorkerExecutor.java:287)
 	at org.gradle.internal.work.DefaultAsyncWorkTracker.lambda$waitForItemsAndGatherFailures$2(DefaultAsyncWorkTracker.java:130)
 	at org.gradle.internal.Factories$1.create(Factories.java:31)
@@ -169,7 +182,7 @@ Caused by: org.gradle.workers.internal.DefaultWorkerExecutor$WorkExecutionExcept
 	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:64)
 	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:43)
 	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:125)
-	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:56)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:61)
 	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:36)
 	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
 	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:36)
@@ -219,25 +232,10 @@ Caused by: org.gradle.workers.internal.DefaultWorkerExecutor$WorkExecutionExcept
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
-Caused by: com.android.builder.internal.aapt.v2.Aapt2Exception: Android resource linking failed
-ru.memento.app-mergeDebugResources-37:/layout/fragment_assistant.xml:148: error: resource drawable/ripple_round (aka ru.memento.debug:drawable/ripple_round) not found.
-ru.memento.app-mergeDebugResources-37:/layout/fragment_calendar.xml:79: error: attribute android:selected not found.
-ru.memento.app-mergeDebugResources-37:/layout/fragment_reminders.xml:64: error: attribute android:selected not found.
-ru.memento.app-mergeDebugResources-37:/layout/fragment_reminders.xml:93: error: attribute android:selected not found.
-error: failed linking file resources.
-
-	at com.android.builder.internal.aapt.v2.Aapt2Exception$Companion.create(Aapt2Exception.kt:45)
-	at com.android.builder.internal.aapt.v2.Aapt2Exception$Companion.create$default(Aapt2Exception.kt:33)
-	at com.android.builder.internal.aapt.v2.Aapt2DaemonImpl.doLink(Aapt2DaemonImpl.kt:189)
-	at com.android.builder.internal.aapt.v2.Aapt2Daemon.link(Aapt2Daemon.kt:124)
-	at com.android.builder.internal.aapt.v2.Aapt2DaemonManager$LeasedAaptDaemon.link(Aapt2DaemonManager.kt:176)
-	at com.android.builder.internal.aapt.v2.Aapt2DaemonManager$leasingAapt2Daemon$1.link(Aapt2DaemonManager.kt:199)
-	at com.android.build.gradle.internal.services.PartialInProcessResourceProcessor.link(PartialInProcessResourceProcessor.kt:51)
-	at com.android.build.gradle.internal.res.Aapt2ProcessResourcesRunnableKt.processResources(Aapt2ProcessResourcesRunnable.kt:74)
-	at com.android.build.gradle.internal.res.LinkApplicationAndroidResourcesTask$Companion.invokeAaptForSplit(LinkApplicationAndroidResourcesTask.kt:945)
-	at com.android.build.gradle.internal.res.LinkApplicationAndroidResourcesTask$Companion.access$invokeAaptForSplit(LinkApplicationAndroidResourcesTask.kt:799)
-	at com.android.build.gradle.internal.res.LinkApplicationAndroidResourcesTask$TaskAction.run(LinkApplicationAndroidResourcesTask.kt:432)
-	at com.android.build.gradle.internal.profile.ProfileAwareWorkAction.execute(ProfileAwareWorkAction.kt:74)
+Caused by: org.jetbrains.kotlin.gradle.tasks.CompilationErrorException: Compilation error. See log for more details
+	at org.jetbrains.kotlin.gradle.tasks.TasksUtilsKt.throwExceptionIfCompilationFailed(tasksUtils.kt:21)
+	at org.jetbrains.kotlin.compilerRunner.GradleKotlinCompilerWork.run(GradleKotlinCompilerWork.kt:119)
+	at org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction.execute(GradleCompilerRunnerWithWorkers.kt:76)
 	at org.gradle.workers.internal.DefaultWorkerServer.execute(DefaultWorkerServer.java:63)
 	at org.gradle.workers.internal.NoIsolationWorkerFactory$1$1.create(NoIsolationWorkerFactory.java:66)
 	at org.gradle.workers.internal.NoIsolationWorkerFactory$1$1.create(NoIsolationWorkerFactory.java:62)
@@ -265,60 +263,10 @@ error: failed linking file resources.
 	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.runBatch(DefaultConditionalExecutionQueue.java:164)
 	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.run(DefaultConditionalExecutionQueue.java:133)
 	... 2 more
-	Suppressed: java.util.NoSuchElementException: Unable to get absolute path from ru.memento.app-mergeDebugResources-37:/layout/fragment_assistant.xml
-                       because ru.memento.app-mergeDebugResources-37 is not key in sourceSetPathMap.
-		at com.android.ide.common.resources.RelativeResourceUtils$relativeResourcePathToAbsolutePath$1.invoke(RelativeResourceUtils.kt:91)
-		at com.android.ide.common.resources.RelativeResourceUtils$relativeResourcePathToAbsolutePath$1.invoke(RelativeResourceUtils.kt:68)
-		at com.android.ide.common.resources.RelativeResourceUtils.relativeResourcePathToAbsolutePath(RelativeResourceUtils.kt:61)
-		at com.android.ide.common.blame.parser.aapt.Aapt2ErrorParser$MessageParser.parse(Aapt2ErrorParser.kt:124)
-		at com.android.ide.common.blame.parser.aapt.Aapt2ErrorParser.parse(Aapt2ErrorParser.kt:99)
-		at com.android.ide.common.blame.parser.aapt.Aapt2OutputParser.parse(Aapt2OutputParser.java:56)
-		at com.android.ide.common.blame.parser.ToolOutputParser.parseToolOutput(ToolOutputParser.java:84)
-		at com.android.build.gradle.internal.res.Aapt2ErrorUtils.rewriteException(Aapt2ErrorUtils.kt:219)
-		at com.android.build.gradle.internal.res.Aapt2ErrorUtils.rewriteLinkException(Aapt2ErrorUtils.kt:133)
-		at com.android.build.gradle.internal.res.Aapt2ProcessResourcesRunnableKt.processResources(Aapt2ProcessResourcesRunnable.kt:76)
-		at com.android.build.gradle.internal.res.LinkApplicationAndroidResourcesTask$Companion.invokeAaptForSplit(LinkApplicationAndroidResourcesTask.kt:945)
-		at com.android.build.gradle.internal.res.LinkApplicationAndroidResourcesTask$Companion.access$invokeAaptForSplit(LinkApplicationAndroidResourcesTask.kt:799)
-		at com.android.build.gradle.internal.res.LinkApplicationAndroidResourcesTask$TaskAction.run(LinkApplicationAndroidResourcesTask.kt:432)
-		at com.android.build.gradle.internal.profile.ProfileAwareWorkAction.execute(ProfileAwareWorkAction.kt:74)
-		at org.gradle.workers.internal.DefaultWorkerServer.execute(DefaultWorkerServer.java:63)
-		at org.gradle.workers.internal.NoIsolationWorkerFactory$1$1.create(NoIsolationWorkerFactory.java:66)
-		at org.gradle.workers.internal.NoIsolationWorkerFactory$1$1.create(NoIsolationWorkerFactory.java:62)
-		at org.gradle.internal.classloader.ClassLoaderUtils.executeInClassloader(ClassLoaderUtils.java:100)
-		at org.gradle.workers.internal.NoIsolationWorkerFactory$1.lambda$execute$0(NoIsolationWorkerFactory.java:62)
-		at org.gradle.workers.internal.AbstractWorker$1.call(AbstractWorker.java:44)
-		at org.gradle.workers.internal.AbstractWorker$1.call(AbstractWorker.java:41)
-		at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
-		at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
-		at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
-		at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
-		at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
-		at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
-		at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
-		at org.gradle.workers.internal.AbstractWorker.executeWrappedInBuildOperation(AbstractWorker.java:41)
-		at org.gradle.workers.internal.NoIsolationWorkerFactory$1.execute(NoIsolationWorkerFactory.java:59)
-		at org.gradle.workers.internal.DefaultWorkerExecutor.lambda$submitWork$0(DefaultWorkerExecutor.java:174)
-		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-		at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.runExecution(DefaultConditionalExecutionQueue.java:194)
-		at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.access$700(DefaultConditionalExecutionQueue.java:127)
-		at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner$1.run(DefaultConditionalExecutionQueue.java:169)
-		at org.gradle.internal.Factories$1.create(Factories.java:31)
-		at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:263)
-		at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:127)
-		at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:132)
-		at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.runBatch(DefaultConditionalExecutionQueue.java:164)
-		at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.run(DefaultConditionalExecutionQueue.java:133)
-		at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
-		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-		at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
-		at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
-		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-		at java.base/java.lang.Thread.run(Thread.java:840)
 
 
-BUILD FAILED in 13s
-20 actionable tasks: 7 executed, 13 from cache
+BUILD FAILED in 19s
+23 actionable tasks: 15 executed, 8 from cache
 
 === ci-build.log ===
 

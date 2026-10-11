@@ -62,6 +62,28 @@ class ScreenshotsTest {
     }
 
     @Test
+    fun `снимок уведомления о напоминании`() {
+        val v = LayoutInflater.from(TestSupport.ctx()).inflate(R.layout.notification_reminder, null, false)
+        v.findViewById<TextView>(R.id.notif_when).text = "Memento · Через 23 мин"
+        v.findViewById<TextView>(R.id.notif_title).text = "Встреча с командой"
+        v.findViewById<TextView>(R.id.notif_body).text = "Офис, переговорная · 19:47"
+        TestSupport.layoutAt(v, wDp = 380, hDp = 150)
+        val f = TestSupport.capture(v, "09-уведомление.png", wDp = 380, hDp = 150)
+        assertTrue("скриншот уведомления не создан", f.exists() && f.length() > 1000)
+    }
+
+    @Test
+    fun `снимок уведомления ассистента`() {
+        val v = LayoutInflater.from(TestSupport.ctx()).inflate(R.layout.notification_ai, null, false)
+        v.findViewById<TextView>(R.id.ai_title).text = "Memento · агент"
+        v.findViewById<TextView>(R.id.ai_counter).text = "шаг 2 из 4"
+        v.findViewById<TextView>(R.id.ai_text).text = "Создаю напоминание «Встреча с командой»"
+        TestSupport.layoutAt(v, wDp = 380, hDp = 150)
+        val f = TestSupport.capture(v, "10-уведомление-агента.png", wDp = 380, hDp = 150)
+        assertTrue("скриншот уведомления агента не создан", f.exists() && f.length() > 1000)
+    }
+
+    @Test
     fun `снимок виджета на рабочем столе`() {
         val v = LayoutInflater.from(TestSupport.ctx()).inflate(R.layout.widget_today, null, false)
         v.findViewById<TextView>(R.id.widget_count).text = "5 напоминаний"

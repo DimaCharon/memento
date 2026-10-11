@@ -19,7 +19,7 @@ class StoreTest {
     fun `демо-данные создают пять событий на сегодня`() {
         val s = TestSupport.seed()
         val all = s.all()
-        assertEquals("всего записей должно быть 6, а есть ${all.map { "${it.date} ${it.title}" }}", 6, all.size)
+        assertEquals("всего записей должно быть 7, а есть ${all.map { "${it.date} ${it.title}" }}", 7, all.size)
         val today = s.today()
         assertTrue(
             "сегодня ${Ru.todayISO()}, а в базе ${all.map { it.date }.distinct()}; сегодня нашлось ${today.size}",

@@ -27,6 +27,27 @@ class UiAlignmentTest {
     private fun at(view: View): Int = (view.left + view.right) / 2
     private fun ay(view: View): Int = (view.top + view.bottom) / 2
 
+    /** Координаты view в системе координат предка (иначе top/left считаются от родителя). */
+    private fun yIn(view: View, ancestor: View): Int {
+        var v: View? = view
+        var y = 0
+        while (v != null && v !== ancestor) {
+            y += v.top
+            v = v.parent as? View
+        }
+        return y
+    }
+
+    private fun xIn(view: View, ancestor: View): Int {
+        var v: View? = view
+        var x = 0
+        while (v != null && v !== ancestor) {
+            x += v.left
+            v = v.parent as? View
+        }
+        return x
+    }
+
     @Test
     fun `кнопка плюс стоит ровно по центру экрана`() {
         val root = ActivityMainRoot.build()
@@ -92,9 +113,10 @@ class UiAlignmentTest {
         val row = inflate(R.layout.item_reminder_row)
         TestSupport.layoutAt(row, wDp = 380, hDp = 72)
         val check = row.findViewById<View>(R.id.row_check)
+        val centerY = yIn(check, row) + check.height / 2
         assertTrue(
-            "галочка должна быть по центру строки: центр галочки ${ay(check)}, центр строки ${row.height / 2}, галочка ${check.top}..${check.bottom}",
-            Math.abs(ay(check) - row.height / 2) <= 3,
+            "галочка должна быть по центру строки: центр галочки $centerY, центр строки ${row.height / 2}",
+            Math.abs(centerY - row.height / 2) <= 3,
         )
     }
 
@@ -108,7 +130,10 @@ class UiAlignmentTest {
             "время у левого края: left=${time.left}, padding=${row.paddingLeft}",
             Math.abs(time.left - row.paddingLeft) <= 2,
         )
-        assertTrue("заголовок правее времени", title.left > time.right)
+        assertTrue(
+            "заголовок должен быть правее времени: заголовок ${xIn(title, row)}, время ${time.left}..${time.right}",
+            xIn(title, row) >= time.right,
+        )
     }
 
     @Test
@@ -128,13 +153,15 @@ class UiAlignmentTest {
         TestSupport.layoutAt(row, wDp = 380, hDp = 72)
         val avatar = row.findViewById<View>(R.id.pr_avatar)
         val name = row.findViewById<View>(R.id.pr_name)
+        val avatarCenter = yIn(avatar, row) + avatar.height / 2
+        val nameCenter = yIn(name, row) + name.height / 2
         assertTrue(
-            "аватар по центру строки: ${ay(avatar)} vs ${row.height / 2}",
-            Math.abs(ay(avatar) - row.height / 2) <= 3,
+            "аватар по центру строки: $avatarCenter vs ${row.height / 2}",
+            Math.abs(avatarCenter - row.height / 2) <= 3,
         )
         assertTrue(
-            "имя по центру строки: ${ay(name)} vs ${row.height / 2}",
-            Math.abs(ay(name) - row.height / 2) <= 3,
+            "имя по центру строки: $nameCenter vs ${row.height / 2}",
+            Math.abs(nameCenter - row.height / 2) <= 3,
         )
     }
 }

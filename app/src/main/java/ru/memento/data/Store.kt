@@ -127,6 +127,11 @@ class Store private constructor(private val app: Context) {
                 place = "Фитнес-клуб", leadMinutes = 30, source = "Демо",
             ),
             Reminder(
+                id = uid("rem"), title = "Забрать посылку", notes = "Пункт выдачи, код 4821",
+                icon = "box", date = today, time = at(215), priority = Priority.LOW,
+                place = "Пункт выдачи", leadMinutes = 10, source = "Демо",
+            ),
+            Reminder(
                 id = uid("rem"), title = "Прочитать книгу", notes = "Глава 4", icon = "book",
                 date = Ru.addDaysISO(today, 1), time = "22:05", priority = Priority.LOW,
                 place = "Дом", leadMinutes = 10, source = "Демо",

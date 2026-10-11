@@ -13,12 +13,11 @@ import javax.xml.parsers.DocumentBuilderFactory
 class StructureTest {
 
     private fun root(): File {
-        var dir = File("").absoluteFile
-        while (dir.parentFile != null) {
+        var dir: File = File("").absoluteFile
+        while (true) {
             if (File(dir, "settings.gradle.kts").exists()) return dir
-            dir = dir.parentFile
+            dir = dir.parentFile ?: error("не найден корень проекта")
         }
-        error("не найден корень проекта")
     }
 
     private fun app(): File = File(root(), "app/src/main")

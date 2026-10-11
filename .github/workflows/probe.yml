@@ -1,7 +1,15 @@
 name: probe
-on: workflow_dispatch
+on:
+  push:
+    branches: [arena/e2407ba8-memento]
+    paths: ['.github/probe.txt']
+  workflow_dispatch:
 jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
-      - run: echo probe
+      - run: echo "hello from actions $(date -u)" > out.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: probe-artifact
+          path: out.txt

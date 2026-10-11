@@ -33,6 +33,7 @@ class OldDeviceTest {
 
     private fun launchAllScreens() {
         TestSupport.seed()
+        runCatching { CrashGuard.markHealthy(TestSupport.ctx()) }
         val a = Robolectric.buildActivity(MainActivity::class.java).setup().get()
         TestSupport.idle()
         assertTrue("главный экран должен быть создан", !a.isFinishing)
@@ -56,6 +57,7 @@ class OldDeviceTest {
     @Test
     fun `экран нового напоминания открывается на старых версиях`() {
         TestSupport.seed()
+        runCatching { CrashGuard.markHealthy(TestSupport.ctx()) }
         val intent = Intent(TestSupport.ctx(), ReminderSheetActivity::class.java)
             .setAction(ReminderSheetActivity.ACTION_NEW)
         val a = Robolectric.buildActivity(ReminderSheetActivity::class.java, intent).setup().get()
@@ -187,5 +189,39 @@ class OldDeviceTest {
             d!!.setBounds(0, 0, size, size)
             d.draw(Canvas(bmp))
         }
+    }
+
+    /**
+     * Каждый значок и цвет из ресурсов должен открываться на старых версиях.
+     * Именно эта проверка ловит «тихие» ошибки drawable, из-за которых приложение падало при запуске.
+     */
+    @Test
+    fun `все картинки приложения открываются на старых версиях`() {
+        val ctx = TestSupport.ctx()
+        val broken = mutableListOf<String>()
+        R.drawable::class.java.fields.forEach { field ->
+            val name = field.name
+            val res = runCatching { field.getInt(null) }.getOrNull() ?: return@forEach
+            val drawable = runCatching { androidx.core.content.ContextCompat.getDrawable(ctx, res) }.getOrNull()
+            if (drawable == null) {
+                val reason = runCatching { androidx.core.content.ContextCompat.getDrawable(ctx, res) }
+                    .exceptionOrNull()?.toString() ?: "null"
+                broken += "$name ($reason)"
+            }
+        }
+        assertTrue("не открылись картинки на API ${android.os.Build.VERSION.SDK_INT}: $broken", broken.isEmpty())
+    }
+
+    @Test
+    fun `все цвета и селекторы открываются на старых версиях`() {
+        val ctx = TestSupport.ctx()
+        val broken = mutableListOf<String>()
+        R.color::class.java.fields.forEach { field ->
+            val name = field.name
+            val res = runCatching { field.getInt(null) }.getOrNull() ?: return@forEach
+            val list = runCatching { androidx.appcompat.content.res.AppCompatResources.getColorStateList(ctx, res) }.getOrNull()
+            if (list == null) broken += name
+        }
+        assertTrue("не открылись цвета на API ${android.os.Build.VERSION.SDK_INT}: $broken", broken.isEmpty())
     }
 }

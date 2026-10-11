@@ -71,6 +71,18 @@ for f in glob.glob(os.path.join(RES, "values*", "*.xml")):
         if name and not name.startswith("android:") and name not in have["style"] and not re.match(r'^(Theme|Widget|ThemeOverlay|TextAppearance)\.(Material|AppCompat|Base)', name):
             problems.append("%s: parent=%s не найден" % (os.path.basename(f), name))
 
+# Угол градиента обязан быть кратен 45: иначе drawable не грузится на Android 8 и ниже,
+# а приложение падает при запуске (Resources$NotFoundException при инфляции разметки).
+for f in glob.glob(os.path.join(RES, "drawable*", "*.xml")):
+    text = open(f, encoding="utf-8").read()
+    for m in re.finditer(r'android:angle="(-?\d+)"', text):
+        angle = int(m.group(1))
+        if angle % 45 != 0:
+            problems.append(
+                "%s: android:angle=%d должен быть кратен 45 (иначе сбой на Android 8 и ниже)"
+                % (os.path.relpath(f, ROOT), angle)
+            )
+
 if problems:
     print("ПРОБЛЕМЫ (%d):" % len(problems))
     for p in sorted(set(problems)):

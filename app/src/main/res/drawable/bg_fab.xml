@@ -3,7 +3,7 @@
     <item>
         <shape android:shape="oval">
             <gradient
-                android:angle="250"
+                android:angle="270"
                 android:startColor="@color/light_btn_from"
                 android:endColor="@color/light_btn_to" />
         </shape>

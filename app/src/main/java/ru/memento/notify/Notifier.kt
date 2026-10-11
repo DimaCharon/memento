@@ -20,6 +20,7 @@ import ru.memento.data.Ru
 import ru.memento.data.Store
 import ru.memento.data.dotRes
 import ru.memento.data.iconResFor
+import ru.memento.data.label
 import ru.memento.ui.MainActivity
 
 /**

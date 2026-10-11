@@ -145,6 +145,18 @@ class Store private constructor(private val app: Context) {
         settings.activeProfileId = "p1"
     }
 
+    /** Только для тестов: полностью пустая база (без демо-записей). */
+    fun clearForTests() {
+        reminders = mutableListOf()
+        notifications = mutableListOf()
+        chat = mutableListOf()
+        logs = mutableListOf()
+        queue = mutableListOf()
+        profiles = mutableListOf(Profile("p1", settings.userName))
+        lastAgentSummary = ""
+        saveNow()
+    }
+
     fun resetDemo() {
         seed()
         saveNow()

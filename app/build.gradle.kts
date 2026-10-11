@@ -95,7 +95,10 @@ android {
     testOptions {
         unitTests.isIncludeAndroidResources = true
         unitTests.isReturnDefaultValues = true
-        unitTests.all { it.maxHeapSize = "2g" }
+        unitTests.all {
+            it.maxHeapSize = "2g"
+            it.systemProperty("memento.screenshots.dir", System.getenv("MEMENTO_SCREENSHOTS_DIR") ?: "${rootProject.projectDir}/screenshots")
+        }
     }
 
     lint {

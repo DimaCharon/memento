@@ -96,9 +96,9 @@ jobs:
           echo "--- outputs ---"
           find app/build/outputs -name "*.apk" -printf "%p  %k KB\n" 2>/dev/null || echo "(нет apk)"
           echo "--- screenshots ---"
-          ls -l app/build/screenshots 2>/dev/null || echo "(нет скриншотов)"
+          ls -l screenshots 2>/dev/null || echo "(нет скриншотов)"
           echo "--- tests ---"
-          find app/build/test-results -name "*.xml" | head -20 || true
+          python3 tools/test_summary.py
 
       - name: Артефакты сборки
         uses: actions/upload-artifact@v4
@@ -107,7 +107,7 @@ jobs:
           path: |
             app/build/outputs/apk/release/*.apk
             app/build/outputs/apk/safe/*.apk
-            app/build/screenshots/**
+            screenshots/*.png
           if-no-files-found: warn
 
       - name: Запись APK и скриншотов в репозиторий
@@ -137,9 +137,7 @@ jobs:
           fi
           cp app/build/outputs/apk/release/*.apk apk/
           cp app/build/outputs/apk/safe/*.apk apk/
-          if [ -d app/build/screenshots ]; then
-            cp app/build/screenshots/*.png screenshots/ 2>/dev/null || true
-          fi
+          ls -l screenshots 2>/dev/null || echo "(скриншоты не созданы)"
           {
             echo "run: $GITHUB_RUN_ID"
             echo "commit: $GITHUB_SHA"

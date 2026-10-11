@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.memento.R
 import ru.memento.data.Reminder
 import ru.memento.data.Ru
+import ru.memento.data.dotRes
 import ru.memento.databinding.ItemDayCellBinding
 import java.time.LocalDate
 

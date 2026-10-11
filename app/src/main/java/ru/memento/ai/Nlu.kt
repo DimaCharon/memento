@@ -235,17 +235,17 @@ object Nlu {
                 hh != null -> hh.groupValues[1].toInt() * 60
                 else -> 10
             }
-            targetRef = cleanTarget(text0.replace(Regex("^.*?(отложи|отложить|перенеси|перенести|напомни позже)"), "", RegexOption.IGNORE_CASE))
+            targetRef = cleanTarget(text0.replace(Regex("^.*?(отложи|отложить|перенеси|перенести|напомни позже)", RegexOption.IGNORE_CASE), ""))
             confidence += 0.1
         } else if (delWords) {
             kind = Kind.DELETE
-            targetRef = cleanTarget(text0.replace(Regex("^.*?(удали|удалить|убери|убрать|стереть)"), "", RegexOption.IGNORE_CASE))
+            targetRef = cleanTarget(text0.replace(Regex("^.*?(удали|удалить|убери|убрать|стереть)", RegexOption.IGNORE_CASE), ""))
             confidence += 0.1
         } else if (doneWords && Regex("(напомина|задач|его|ее|её|это|выполн|готово|сделано)").containsMatchIn(T)) {
             kind = Kind.COMPLETE
             targetRef = cleanTarget(
-                text0.replace(Regex("^.*?(отметь|отметить|выполненным|выполнено|готово|сделано|закрой|заверши)"), "", RegexOption.IGNORE_CASE)
-                    .replace(Regex("^\\s*(напоминание|задачу|задача)\\s*"), "", RegexOption.IGNORE_CASE),
+                text0.replace(Regex("^.*?(отметь|отметить|выполненным|выполнено|готово|сделано|закрой|заверши)", RegexOption.IGNORE_CASE), "")
+                    .replace(Regex("^\\s*(напоминание|задачу|задача)\\s*", RegexOption.IGNORE_CASE), ""),
             )
             confidence += 0.1
         } else if (Regex("(поставь|включи|выключи|сделай|измени|поменяй|переключи).*(звук|уведомлен|тему|темн|светл|имя|проверк|виджет)|^(уведомления|звук) (вкл|выкл)").containsMatchIn(T.trim()) && widgetM == null) {

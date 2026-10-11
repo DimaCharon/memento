@@ -17,11 +17,13 @@
     <dimen name="btn_radius">16dp</dimen>
 
     <!-- Нижняя навигация: бар + центральная кнопка «+» -->
-    <dimen name="nav_height">78dp</dimen>
+    <dimen name="nav_height">74dp</dimen>
     <dimen name="nav_icon">24dp</dimen>
     <dimen name="nav_label">10sp</dimen>
     <dimen name="fab_size">56dp</dimen>
-    <dimen name="fab_margin_bottom">30dp</dimen>
+    <dimen name="fab_margin_bottom">28dp</dimen>
+    <dimen name="nav_side">12dp</dimen>
+    <dimen name="nav_bottom">14dp</dimen>
     <dimen name="content_bottom_inset">122dp</dimen>
 
     <dimen name="row_h">56dp</dimen>

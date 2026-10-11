@@ -24,8 +24,18 @@
     public void set*(...);
 }
 
+# --- Диагностика: в отчёте о сбое нужны настоящие имена классов и номера строк ---
+-keepattributes SourceFile,LineNumberTable
+-renamesourcefileattribute SourceFile
+
+# --- Без агрессивной оптимизации/склейки классов: надёжнее на OEM-прошивках ---
+-dontoptimize
+
 # --- Коtlin/AndroidX ---
 -dontwarn org.jetbrains.annotations.**
 -keepclassmembers class kotlin.Metadata { public <methods>; }
 -keepattributes *Annotation*, InnerClasses, Signature, EnclosingMethod
--keep,allowobfuscation class ru.memento.** { *; }
+-keep class ru.memento.** { *; }
+
+# --- Полный список приложения в отчёте о сбое ---
+-keepnames class ru.memento.**

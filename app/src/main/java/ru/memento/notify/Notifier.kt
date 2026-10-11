@@ -126,7 +126,7 @@ object Notifier {
             Ru.notifBody(r) + if (r.repeat != ru.memento.data.Repeat.NONE) " · ${r.repeat.label(context)}" else "",
         )
         v.setImageViewResource(R.id.notif_icon, iconResFor(r.icon))
-        v.setInt(R.id.notif_dot, "setBackgroundResource", priorityDot(r.priority))
+        v.setImageViewResource(R.id.notif_dot, priorityDot(r.priority))
         v.setViewVisibility(R.id.notif_dot, if (r.priority == Priority.MEDIUM) android.view.View.INVISIBLE else android.view.View.VISIBLE)
 
         if (withButtons) {

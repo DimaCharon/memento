@@ -167,10 +167,32 @@ class ProfileFragment : Fragment() {
         b.pfAbout.setOnClickListener {
             startActivity(Intent(requireContext(), AboutActivity::class.java))
         }
-        b.pfVersion.text = "${getString(R.string.app_name)} ${BuildConfig.VERSION_NAME}"
+        b.pfDiagnostics.setOnClickListener { runSelfTest() }
+        b.pfVersion.text = "${getString(R.string.app_name)} ${BuildConfig.VERSION_NAME} · сборка ${BuildConfig.VERSION_CODE}"
 
         store.addListener(listener)
         refreshValues()
+    }
+
+    /** Самопроверка: показывает по пунктам, что работает на этом телефоне. */
+    private fun runSelfTest() {
+        val lines = ru.memento.SelfTest.run(requireContext())
+        val text = ru.memento.SelfTest.asText(lines)
+        val body = lines.joinToString("\n") { (if (it.ok) "✓ " else "✗ ") + it.name + ": " + it.detail }
+        val dialog = androidx.appcompat.app.AlertDialog.Builder(requireContext(), R.style.Theme_Memento)
+            .setTitle(R.string.diag_title)
+            .setMessage(body)
+            .setPositiveButton(R.string.diag_copy, null)
+            .setNegativeButton(R.string.save, null)
+            .create()
+        dialog.setOnShowListener {
+            dialog.getButton(android.content.DialogInterface.BUTTON_POSITIVE).setOnClickListener {
+                val cm = requireContext().getSystemService(android.content.Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
+                cm.setPrimaryClip(android.content.ClipData.newPlainText("Memento", text))
+                Toast.makeText(requireContext(), R.string.diag_copied, Toast.LENGTH_SHORT).show()
+            }
+        }
+        dialog.show()
     }
 
     private fun saveName() {

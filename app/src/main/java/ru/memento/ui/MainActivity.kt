@@ -18,6 +18,7 @@ import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
+import ru.memento.CrashGuard
 import ru.memento.R
 import ru.memento.databinding.ActivityMainBinding
 import ru.memento.data.Memento
@@ -32,9 +33,49 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var b: ActivityMainBinding
     private var currentTab = TAB_HOME
+    private var themeRes = R.style.Theme_Memento
+
+    private fun theTheme(): Int {
+        val name = runCatching { Store.get(this).settings.theme }.getOrDefault("graphite")
+        return if (name == "coal") R.style.Theme_Memento_Coal else R.style.Theme_Memento
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Тему нужно выбрать до super.onCreate — иначе на части прошивок это приводит к сбою
+        themeRes = theTheme()
+        setTheme(themeRes)
         super.onCreate(savedInstanceState)
+
+        // Прошлый запуск закончился сбоем — сначала покажем понятное сообщение с текстом ошибки
+        val report = runCatching { CrashGuard.pendingReport(this) }.getOrNull()
+        if (report != null && !intent.getBooleanExtra(EXTRA_FROM_CRASH, false)) {
+            startActivity(CrashActivity.intent(this, report))
+            finish()
+            return
+        }
+
+        runCatching { CrashGuard.install(applicationContext) }
+
+        try {
+            buildUi(savedInstanceState)
+        } catch (t: Throwable) {
+            // Интерфейс не собрался на этом телефоне — покажем ошибку, а не «произошёл сбой»
+            runCatching {
+                startActivity(CrashActivity.intent(this, describe(t)))
+                finish()
+            }
+        }
+    }
+
+    private fun describe(t: Throwable): String {
+        val sw = java.io.StringWriter()
+        t.printStackTrace(java.io.PrintWriter(sw))
+        return "Memento ${ru.memento.BuildConfig.VERSION_NAME}\n" +
+            "Android ${Build.VERSION.RELEASE} (API ${Build.VERSION.SDK_INT}), ${Build.MANUFACTURER} ${Build.MODEL}\n\n" +
+            sw.toString()
+    }
+
+    private fun buildUi(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         b = ActivityMainBinding.inflate(layoutInflater)
         setContentView(b.root)
@@ -190,9 +231,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        // Тема может смениться в профиле
-        val theme = Store.get(this).settings.theme
-        setTheme(if (theme == "coal") R.style.Theme_Memento_Coal else R.style.Theme_Memento)
+        // Экран построился — значит запуск удался: снимаем метку сбоя
+        runCatching { CrashGuard.markHealthy(this) }
+        // Тема могла смениться в профиле — тогда аккуратно пересоздаём экран
+        val want = theTheme()
+        if (want != themeRes) {
+            themeRes = want
+            recreate()
+        }
     }
 
     companion object {
@@ -205,6 +251,7 @@ class MainActivity : AppCompatActivity() {
 
         const val ACTION_OPEN_REMINDER = "ru.memento.action.OPEN_REMINDER"
         const val EXTRA_OPEN_TAB = "open_tab"
+        const val EXTRA_FROM_CRASH = "from_crash"
         private const val KEY_TAB = "tab"
     }
 }

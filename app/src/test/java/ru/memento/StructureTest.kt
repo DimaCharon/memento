@@ -43,7 +43,7 @@ class StructureTest {
         val providers = names("provider")
 
         listOf(
-            ".ui.MainActivity", ".ui.ReminderSheetActivity", ".ui.AboutActivity",
+            ".ui.MainActivity", ".ui.ReminderSheetActivity", ".ui.AboutActivity", ".ui.CrashActivity",
         ).forEach { assertTrue("нет активности $it ($activities)", it in activities) }
         listOf(
             ".service.AiTaskService", ".widget.TodayWidgetService",

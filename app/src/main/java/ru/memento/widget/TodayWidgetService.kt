@@ -37,12 +37,10 @@ class Factory(private val context: Context, private val widgetId: Int) : RemoteV
         val v = RemoteViews(context.packageName, R.layout.widget_today_row)
         v.setTextViewText(R.id.row_time, r.time)
         v.setTextViewText(R.id.row_title, r.title)
-        v.setInt(R.id.row_dot, "setBackgroundResource", r.priority.dotRes())
+        // RemoteViews разрешает только «безопасные» методы: меняем картинки, а не фон и не tint
+        v.setImageViewResource(R.id.row_dot, r.priority.dotRes())
         v.setViewVisibility(R.id.row_dot, android.view.View.VISIBLE)
-
-        // RemoteViews поддерживает только разрешённые методы — меняем ресурсы, а не tint
-        v.setInt(R.id.row_check, "setBackgroundResource", if (r.done) R.drawable.bg_check_on else R.drawable.bg_check_off)
-        v.setImageViewResource(R.id.row_check, if (r.done) R.drawable.ic_check_ok else R.drawable.ic_check_muted)
+        v.setImageViewResource(R.id.row_check, if (r.done) R.drawable.bg_check_on else R.drawable.bg_check_off)
 
         // Открыть напоминание
         val openIntent = Intent().apply {

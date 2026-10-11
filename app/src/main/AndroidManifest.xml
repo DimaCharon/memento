@@ -73,6 +73,14 @@
             android:theme="@style/Theme.Memento.Sheet"
             android:windowSoftInputMode="adjustResize" />
 
+        <!-- Экран «что случилось»: простой, открывается даже если основной интерфейс не работает -->
+        <activity
+            android:name=".ui.CrashActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:label="@string/crash_title"
+            android:launchMode="singleTop" />
+
         <activity
             android:name=".ui.AboutActivity"
             android:exported="false"

@@ -30,20 +30,18 @@
         android:textColor="@color/txt"
         android:textSize="12sp" />
 
-    <View
+    <ImageView
         android:id="@+id/row_dot"
         android:layout_width="6dp"
         android:layout_height="6dp"
         android:layout_marginEnd="8dp"
-        android:background="@drawable/dot_medium" />
+        android:contentDescription="@string/priority"
+        android:src="@drawable/dot_medium" />
 
     <ImageView
         android:id="@+id/row_check"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:background="@drawable/bg_check_off"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
         android:contentDescription="@string/mark_done"
-        android:padding="4dp"
-        android:src="@drawable/ic_check_small"
-        android:tint="@color/txt3" />
+        android:src="@drawable/bg_check_off" />
 </LinearLayout>

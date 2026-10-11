@@ -243,4 +243,19 @@
         <item quantity="many">%d минут</item>
         <item quantity="other">%d минут</item>
     </plurals>
+    <!-- Экран сбоя и самопроверка -->
+    <string name="crash_title">Приложение столкнулось с ошибкой</string>
+    <string name="crash_sub">Ниже — текст ошибки. Нажмите «Отправить» и передайте его разработчику: по нему сразу видно причину.</string>
+    <string name="crash_copy">Скопировать текст</string>
+    <string name="crash_copied">Текст ошибки скопирован</string>
+    <string name="crash_send">Отправить</string>
+    <string name="crash_continue">Продолжить работу</string>
+    <string name="crash_reset">Сбросить данные и открыть заново</string>
+    <string name="crash_reset_done">Данные сброшены, приложение открывается заново</string>
+    <string name="diagnostics">Диагностика приложения</string>
+    <string name="diag_title">Самопроверка</string>
+    <string name="diag_copy">Скопировать</string>
+    <string name="diag_copied">Результат скопирован — отправьте его разработчику</string>
+    <string name="diag_problem">Есть замечания — они отмечены минусом</string>
+    <string name="diag_all_ok">Всё работает</string>
 </resources>

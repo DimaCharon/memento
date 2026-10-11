@@ -1,83 +1,263 @@
-run: 38138118614 step failed
+run: 38138437149 step failed
 === ci-test.log ===
-To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.11.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
-Daemon will be stopped at the end of the build 
+�няются данными и обновляются(OldDeviceTest.kt:88)
 
-> Configure project :app
-WARNING: The option setting 'android.defaults.buildfeatures.buildconfig=true' is deprecated.
-The current default is 'false'.
-It will be removed in version 9.0 of the Android Gradle plugin.
-To keep using this feature, add the following to your module-level build.gradle files:
-    android.buildFeatures.buildConfig = true
-or from Android Studio, click: `Refactor` > `Migrate BuildConfig to Gradle Build Files`.
+OldDeviceTest > сохранение ошибки и экран сбоя готовы[26] FAILED
+    android.content.res.Resources$NotFoundException: Drawable ru.memento.debug:drawable/bg_btn_light with resource ID #0x7f080082
 
-> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
-> Task :app:preBuild UP-TO-DATE
-> Task :app:preDebugBuild UP-TO-DATE
-> Task :app:dataBindingMergeDependencyArtifactsDebug
-> Task :app:generateDebugResValues FROM-CACHE
-> Task :app:generateDebugResources
-> Task :app:packageDebugResources
-> Task :app:generateDebugBuildConfig
-> Task :app:mapDebugSourceSetPaths
-> Task :app:parseDebugLocalResources
-> Task :app:createDebugCompatibleScreenManifests
-> Task :app:checkDebugAarMetadata
-> Task :app:extractDeepLinksDebug FROM-CACHE
-> Task :app:mergeDebugResources
-> Task :app:processDebugMainManifest
-> Task :app:dataBindingGenBaseClassesDebug
-> Task :app:processDebugManifest
-> Task :app:javaPreCompileDebug FROM-CACHE
-> Task :app:preDebugUnitTestBuild UP-TO-DATE
-> Task :app:javaPreCompileDebugUnitTest FROM-CACHE
-> Task :app:processDebugManifestForPackage
-> Task :app:mergeDebugShaders
-> Task :app:compileDebugShaders NO-SOURCE
-> Task :app:generateDebugAssets UP-TO-DATE
-> Task :app:mergeDebugAssets
-> Task :app:processDebugResources
-> Task :app:packageDebugUnitTestForUnitTest
-> Task :app:generateDebugUnitTestConfig
+        Caused by:
+        android.content.res.Resources$NotFoundException: File res/drawable/bg_btn_light.xml from drawable resource ID #0x7f080082
+            at android.content.res.ResourcesImpl.loadDrawableForCookie(ResourcesImpl.java:769)
+            at android.content.res.ResourcesImpl.loadDrawable(ResourcesImpl.java:600)
+            at jdk.internal.reflect.GeneratedMethodAccessor29.invoke(Unknown Source)
+            at java.base@17.0.20.1/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+            at org.robolectric.shadows.ShadowArscResourcesImpl$ResourcesImplReflector$$Reflector120.loadDrawable(Unknown Source)
+            at org.robolectric.shadows.ShadowArscResourcesImpl.loadDrawable(ShadowArscResourcesImpl.java:106)
+            at android.content.res.ResourcesImpl.loadDrawable(ResourcesImpl.java)
+            at android.content.res.Resources.getDrawableForDensity(Resources.java:876)
+            at android.content.res.Resources.getDrawable(Resources.java:818)
+            at android.content.Context.getDrawable(Context.java:605)
+            at android.view.View.setBackgroundResource(View.java:20303)
+            at ru.memento.ui.CrashActivity.button(CrashActivity.kt:107)
+            at ru.memento.ui.CrashActivity.onCreate(CrashActivity.kt:55)
+            at android.app.Activity.performCreate(Activity.java:6975)
+            at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1213)
+            at org.robolectric.android.internal.RoboMonitoringInstrumentation.callActivityOnCreate(RoboMonitoringInstrumentation.java:382)
+            at org.robolectric.android.controller.ActivityController.lambda$create$0(ActivityController.java:138)
+            at org.robolectric.shadows.ShadowPausedLooper.runPaused(ShadowPausedLooper.java:243)
+            at org.robolectric.android.controller.ActivityController.create(ActivityController.java:136)
+            at org.robolectric.android.controller.ActivityController.create(ActivityController.java:146)
+            at org.robolectric.android.controller.ActivityController.setup(ActivityController.java:341)
+            at ru.memento.OldDeviceTest.сохранение ошибки и экран сбоя готовы(OldDeviceTest.kt:174)
 
-> Task :app:compileDebugKotlin
-w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ai/Nlu.kt:251:199 Condition is always 'true'.
-w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ui/MainActivity.kt:144:9 'fun overridePendingTransition(p0: Int, p1: Int): Unit' is deprecated. Deprecated in Java.
-w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/widget/TodayWidgetProvider.kt:48:19 'fun setRemoteAdapter(p0: Int, p1: Intent!): Unit' is deprecated. Deprecated in Java.
-w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/widget/TodayWidgetProvider.kt:78:21 'fun notifyAppWidgetViewDataChanged(p0: Int, p1: Int): Unit' is deprecated. Deprecated in Java.
+            Caused by:
+            org.xmlpull.v1.XmlPullParserException: Binary XML file line #6<gradient> tag requires 'angle' attribute to be a multiple of 45
+                at android.graphics.drawable.GradientDrawable.updateGradientDrawableGradient(GradientDrawable.java:1582)
+                at android.graphics.drawable.GradientDrawable.inflateChildElements(GradientDrawable.java:1404)
+                at android.graphics.drawable.GradientDrawable.inflate(GradientDrawable.java:1225)
+                at android.graphics.drawable.DrawableInflater.inflateFromXmlForDensity(DrawableInflater.java:142)
+                at android.graphics.drawable.Drawable.createFromXmlInnerForDensity(Drawable.java:1295)
+                at android.graphics.drawable.Drawable.createFromXmlForDensity(Drawable.java:1254)
+                at android.content.res.ResourcesImpl.loadDrawableForCookie(ResourcesImpl.java:758)
+                ... 21 more
 
-> Task :app:compileDebugJavaWithJavac
-> Task :app:bundleDebugClassesToCompileJar
-> Task :app:processDebugJavaRes
-> Task :app:bundleDebugClassesToRuntimeJar
+OldDeviceTest > сохранение ошибки и экран сбоя готовы FAILED
+    android.content.res.Resources$NotFoundException: Drawable ru.memento.debug:drawable/bg_btn_light with resource ID #0x7f080082
 
-> Task :app:compileDebugUnitTestKotlin FAILED
-e: file:///home/runner/work/memento/memento/app/src/test/java/ru/memento/OldDeviceTest.kt:95:42 Unresolved reference 'Factory'.
-e: file:///home/runner/work/memento/memento/app/src/test/java/ru/memento/OldDeviceTest.kt:97:64 'operator' modifier is required on 'FirNamedFunctionSymbol kotlin/compareTo' in 'compareTo'.
-e: file:///home/runner/work/memento/memento/app/src/test/java/ru/memento/OldDeviceTest.kt:100:15 Cannot infer type for this parameter. Please specify it explicitly.
-e: file:///home/runner/work/memento/memento/app/src/test/java/ru/memento/OldDeviceTest.kt:100:21 Argument type mismatch: actual type is 'android.content.Context', but 'kotlin.Function1<T, kotlin.Unit>' was expected.
-e: file:///home/runner/work/memento/memento/app/src/test/java/ru/memento/OldDeviceTest.kt:100:26 Too many arguments for 'fun <T> T.apply(block: T.() -> Unit): T
-    [R|Contract description]
-     <
-        CallsInPlace(block, EXACTLY_ONCE)
-    >'.
-e: file:///home/runner/work/memento/memento/app/src/test/java/ru/memento/OldDeviceTest.kt:153:15 Expression 'available' of type 'kotlin.Boolean' cannot be invoked as a function. Function 'invoke()' is not found.
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_3-1791720513921.json
+        Caused by:
+        android.content.res.Resources$NotFoundException: File res/drawable/bg_btn_light.xml from drawable resource ID #0x7f080082
+            at android.content.res.ResourcesImpl.loadDrawableForCookie(ResourcesImpl.java:847)
+            at android.content.res.ResourcesImpl.loadDrawable(ResourcesImpl.java:631)
+            at jdk.internal.reflect.GeneratedMethodAccessor38.invoke(Unknown Source)
+            at java.base@17.0.20.1/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+            at org.robolectric.shadows.ShadowArscResourcesImpl$ResourcesImplReflector$$Reflector128.loadDrawable(Unknown Source)
+            at org.robolectric.shadows.ShadowArscResourcesImpl.loadDrawable(ShadowArscResourcesImpl.java:106)
+            at android.content.res.ResourcesImpl.loadDrawable(ResourcesImpl.java)
+            at android.content.res.Resources.getDrawableForDensity(Resources.java:888)
+            at android.content.res.Resources.getDrawable(Resources.java:827)
+            at android.content.Context.getDrawable(Context.java:626)
+            at android.view.View.setBackgroundResource(View.java:21451)
+            at ru.memento.ui.CrashActivity.button(CrashActivity.kt:107)
+            at ru.memento.ui.CrashActivity.onCreate(CrashActivity.kt:55)
+            at android.app.Activity.performCreate(Activity.java:7136)
+            at android.app.Activity.performCreate(Activity.java:7127)
+            at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1271)
+            at org.robolectric.android.internal.RoboMonitoringInstrumentation.callActivityOnCreate(RoboMonitoringInstrumentation.java:382)
+            at org.robolectric.android.controller.ActivityController.lambda$create$0(ActivityController.java:138)
+            at org.robolectric.shadows.ShadowPausedLooper.runPaused(ShadowPausedLooper.java:243)
+            at org.robolectric.android.controller.ActivityController.create(ActivityController.java:136)
+            at org.robolectric.android.controller.ActivityController.create(ActivityController.java:146)
+            at org.robolectric.android.controller.ActivityController.setup(ActivityController.java:341)
+            at ru.memento.OldDeviceTest.сохранение ошибки и экран сбоя готовы(OldDeviceTest.kt:174)
+
+            Caused by:
+            org.xmlpull.v1.XmlPullParserException: Binary XML file line #6<gradient> tag requires 'angle' attribute to be a multiple of 45
+                at android.graphics.drawable.GradientDrawable.updateGradientDrawableGradient(GradientDrawable.java:1601)
+                at android.graphics.drawable.GradientDrawable.inflateChildElements(GradientDrawable.java:1423)
+                at android.graphics.drawable.GradientDrawable.inflate(GradientDrawable.java:1244)
+                at android.graphics.drawable.DrawableInflater.inflateFromXmlForDensity(DrawableInflater.java:142)
+                at android.graphics.drawable.Drawable.createFromXmlInnerForDensity(Drawable.java:1332)
+                at android.graphics.drawable.Drawable.createFromXmlForDensity(Drawable.java:1291)
+                at android.content.res.ResourcesImpl.loadDrawableForCookie(ResourcesImpl.java:833)
+                ... 22 more
+
+OldDeviceTest > приложение открывается на старых версиях Android[26] FAILED
+    java.lang.AssertionError: главный экран должен быть создан
+        at org.junit.Assert.fail(Assert.java:89)
+        at org.junit.Assert.assertTrue(Assert.java:42)
+        at ru.memento.OldDeviceTest.launchAllScreens(OldDeviceTest.kt:38)
+        at ru.memento.OldDeviceTest.приложение открывается на старых версиях Android(OldDeviceTest.kt:53)
+
+OldDeviceTest > приложение открывается на старых версиях Android FAILED
+    java.lang.AssertionError: главный экран должен быть создан
+        at org.junit.Assert.fail(Assert.java:89)
+        at org.junit.Assert.assertTrue(Assert.java:42)
+        at ru.memento.OldDeviceTest.launchAllScreens(OldDeviceTest.kt:38)
+        at ru.memento.OldDeviceTest.приложение открывается на старых версиях Android(OldDeviceTest.kt:53)
+
+OldDeviceTest > экран нового напоминания открывается на старых версиях[26] FAILED
+    android.view.InflateException: Binary XML file line #499: Binary XML file line #499: Error inflating class TextView
+
+        Caused by:
+        android.view.InflateException: Binary XML file line #499: Error inflating class TextView
+
+            Caused by:
+            android.content.res.Resources$NotFoundException: Drawable ru.memento.debug:drawable/bg_btn_light with resource ID #0x7f080082
+
+                Caused by:
+                android.content.res.Resources$NotFoundException: File res/drawable/bg_btn_light.xml from drawable resource ID #0x7f080082
+                    at android.content.res.ResourcesImpl.loadDrawableForCookie(ResourcesImpl.java:769)
+                    at android.content.res.ResourcesImpl.loadDrawable(ResourcesImpl.java:600)
+                    at jdk.internal.reflect.GeneratedMethodAccessor29.invoke(Unknown Source)
+                    at java.base@17.0.20.1/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+                    at org.robolectric.shadows.ShadowArscResourcesImpl$ResourcesImplReflector$$Reflector120.loadDrawable(Unknown Source)
+                    at org.robolectric.shadows.ShadowArscResourcesImpl.loadDrawable(ShadowArscResourcesImpl.java:106)
+                    at android.content.res.ResourcesImpl.loadDrawable(ResourcesImpl.java)
+                    at android.content.res.Resources.loadDrawable(Resources.java:885)
+                    at android.content.res.TypedArray.getDrawableForDensity(TypedArray.java:953)
+                    at android.content.res.TypedArray.getDrawable(TypedArray.java:928)
+                    at android.view.View.__constructor__(View.java:4730)
+                    at jdk.internal.reflect.GeneratedMethodAccessor26.invoke(Unknown Source)
+                    at java.base@17.0.20.1/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+                    at org.robolectric.shadows.ShadowView$_View_$$Reflector117.__constructor__(Unknown Source)
+                    at org.robolectric.shadows.ShadowView.__constructor__(ShadowView.java:171)
+                    at android.view.View.<init>(View.java:4668)
+                    at android.widget.TextView.<init>(TextView.java:824)
+                    at android.widget.TextView.<init>(TextView.java:818)
+                    at androidx.appcompat.widget.AppCompatTextView.<init>(AppCompatTextView.java:115)
+                    at com.google.android.material.textview.MaterialTextView.<init>(MaterialTextView.java:92)
+                    at com.google.android.material.textview.MaterialTextView.<init>(MaterialTextView.java:87)
+                    at com.google.android.material.theme.MaterialComponentsViewInflater.createTextView(MaterialComponentsViewInflater.java:61)
+                    at androidx.appcompat.app.AppCompatViewInflater.createView(AppCompatViewInflater.java:148)
+                    at androidx.appcompat.app.AppCompatDelegateImpl.createView(AppCompatDelegateImpl.java:1654)
+                    at androidx.appcompat.app.AppCompatDelegateImpl.onCreateView(AppCompatDelegateImpl.java:1705)
+                    at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:772)
+                    at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:730)
+                    at android.view.LayoutInflater.rInflate(LayoutInflater.java:863)
+                    at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:824)
+                    at android.view.LayoutInflater.rInflate(LayoutInflater.java:866)
+                    at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:824)
+                    at android.view.LayoutInflater.rInflate(LayoutInflater.java:866)
+                    at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:824)
+                    at android.view.LayoutInflater.inflate(LayoutInflater.java:515)
+                    at android.view.LayoutInflater.inflate(LayoutInflater.java:423)
+                    at ru.memento.databinding.ActivityReminderSheetBinding.inflate(ActivityReminderSheetBinding.java:149)
+                    at ru.memento.databinding.ActivityReminderSheetBinding.inflate(ActivityReminderSheetBinding.java:143)
+                    at ru.memento.ui.ReminderSheetActivity.onCreate(ReminderSheetActivity.kt:55)
+                    at android.app.Activity.performCreate(Activity.java:6975)
+                    at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1213)
+                    at org.robolectric.android.internal.RoboMonitoringInstrumentation.callActivityOnCreate(RoboMonitoringInstrumentation.java:382)
+                    at org.robolectric.android.controller.ActivityController.lambda$create$0(ActivityController.java:138)
+                    at org.robolectric.shadows.ShadowPausedLooper.runPaused(ShadowPausedLooper.java:243)
+                    at org.robolectric.android.controller.ActivityController.create(ActivityController.java:136)
+                    at org.robolectric.android.controller.ActivityController.create(ActivityController.java:146)
+                    at org.robolectric.android.controller.ActivityController.setup(ActivityController.java:341)
+                    at ru.memento.OldDeviceTest.экран нового напоминания открывается на старых версиях(OldDeviceTest.kt:61)
+
+                    Caused by:
+                    org.xmlpull.v1.XmlPullParserException: Binary XML file line #6<gradient> tag requires 'angle' attribute to be a multiple of 45
+                        at android.graphics.drawable.GradientDrawable.updateGradientDrawableGradient(GradientDrawable.java:1582)
+                        at android.graphics.drawable.GradientDrawable.inflateChildElements(GradientDrawable.java:1404)
+                        at android.graphics.drawable.GradientDrawable.inflate(GradientDrawable.java:1225)
+                        at android.graphics.drawable.DrawableInflater.inflateFromXmlForDensity(DrawableInflater.java:142)
+                        at android.graphics.drawable.Drawable.createFromXmlInnerForDensity(Drawable.java:1295)
+                        at android.graphics.drawable.Drawable.createFromXmlForDensity(Drawable.java:1254)
+                        at android.content.res.ResourcesImpl.loadDrawableForCookie(ResourcesImpl.java:758)
+                        ... 46 more
+
+OldDeviceTest > экран нового напоминания открывается на старых версиях FAILED
+    android.view.InflateException: Binary XML file line #499: Binary XML file line #499: Error inflating class TextView
+
+        Caused by:
+        android.view.InflateException: Binary XML file line #499: Error inflating class TextView
+
+            Caused by:
+            android.content.res.Resources$NotFoundException: Drawable ru.memento.debug:drawable/bg_btn_light with resource ID #0x7f080082
+
+                Caused by:
+                android.content.res.Resources$NotFoundException: File res/drawable/bg_btn_light.xml from drawable resource ID #0x7f080082
+                    at android.content.res.ResourcesImpl.loadDrawableForCookie(ResourcesImpl.java:847)
+                    at android.content.res.ResourcesImpl.loadDrawable(ResourcesImpl.java:631)
+                    at jdk.internal.reflect.GeneratedMethodAccessor38.invoke(Unknown Source)
+                    at java.base@17.0.20.1/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+                    at org.robolectric.shadows.ShadowArscResourcesImpl$ResourcesImplReflector$$Reflector128.loadDrawable(Unknown Source)
+                    at org.robolectric.shadows.ShadowArscResourcesImpl.loadDrawable(ShadowArscResourcesImpl.java:106)
+                    at android.content.res.ResourcesImpl.loadDrawable(ResourcesImpl.java)
+                    at android.content.res.Resources.loadDrawable(Resources.java:897)
+                    at android.content.res.TypedArray.getDrawableForDensity(TypedArray.java:955)
+                    at android.content.res.TypedArray.getDrawable(TypedArray.java:930)
+                    at android.view.View.__constructor__(View.java:5010)
+                    at jdk.internal.reflect.GeneratedMethodAccessor35.invoke(Unknown Source)
+                    at java.base@17.0.20.1/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+                    at org.robolectric.shadows.ShadowView$_View_$$Reflector125.__constructor__(Unknown Source)
+                    at org.robolectric.shadows.ShadowView.__constructor__(ShadowView.java:171)
+                    at android.view.View.<init>(View.java:4948)
+                    at android.widget.TextView.<init>(TextView.java:875)
+                    at android.widget.TextView.<init>(TextView.java:869)
+                    at androidx.appcompat.widget.AppCompatTextView.<init>(AppCompatTextView.java:115)
+                    at com.google.android.material.textview.MaterialTextView.<init>(MaterialTextView.java:92)
+                    at com.google.android.material.textview.MaterialTextView.<init>(MaterialTextView.java:87)
+                    at com.google.android.material.theme.MaterialComponentsViewInflater.createTextView(MaterialComponentsViewInflater.java:61)
+                    at androidx.appcompat.app.AppCompatViewInflater.createView(AppCompatViewInflater.java:148)
+                    at androidx.appcompat.app.AppCompatDelegateImpl.createView(AppCompatDelegateImpl.java:1654)
+                    at androidx.appcompat.app.AppCompatDelegateImpl.onCreateView(AppCompatDelegateImpl.java:1705)
+                    at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:772)
+                    at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:730)
+                    at android.view.LayoutInflater.rInflate(LayoutInflater.java:863)
+                    at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:824)
+                    at android.view.LayoutInflater.rInflate(LayoutInflater.java:866)
+                    at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:824)
+                    at android.view.LayoutInflater.rInflate(LayoutInflater.java:866)
+                    at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:824)
+                    at android.view.LayoutInflater.inflate(LayoutInflater.java:515)
+                    at android.view.LayoutInflater.inflate(LayoutInflater.java:423)
+                    at ru.memento.databinding.ActivityReminderSheetBinding.inflate(ActivityReminderSheetBinding.java:149)
+                    at ru.memento.databinding.ActivityReminderSheetBinding.inflate(ActivityReminderSheetBinding.java:143)
+                    at ru.memento.ui.ReminderSheetActivity.onCreate(ReminderSheetActivity.kt:55)
+                    at android.app.Activity.performCreate(Activity.java:7136)
+                    at android.app.Activity.performCreate(Activity.java:7127)
+                    at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1271)
+                    at org.robolectric.android.internal.RoboMonitoringInstrumentation.callActivityOnCreate(RoboMonitoringInstrumentation.java:382)
+                    at org.robolectric.android.controller.ActivityController.lambda$create$0(ActivityController.java:138)
+                    at org.robolectric.shadows.ShadowPausedLooper.runPaused(ShadowPausedLooper.java:243)
+                    at org.robolectric.android.controller.ActivityController.create(ActivityController.java:136)
+                    at org.robolectric.android.controller.ActivityController.create(ActivityController.java:146)
+                    at org.robolectric.android.controller.ActivityController.setup(ActivityController.java:341)
+                    at ru.memento.OldDeviceTest.экран нового напоминания открывается на старых версиях(OldDeviceTest.kt:61)
+
+                    Caused by:
+                    org.xmlpull.v1.XmlPullParserException: Binary XML file line #6<gradient> tag requires 'angle' attribute to be a multiple of 45
+                        at android.graphics.drawable.GradientDrawable.updateGradientDrawableGradient(GradientDrawable.java:1601)
+                        at android.graphics.drawable.GradientDrawable.inflateChildElements(GradientDrawable.java:1423)
+                        at android.graphics.drawable.GradientDrawable.inflate(GradientDrawable.java:1244)
+                        at android.graphics.drawable.DrawableInflater.inflateFromXmlForDensity(DrawableInflater.java:142)
+                        at android.graphics.drawable.Drawable.createFromXmlInnerForDensity(Drawable.java:1332)
+                        at android.graphics.drawable.Drawable.createFromXmlForDensity(Drawable.java:1291)
+                        at android.content.res.ResourcesImpl.loadDrawableForCookie(ResourcesImpl.java:833)
+                        ... 47 more
+
+StructureTest > сборка настроена на выпуск подписанного APK FAILED
+    org.junit.ComparisonFailure: expected:<[1]> but was:<[2]>
+        at org.junit.Assert.assertEquals(Assert.java:117)
+        at org.junit.Assert.assertEquals(Assert.java:146)
+        at ru.memento.StructureTest.сборка настроена на выпуск подписанного APK(StructureTest.kt:143)
+
+91 tests completed, 9 failed
+
+> Task :app:testDebugUnitTest FAILED
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_3-1791720819736.json
 
 FAILURE: Build failed with an exception.
 
 * What went wrong:
-Execution failed for task ':app:compileDebugUnitTestKotlin'.
-> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
-   > Compilation error. See log for more details
+Execution failed for task ':app:testDebugUnitTest'.
+> There were failing tests. See the report at: file:///home/runner/work/memento/memento/app/build/reports/tests/testDebugUnitTest/index.html
 
 * Try:
-> Run with --info or --debug option to get more log output.
 > Run with --scan to get full insights.
-> Get more help at https://help.gradle.org.
 
 * Exception is:
-org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:compileDebugUnitTestKotlin'.
+org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:testDebugUnitTest'.
 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:130)
 	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:293)
 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:128)
@@ -109,18 +289,20 @@ org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:com
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
-Caused by: org.gradle.workers.internal.DefaultWorkerExecutor$WorkExecutionException: A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
-	at org.gradle.workers.internal.DefaultWorkerExecutor$WorkItemExecution.waitForCompletion(DefaultWorkerExecutor.java:287)
-	at org.gradle.internal.work.DefaultAsyncWorkTracker.lambda$waitForItemsAndGatherFailures$2(DefaultAsyncWorkTracker.java:130)
-	at org.gradle.internal.Factories$1.create(Factories.java:31)
-	at org.gradle.internal.work.DefaultWorkerLeaseService.withoutLocks(DefaultWorkerLeaseService.java:335)
-	at org.gradle.internal.work.DefaultWorkerLeaseService.withoutLocks(DefaultWorkerLeaseService.java:318)
-	at org.gradle.internal.work.DefaultWorkerLeaseService.withoutLock(DefaultWorkerLeaseService.java:323)
-	at org.gradle.internal.work.DefaultAsyncWorkTracker.waitForItemsAndGatherFailures(DefaultAsyncWorkTracker.java:126)
-	at org.gradle.internal.work.DefaultAsyncWorkTracker.waitForItemsAndGatherFailures(DefaultAsyncWorkTracker.java:92)
-	at org.gradle.internal.work.DefaultAsyncWorkTracker.waitForAll(DefaultAsyncWorkTracker.java:78)
-	at org.gradle.internal.work.DefaultAsyncWorkTracker.waitForCompletion(DefaultAsyncWorkTracker.java:66)
-	at org.gradle.api.internal.tasks.execution.TaskExecution$3.run(TaskExecution.java:252)
+Caused by: org.gradle.api.internal.exceptions.MarkedVerificationException: There were failing tests. See the report at: file:///home/runner/work/memento/memento/app/build/reports/tests/testDebugUnitTest/index.html
+	at org.gradle.api.tasks.testing.AbstractTestTask.handleTestFailures(AbstractTestTask.java:707)
+	at org.gradle.api.tasks.testing.AbstractTestTask.handleCollectedResults(AbstractTestTask.java:541)
+	at org.gradle.api.tasks.testing.AbstractTestTask.executeTests(AbstractTestTask.java:536)
+	at org.gradle.api.tasks.testing.Test.executeTests(Test.java:731)
+	at com.android.build.gradle.tasks.factory.AndroidUnitTest.executeTests(AndroidUnitTest.java:171)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:125)
+	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.doExecute(StandardTaskAction.java:58)
+	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:51)
+	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:29)
+	at org.gradle.api.internal.tasks.execution.TaskExecution$3.run(TaskExecution.java:244)
 	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
 	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
@@ -238,41 +420,10 @@ Caused by: org.gradle.workers.internal.DefaultWorkerExecutor$WorkExecutionExcept
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
-Caused by: org.jetbrains.kotlin.gradle.tasks.CompilationErrorException: Compilation error. See log for more details
-	at org.jetbrains.kotlin.gradle.tasks.TasksUtilsKt.throwExceptionIfCompilationFailed(tasksUtils.kt:21)
-	at org.jetbrains.kotlin.compilerRunner.GradleKotlinCompilerWork.run(GradleKotlinCompilerWork.kt:119)
-	at org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction.execute(GradleCompilerRunnerWithWorkers.kt:76)
-	at org.gradle.workers.internal.DefaultWorkerServer.execute(DefaultWorkerServer.java:63)
-	at org.gradle.workers.internal.NoIsolationWorkerFactory$1$1.create(NoIsolationWorkerFactory.java:66)
-	at org.gradle.workers.internal.NoIsolationWorkerFactory$1$1.create(NoIsolationWorkerFactory.java:62)
-	at org.gradle.internal.classloader.ClassLoaderUtils.executeInClassloader(ClassLoaderUtils.java:100)
-	at org.gradle.workers.internal.NoIsolationWorkerFactory$1.lambda$execute$0(NoIsolationWorkerFactory.java:62)
-	at org.gradle.workers.internal.AbstractWorker$1.call(AbstractWorker.java:44)
-	at org.gradle.workers.internal.AbstractWorker$1.call(AbstractWorker.java:41)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
-	at org.gradle.workers.internal.AbstractWorker.executeWrappedInBuildOperation(AbstractWorker.java:41)
-	at org.gradle.workers.internal.NoIsolationWorkerFactory$1.execute(NoIsolationWorkerFactory.java:59)
-	at org.gradle.workers.internal.DefaultWorkerExecutor.lambda$submitWork$0(DefaultWorkerExecutor.java:174)
-	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.runExecution(DefaultConditionalExecutionQueue.java:194)
-	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.access$700(DefaultConditionalExecutionQueue.java:127)
-	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner$1.run(DefaultConditionalExecutionQueue.java:169)
-	at org.gradle.internal.Factories$1.create(Factories.java:31)
-	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:263)
-	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:127)
-	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:132)
-	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.runBatch(DefaultConditionalExecutionQueue.java:164)
-	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.run(DefaultConditionalExecutionQueue.java:133)
-	... 2 more
 
 
-BUILD FAILED in 42s
-28 actionable tasks: 24 executed, 4 from cache
+BUILD FAILED in 35s
+30 actionable tasks: 14 executed, 16 from cache
 
 === ci-build.log ===
 

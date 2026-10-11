@@ -91,14 +91,15 @@ def home():
     say(abs(fab_center - w / 2) <= 5, f"«+» по центру: x={fab_center:.1f}, центр экрана {w / 2:.1f}")
     say((y1 - y0) >= 100, f"«+» достаточно крупный: высота {y1 - y0}px")
 
-    # 2) вкладки меню: светлые глифы в полосе панели, симметрия относительно «+»
-    band = range(max(0, y0 - 60), min(h, y1 + 90))
-    flags = [sum(1 for y in band if sum(px[x, y]) > 250) > 1 for x in range(w)]
-    found = groups_of(flags, min_width=4, merge_gap=int(w * 0.025))
-    tabs = [g for g in found if g[2] < fab_center - w * 0.06 or g[2] > fab_center + w * 0.06]
-    print("     элементы панели:", [(int(a), int(b)) for a, b, _ in found])
-    say(len(tabs) >= 4, f"вкладок по бокам от «+»: {len(tabs)} (нужно 4)")
-    if len(tabs) >= 4:
+    # 2) значки вкладок: полоса вокруг центра «+», где видны только иконки 24dp и сама кнопка
+    cy = (y0 + y1) / 2
+    band = range(int(cy - 40), int(cy + 40))
+    flags = [sum(1 for y in band if sum(px[x, y]) > 250) > 0 for x in range(w)]
+    found = groups_of(flags, min_width=6, merge_gap=24)
+    tabs = [g for g in found if abs(g[2] - fab_center) > w * 0.1]
+    print("     значки панели:", [(int(a), int(b)) for a, b, _ in found])
+    say(len(tabs) == 4, f"значков вкладок по бокам от «+»: {len(tabs)} (нужно 4)")
+    if len(tabs) == 4:
         left = sorted([g[2] for g in tabs if g[2] < fab_center], reverse=True)
         right = sorted([g[2] for g in tabs if g[2] > fab_center])
         near = (fab_center - left[0], right[0] - fab_center)

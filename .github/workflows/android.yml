@@ -113,6 +113,19 @@ jobs:
           set -e
           git config user.name "Memento CI"
           git config user.email "ci@users.noreply.github.com"
+          publish() {
+            git add -A apk screenshots ci-report.txt ci-failure.log 2>/dev/null || true
+            if git diff --cached --quiet; then echo "нечего публиковать"; return 0; fi
+            git commit -m "$1" || return 0
+            for i in 1 2 3 4 5; do
+              git fetch origin "$GITHUB_REF_NAME" --quiet || true
+              git rebase FETCH_HEAD --quiet 2>/dev/null || git rebase --abort 2>/dev/null || true
+              if git push origin "HEAD:$GITHUB_REF_NAME"; then echo "опубликовано"; return 0; fi
+              sleep 6
+            done
+            echo "::warning::не удалось опубликовать коммит"
+            return 0
+          }
           mkdir -p apk screenshots
           rm -f apk/*.apk
           if ! ls app/build/outputs/apk/release/*.apk >/dev/null 2>&1; then
@@ -136,28 +149,30 @@ jobs:
             ls -l screenshots 2>/dev/null || echo "(нет)"
           } > ci-report.txt
           ls -lh apk
-          git add -A apk screenshots ci-report.txt
-          if git diff --cached --quiet; then
-            echo "Нечего публиковать"
-          else
-            VN=$(grep -oP 'versionName=\K.*' version.properties | tr -d '\r')
-            git commit -m "build: APK ${VN} (${GITHUB_SHA::7}) [skip ci]"
-            git push
-          fi
+          VN=$(grep -oP 'versionName=\K.*' version.properties | tr -d '\r')
+          publish "build: APK ${VN} (${GITHUB_SHA::7}) [skip ci]"
 
       - name: Записать лог ошибки в репозиторий
         if: failure()
         run: |
           git config user.name "Memento CI"
           git config user.email "ci@users.noreply.github.com"
+          publish() {
+            git add -A apk screenshots ci-report.txt ci-failure.log 2>/dev/null || true
+            if git diff --cached --quiet; then echo "нечего публиковать"; return 0; fi
+            git commit -m "$1" || return 0
+            for i in 1 2 3 4 5; do
+              git fetch origin "$GITHUB_REF_NAME" --quiet || true
+              git rebase FETCH_HEAD --quiet 2>/dev/null || git rebase --abort 2>/dev/null || true
+              if git push origin "HEAD:$GITHUB_REF_NAME"; then echo "опубликовано"; return 0; fi
+              sleep 6
+            done
+            echo "::warning::не удалось опубликовать коммит"
+            return 0
+          }
           { echo "run: $GITHUB_RUN_ID step failed"; echo "=== ci-test.log ==="; tail -c 40000 ci-test.log 2>/dev/null; echo; echo "=== ci-build.log ==="; tail -c 40000 ci-build.log 2>/dev/null; echo; echo "=== ci-verify.log ==="; cat ci-verify.log 2>/dev/null; } > ci-failure.log
           git add -f ci-failure.log
-          git commit -m "ci: лог падения сборки [skip ci]" || true
-          for i in 1 2 3; do
-            git pull --rebase --quiet || git rebase --abort || true
-            if git push origin HEAD:$GITHUB_REF_NAME; then break; fi
-            sleep 7
-          done
+          publish "ci: лог падения сборки [skip ci]"
 
       - name: Итог
         run: |

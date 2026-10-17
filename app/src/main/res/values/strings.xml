@@ -20,6 +20,7 @@
     <string name="widget_next">Следующее</string>
     <string name="widget_progress">Прогресс дня</string>
     <string name="widget_progress_desc">Кольцо прогресса: сколько выполнено из всех дел на сегодня</string>
+    <string name="three_events">3 напоминания</string>
     <string name="widget_week">Ближайшая неделя</string>
     <string name="widget_day">Расписание на день</string>
     <string name="widget_agent">Агент</string>

@@ -50,6 +50,22 @@ class ScreenshotsTest {
     }
 
     @Test
+    fun `снимки новых виджетов`() {
+        val pairs = listOf(
+            R.layout.widget_next to "12-виджет-следующее.png",
+            R.layout.widget_week to "13-виджет-неделя.png",
+            R.layout.widget_day to "14-виджет-день.png",
+            R.layout.widget_quick to "15-виджет-быстро.png",
+        )
+        pairs.forEach { (layout, name) ->
+            val v = LayoutInflater.from(TestSupport.ctx()).inflate(layout, null, false)
+            TestSupport.layoutAt(v, wDp = 320, hDp = 200)
+            val f = TestSupport.capture(v, name, wDp = 320, hDp = 200)
+            assertTrue("скриншот $name не создан", f.exists() && f.length() > 1000)
+        }
+    }
+
+    @Test
     fun `снимок регистрации`() {
         TestSupport.store()
         val a = Robolectric.buildActivity(ru.memento.ui.WelcomeActivity::class.java).setup().get()
@@ -95,8 +111,7 @@ class ScreenshotsTest {
 
     @Test
     fun `снимок виджета на рабочем столе`() {
-        val v = LayoutInflater.from(TestSupport.ctx()).inflate(R.layout.widget_today, null, false)
-        v.findViewById<TextView>(R.id.widget_count).text = "5 напоминаний"
+        val v = LayoutInflater.from(TestSupport.ctx()).inflate(R.layout.widget_today_preview, null, false)
         TestSupport.layoutAt(v, wDp = 320, hDp = 180)
         val f = TestSupport.capture(v, "08-виджет.png", wDp = 320, hDp = 180)
         assertTrue(f.exists() && f.length() > 1000)

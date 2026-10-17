@@ -72,7 +72,7 @@ class OldDeviceTest {
         val ctx = TestSupport.ctx()
         val host = FrameLayout(ctx)
         listOf(
-            R.layout.widget_today, R.layout.widget_today_initial, R.layout.widget_today_row,
+            R.layout.widget_today, R.layout.widget_today_preview, R.layout.widget_today_initial, R.layout.widget_today_row,
             R.layout.widget_progress, R.layout.widget_next, R.layout.widget_week,
             R.layout.widget_day, R.layout.widget_agent, R.layout.widget_quick,
             R.layout.notification_reminder, R.layout.notification_ai,

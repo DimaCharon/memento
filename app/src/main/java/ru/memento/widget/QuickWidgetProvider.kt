@@ -24,7 +24,8 @@ class QuickWidgetProvider : AppWidgetProvider() {
     companion object {
         const val ACTION_REFRESH = "ru.memento.widget.REFRESH_QUICK"
 
-        fun update(context: Context, manager: AppWidgetManager, id: Int) {
+        /** Собирает карточку виджета: используется и на телефоне, и в тестах/превью. */
+        fun build(context: Context): RemoteViews {
             val store = Store.get(context)
             val left = store.today().count { !it.done }
             val v = RemoteViews(context.packageName, R.layout.widget_quick)
@@ -34,7 +35,11 @@ class QuickWidgetProvider : AppWidgetProvider() {
                 else "${Ru.eventsWord(left)} на сегодня",
             )
             v.setOnClickPendingIntent(R.id.widget_quick_root, WidgetIntents.newReminder(context, 80))
-            manager.updateAppWidget(id, v)
+            return v
+        }
+
+        fun update(context: Context, manager: AppWidgetManager, id: Int) {
+            manager.updateAppWidget(id, build(context))
         }
 
         fun refresh(context: Context) {

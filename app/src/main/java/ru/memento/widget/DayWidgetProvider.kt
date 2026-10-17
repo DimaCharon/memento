@@ -41,7 +41,8 @@ class DayWidgetProvider : AppWidgetProvider() {
             R.id.day_check0, R.id.day_check1, R.id.day_check2, R.id.day_check3, R.id.day_check4,
         )
 
-        fun update(context: Context, manager: AppWidgetManager, id: Int) {
+        /** Собирает карточку виджета: используется и на телефоне, и в тестах/превью. */
+        fun build(context: Context): RemoteViews {
             val store = Store.get(context)
             val v = RemoteViews(context.packageName, R.layout.widget_day)
             val today = store.today().sortedWith(compareBy({ it.done }, { Ru.timeToMinutes(it.time) }))
@@ -70,7 +71,11 @@ class DayWidgetProvider : AppWidgetProvider() {
             }
             v.setOnClickPendingIntent(R.id.widget_day_root, WidgetIntents.openApp(context, 60))
             v.setOnClickPendingIntent(R.id.day_plus, WidgetIntents.newReminder(context, 61))
-            manager.updateAppWidget(id, v)
+            return v
+        }
+
+        fun update(context: Context, manager: AppWidgetManager, id: Int) {
+            manager.updateAppWidget(id, build(context))
         }
 
         fun refresh(context: Context) {

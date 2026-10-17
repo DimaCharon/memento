@@ -25,7 +25,8 @@ class AgentWidgetProvider : AppWidgetProvider() {
     companion object {
         const val ACTION_REFRESH = "ru.memento.widget.REFRESH_AGENT"
 
-        fun update(context: Context, manager: AppWidgetManager, id: Int) {
+        /** Собирает карточку виджета: используется и на телефоне, и в тестах/превью. */
+        fun build(context: Context): RemoteViews {
             val store = Store.get(context)
             val last = store.logs.lastOrNull()
             val v = RemoteViews(context.packageName, R.layout.widget_agent)
@@ -48,7 +49,11 @@ class AgentWidgetProvider : AppWidgetProvider() {
             val ask = WidgetIntents.openApp(context, 70, MainActivity.TAB_ASSISTANT)
             v.setOnClickPendingIntent(R.id.agent_ask, ask)
             v.setOnClickPendingIntent(R.id.widget_agent_root, ask)
-            manager.updateAppWidget(id, v)
+            return v
+        }
+
+        fun update(context: Context, manager: AppWidgetManager, id: Int) {
+            manager.updateAppWidget(id, build(context))
         }
 
         fun refresh(context: Context) {

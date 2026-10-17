@@ -25,7 +25,8 @@ class NextWidgetProvider : AppWidgetProvider() {
     companion object {
         const val ACTION_REFRESH = "ru.memento.widget.REFRESH_NEXT"
 
-        fun update(context: Context, manager: AppWidgetManager, id: Int) {
+        /** Собирает карточку виджета: используется и на телефоне, и в тестах/превью. */
+        fun build(context: Context): RemoteViews {
             val store = Store.get(context)
             val r = store.next()
             val v = RemoteViews(context.packageName, R.layout.widget_next)
@@ -43,7 +44,11 @@ class NextWidgetProvider : AppWidgetProvider() {
                 v.setImageViewResource(R.id.next_dot, r.priority.dotDrawableRes())
                 v.setOnClickPendingIntent(R.id.widget_next_root, WidgetIntents.openReminder(context, 31, r.id))
             }
-            manager.updateAppWidget(id, v)
+            return v
+        }
+
+        fun update(context: Context, manager: AppWidgetManager, id: Int) {
+            manager.updateAppWidget(id, build(context))
         }
 
         fun refresh(context: Context) {

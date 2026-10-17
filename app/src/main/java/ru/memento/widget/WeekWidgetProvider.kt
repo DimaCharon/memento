@@ -38,7 +38,8 @@ class WeekWidgetProvider : AppWidgetProvider() {
             R.id.week_c4, R.id.week_c5, R.id.week_c6,
         )
 
-        fun update(context: Context, manager: AppWidgetManager, id: Int) {
+        /** Собирает карточку виджета: используется и на телефоне, и в тестах/превью. */
+        fun build(context: Context): RemoteViews {
             val store = Store.get(context)
             val v = RemoteViews(context.packageName, R.layout.widget_week)
             val today = LocalDate.now()
@@ -59,7 +60,11 @@ class WeekWidgetProvider : AppWidgetProvider() {
             }
             v.setTextViewText(R.id.week_total, Ru.remindersWord(active))
             v.setOnClickPendingIntent(R.id.widget_week_root, WidgetIntents.openApp(context, 32))
-            manager.updateAppWidget(id, v)
+            return v
+        }
+
+        fun update(context: Context, manager: AppWidgetManager, id: Int) {
+            manager.updateAppWidget(id, build(context))
         }
 
         fun refresh(context: Context) {

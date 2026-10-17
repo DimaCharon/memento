@@ -1,6 +1,5 @@
 package ru.memento.ui
 
-import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Intent
@@ -14,11 +13,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import ru.memento.R
 import ru.memento.data.Store
-import ru.memento.data.WIDGET_DEFS
 import ru.memento.databinding.FragmentWidgetsBinding
 import ru.memento.ui.adapter.WidgetAdapter
-import ru.memento.widget.ProgressWidgetProvider
-import ru.memento.widget.TodayWidgetProvider
+import ru.memento.data.WidgetDef
+import ru.memento.widget.Widgets
 
 /**
  * «Виджеты»: переключатель размера «Сегодня» (2×2 / 4×2 / 4×4), тумблеры всех виджетов
@@ -40,23 +38,22 @@ class WidgetsFragment : Fragment() {
 
     override fun onViewCreated(view: View, saved: Bundle?) {
         store = Store.get(requireContext())
-        adapter = WidgetAdapter { def, checked ->
-            if (checked) {
-                store.settings.activeWidgets.add(def.id)
-            } else {
-                store.settings.activeWidgets.remove(def.id)
-            }
-            store.changed(reschedule = false)
-            refresh()
-        }
+        adapter = WidgetAdapter(
+            onToggle = { def, checked ->
+                if (checked) store.settings.activeWidgets.add(def.id)
+                else store.settings.activeWidgets.remove(def.id)
+                store.changed(reschedule = false)
+                refresh()
+            },
+            onAdd = { def -> add(def) },
+        )
         b.wgList.layoutManager = LinearLayoutManager(requireContext())
         b.wgList.adapter = adapter
 
         b.size2x2.setOnClickListener { setSize("2x2") }
         b.size4x2.setOnClickListener { setSize("4x2") }
         b.size4x4.setOnClickListener { setSize("4x4") }
-        b.wgAddToday.setOnClickListener { pin(TodayWidgetProvider::class.java, "today") }
-        b.wgAddProgress.setOnClickListener { pin(ProgressWidgetProvider::class.java, "progress") }
+
 
         store.addListener(listener)
         refresh()
@@ -66,6 +63,16 @@ class WidgetsFragment : Fragment() {
         store.settings.widgetLayout = size
         store.changed(reschedule = false)
         refresh()
+    }
+
+    /** Просит лаунчер поставить конкретный виджет на рабочий стол. */
+    private fun add(def: WidgetDef) {
+        val provider = Widgets.providerFor(def.id)
+        if (provider == null) {
+            Toast.makeText(requireContext(), R.string.widget_pin_unavailable, Toast.LENGTH_LONG).show()
+            return
+        }
+        pin(provider, def.id)
     }
 
     /** Просьба к лаунчеру добавить виджет; если он не умеет — показываем инструкцию. */

@@ -152,6 +152,39 @@
         <item name="android:paddingBottom">12dp</item>
     </style>
 
+    <!-- ===================== Виджеты (RemoteViews) ===================== -->
+    <style name="WeekCell">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="WeekDay">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/txt3</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="WeekNum">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:textColor">@color/txt</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="WeekCount">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">3dp</item>
+        <item name="android:textColor">@color/txt3</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
     <!-- ===================== Нижняя навигация ===================== -->
     <style name="NavItem">
         <item name="android:layout_width">0dp</item>

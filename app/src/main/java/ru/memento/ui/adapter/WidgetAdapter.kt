@@ -4,14 +4,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.materialswitch.MaterialSwitch
 import ru.memento.R
 import ru.memento.data.WidgetDef
 import ru.memento.databinding.ItemWidgetToggleBinding
 
-/** Список виджетов с тумблерами (как на сайте). */
-class WidgetAdapter(private val onToggle: (WidgetDef, Boolean) -> Unit) :
-    RecyclerView.Adapter<WidgetAdapter.VH>() {
+/**
+ * Список виджетов: тумблер «показывать на главном экране» и кнопка
+ * «Добавить» — просит лаунчер поставить виджет на рабочий стол.
+ */
+class WidgetAdapter(
+    private val onToggle: (WidgetDef, Boolean) -> Unit,
+    private val onAdd: (WidgetDef) -> Unit,
+) : RecyclerView.Adapter<WidgetAdapter.VH>() {
 
     private val items: List<WidgetDef> = ru.memento.data.WIDGET_DEFS
 
@@ -23,10 +27,11 @@ class WidgetAdapter(private val onToggle: (WidgetDef, Boolean) -> Unit) :
             b.wgTitle.text = w.title
             b.wgCaption.text = w.caption + " · " + w.size
             b.wgIcon.setImageResource(iconFor(w.id))
+            b.wgSwitch.setOnCheckedChangeListener(null)
             b.wgSwitch.isChecked = ru.memento.data.Store.get(b.root.context).settings.activeWidgets.contains(w.id)
-            b.wgSwitch.setOnClickListener(null)
             b.wgSwitch.setOnCheckedChangeListener { _, checked -> onToggle(w, checked) }
             b.wgRoot.setOnClickListener { b.wgSwitch.isChecked = !b.wgSwitch.isChecked }
+            b.wgAdd.setOnClickListener { onAdd(w) }
         }
     }
 
@@ -36,7 +41,8 @@ class WidgetAdapter(private val onToggle: (WidgetDef, Boolean) -> Unit) :
         "progress" -> R.drawable.ic_target
         "week" -> R.drawable.ic_week
         "day" -> R.drawable.ic_list
-        else -> R.drawable.ic_sparkle
+        "agent" -> R.drawable.ic_sparkle
+        else -> R.drawable.ic_plus
     }
 
     override fun getItemCount(): Int = items.size

@@ -43,7 +43,8 @@ class StructureTest {
         val providers = names("provider")
 
         listOf(
-            ".ui.MainActivity", ".ui.ReminderSheetActivity", ".ui.AboutActivity", ".ui.CrashActivity",
+            ".ui.MainActivity", ".ui.WelcomeActivity", ".ui.ReminderSheetActivity",
+            ".ui.AboutActivity", ".ui.CrashActivity",
         ).forEach { assertTrue("нет активности $it ($activities)", it in activities) }
         listOf(
             ".service.AiTaskService", ".widget.TodayWidgetService",
@@ -63,6 +64,19 @@ class StructureTest {
         all.forEach { name ->
             val path = name.removePrefix(".").replace('.', '/') + ".kt"
             assertTrue("нет файла $path для $name", File(File(app(), "java/ru/memento"), path).exists())
+        }
+    }
+
+    @Test
+    fun `у каждого виджета есть провайдер и описание`() {
+        val defs = ru.memento.data.WIDGET_DEFS
+        assertTrue("виджетов должно быть не меньше семи, а есть ${defs.size}", defs.size >= 7)
+        defs.forEach { d ->
+            assertTrue("нет провайдера для виджета ${d.id}", ru.memento.widget.Widgets.providerFor(d.id) != null)
+            assertTrue(
+                "нет описания res/xml/widget_${d.id}_info.xml",
+                File(app(), "res/xml/widget_${d.id}_info.xml").exists(),
+            )
         }
     }
 

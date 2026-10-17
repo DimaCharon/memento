@@ -8,7 +8,7 @@ import android.widget.RemoteViewsService
 import ru.memento.R
 import ru.memento.data.Ru
 import ru.memento.data.Store
-import ru.memento.data.dotRes
+import ru.memento.data.dotDrawableRes
 
 /** Наполнение списка виджета «Сегодня». */
 class TodayWidgetService : RemoteViewsService() {
@@ -38,7 +38,7 @@ class Factory(private val context: Context, private val widgetId: Int) : RemoteV
         v.setTextViewText(R.id.row_time, r.time)
         v.setTextViewText(R.id.row_title, r.title)
         // RemoteViews разрешает только «безопасные» методы: меняем картинки, а не фон и не tint
-        v.setImageViewResource(R.id.row_dot, r.priority.dotRes())
+        v.setImageViewResource(R.id.row_dot, r.priority.dotDrawableRes())
         v.setViewVisibility(R.id.row_dot, android.view.View.VISIBLE)
         v.setImageViewResource(R.id.row_check, if (r.done) R.drawable.bg_check_on else R.drawable.bg_check_off)
 

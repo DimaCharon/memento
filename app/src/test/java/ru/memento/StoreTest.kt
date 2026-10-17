@@ -29,6 +29,30 @@ class StoreTest {
     }
 
     @Test
+    fun `регистрация создаёт полностью пустой профиль`() {
+        val s = TestSupport.store()
+        s.register("Мария", "maria@example.com")
+        assertTrue("регистрация пройдена", s.settings.onboarded)
+        assertEquals("Мария", s.settings.userName)
+        assertEquals("maria@example.com", s.settings.email)
+        assertTrue("напоминаний быть не должно: ${s.all()}", s.all().isEmpty())
+        assertTrue("уведомлений быть не должно", s.notifications.isEmpty())
+        assertTrue("чата быть не должно", s.chat.isEmpty())
+        assertEquals("должен остаться один профиль", 1, s.profiles.size)
+        assertEquals("Мария", s.profiles.first().name)
+    }
+
+    @Test
+    fun `выход из профиля стирает данные и возвращает регистрацию`() {
+        val s = TestSupport.seed()
+        s.logout()
+        assertFalse("регистрация сброшена", s.settings.onboarded)
+        assertTrue("напоминания удалены", s.all().isEmpty())
+        assertTrue("профилей нет", s.profiles.isEmpty())
+        assertTrue("ключ ИИ не хранится после выхода", s.ai.apiKey.isEmpty())
+    }
+
+    @Test
     fun `статистика дня считает выполненные`() {
         val s = TestSupport.seed()
         val (done, total) = s.todayStats()

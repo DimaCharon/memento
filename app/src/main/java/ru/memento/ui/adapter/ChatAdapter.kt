@@ -37,7 +37,7 @@ class ChatAdapter : RecyclerView.Adapter<ChatAdapter.VH>() {
             val b = ItemChatAgentBinding.inflate(inflater, parent, false)
             VH(b.root) { m ->
                 b.chatText.text = m.text
-                b.chatAgent.text = m.agent ?: "Memento Orchestrator"
+                b.chatAgent.text = m.agent ?: "NORY Orchestrator"
             }
         }
     }

@@ -3,11 +3,10 @@
     android:id="@+id/wg_root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp"
-    android:background="@drawable/bg_card_row"
-    android:gravity="center_vertical"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/bg_card"
     android:orientation="horizontal"
-    android:padding="12dp">
+    android:padding="14dp">
 
     <ImageView
         android:id="@+id/wg_icon"
@@ -32,18 +31,30 @@
             android:layout_height="wrap_content"
             android:text="@string/widget_today"
             android:textColor="@color/txt"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/wg_caption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="3dp"
             android:ellipsize="end"
-            android:maxLines="1"
+            android:maxLines="2"
             android:text="@string/widget_preview"
             android:textColor="@color/txt3"
             android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/wg_add"
+            style="@style/MementoBtnGhost"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginTop="10dp"
+            android:minHeight="36dp"
+            android:text="@string/widget_add"
+            android:textColor="@color/accentStrong"
+            android:textSize="12.5sp" />
     </LinearLayout>
 
     <com.google.android.material.materialswitch.MaterialSwitch

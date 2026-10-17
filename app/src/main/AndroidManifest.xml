@@ -65,6 +65,13 @@
         </activity>
 
         <activity
+            android:name=".ui.WelcomeActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:label="@string/welcome_title"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
             android:name=".ui.ReminderSheetActivity"
             android:exported="false"
             android:configChanges="orientation|screenSize|keyboardHidden|uiMode"
@@ -156,6 +163,67 @@
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_progress_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widget.NextWidgetProvider"
+            android:exported="true"
+            android:label="@string/widget_next">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="ru.memento.widget.REFRESH_NEXT" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_next_info" />
+        </receiver>
+        <receiver
+            android:name=".widget.WeekWidgetProvider"
+            android:exported="true"
+            android:label="@string/widget_week">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="ru.memento.widget.REFRESH_WEEK" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_week_info" />
+        </receiver>
+        <receiver
+            android:name=".widget.DayWidgetProvider"
+            android:exported="true"
+            android:label="@string/widget_day">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="ru.memento.widget.REFRESH_DAY" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_day_info" />
+        </receiver>
+        <receiver
+            android:name=".widget.AgentWidgetProvider"
+            android:exported="true"
+            android:label="@string/widget_agent">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="ru.memento.widget.REFRESH_AGENT" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_agent_info" />
+        </receiver>
+        <receiver
+            android:name=".widget.QuickWidgetProvider"
+            android:exported="true"
+            android:label="@string/widget_quick">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="ru.memento.widget.REFRESH_QUICK" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_quick_info" />
         </receiver>
 
         <!-- Виджет: тап по строке = открыть напоминание -->

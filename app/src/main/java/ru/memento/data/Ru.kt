@@ -155,6 +155,13 @@ fun Priority.dotRes(): Int = when (this) {
     Priority.LOW -> R.color.prio_low
 }
 
+/** Картинка точки приоритета — для виджетов и уведомлений (RemoteViews умеет только картинки). */
+fun Priority.dotDrawableRes(): Int = when (this) {
+    Priority.HIGH -> R.drawable.dot_high
+    Priority.MEDIUM -> R.drawable.dot_medium
+    Priority.LOW -> R.drawable.dot_low
+}
+
 /** Иконка приоритета/иконка напоминания по имени из парсера. */
 fun iconResFor(name: String?): Int = when (name) {
     "phone" -> R.drawable.ic_phone

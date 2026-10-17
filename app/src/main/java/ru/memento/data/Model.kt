@@ -94,7 +94,10 @@ data class Profile(
 
 /** Настройки приложения. */
 data class Settings(
-    var userName: String = "Александр",
+    var userName: String = "",
+    var email: String = "",
+    var onboarded: Boolean = false,               // пройдена ли регистрация
+    var notifStyle: String = "black",             // black | system
     var widgetLayout: String = "4x2",              // 2x2 | 4x2 | 4x4
     var activeWidgets: MutableSet<String> = linkedSetOf("today", "next", "progress"),
     var theme: String = "graphite",                // graphite | coal
@@ -103,7 +106,7 @@ data class Settings(
     var verification: Boolean = true,
     var backgroundTasks: Boolean = true,
     var offlineSpeech: Boolean = true,
-    var activeProfileId: String = "p1",
+    var activeProfileId: String = "",
 )
 
 /** Доступ к ИИ: OpenAI-совместимый шлюз (по умолчанию api.xkiro.com/v1). */
@@ -119,10 +122,11 @@ data class AiConfig(
 data class WidgetDef(val id: String, val title: String, val caption: String, val size: String)
 
 val WIDGET_DEFS = listOf(
-    WidgetDef("today", "Сегодня", "Список на день", "4x2"),
-    WidgetDef("next", "Следующее", "Что дальше", "2x2"),
+    WidgetDef("today", "Сегодня", "Список на день с отметками", "4x2"),
+    WidgetDef("next", "Следующее", "Ближайшее дело", "2x2"),
     WidgetDef("progress", "Прогресс дня", "Кольцо и число", "2x2"),
-    WidgetDef("week", "Ближайшая неделя", "7 дней", "4x2"),
-    WidgetDef("day", "Расписание на день", "Таймлайн", "4x4"),
-    WidgetDef("agent", "Агент", "Последнее действие ИИ", "4x2"),
+    WidgetDef("week", "Ближайшая неделя", "7 дней и число дел", "4x2"),
+    WidgetDef("day", "Расписание на день", "Все дела дня с галочками", "4x4"),
+    WidgetDef("agent", "Агент", "Последний ответ ИИ", "4x2"),
+    WidgetDef("quick", "Быстрое добавление", "Одна кнопка «+»", "2x1"),
 )

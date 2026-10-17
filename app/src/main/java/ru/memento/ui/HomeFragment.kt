@@ -111,7 +111,9 @@ class HomeFragment : Fragment() {
         b.homeDay.text = "${Ru.fmtLongDate(LocalDate.now())}, ${Ru.eventsWord(today.size)}"
         tick.run()
 
-        b.homeGreeting.text = "${Ru.greeting(now.hour)},\n${store.settings.userName}"
+        val who = store.settings.userName.trim()
+        b.homeGreeting.text = if (who.isEmpty()) Ru.greeting(now.hour)
+        else "${Ru.greeting(now.hour)},\n$who"
         b.homeSub.text = Ru.greetingSub(now.hour, left)
         val ratio = if (total > 0) done.toFloat() / total else 0f
         b.homeRing.setProgress(ratio)

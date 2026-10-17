@@ -79,6 +79,9 @@ class ProfileFragment : Fragment() {
         b.pfSize4x4.setOnClickListener { setSize("4x4") }
         b.pfThemeGraphite.setOnClickListener { setTheme("graphite") }
         b.pfThemeCoal.setOnClickListener { setTheme("coal") }
+        b.pfNotifBlack.setOnClickListener { setNotifStyle("black") }
+        b.pfNotifSystem.setOnClickListener { setNotifStyle("system") }
+        b.pfLogout.setOnClickListener { confirmLogout() }
 
         // Тумблеры
         b.setNotifications.switchTitle.setText(R.string.setting_notifications)
@@ -219,6 +222,30 @@ class ProfileFragment : Fragment() {
         activity?.recreate()
     }
 
+    private fun setNotifStyle(style: String) {
+        store.settings.notifStyle = style
+        store.changed(reschedule = false)
+        Notifier.ensureChannels(requireContext())
+        refreshValues()
+    }
+
+    /** Выход: стираем данные профиля и возвращаемся к регистрации. */
+    private fun confirmLogout() {
+        androidx.appcompat.app.AlertDialog.Builder(requireContext(), R.style.Theme_Memento)
+            .setTitle(R.string.logout_q)
+            .setMessage(R.string.logout_q_text)
+            .setPositiveButton(R.string.logout_yes) { _, _ ->
+                store.logout()
+                val intent = Intent(requireContext(), WelcomeActivity::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                }
+                startActivity(intent)
+                activity?.finish()
+            }
+            .setNegativeButton(R.string.cancel, null)
+            .show()
+    }
+
     private fun saveAi() {
         store.ai.apiKey = b.pfApiKey.text?.toString()?.trim().orEmpty()
         store.ai.baseUrl = b.pfBaseUrl.text?.toString()?.trim().orEmpty().ifBlank { "https://api.xkiro.com/v1" }
@@ -317,8 +344,12 @@ class ProfileFragment : Fragment() {
     private fun refreshValues() {
         val (done, total) = store.todayStats()
         val series = listOf(1, 3, 7, 14, 30).lastOrNull { it <= store.all().count { r -> r.done } } ?: 1
-        b.pfName.text = store.settings.userName
-        b.pfAvatar.text = store.settings.userName.take(1).uppercase()
+        val who = store.settings.userName.ifBlank { getString(R.string.app_name) }
+        b.pfName.text = who
+        b.pfAvatar.text = who.take(1).uppercase()
+        b.pfEmail.text = store.settings.email.ifBlank { getString(R.string.account_empty) }
+        b.pfNotifBlack.isSelected = store.settings.notifStyle != "system"
+        b.pfNotifSystem.isSelected = store.settings.notifStyle == "system"
         b.pfSeries.text = getString(R.string.series, series, store.all().count { it.done }, total)
         b.pfChipToday.text = "${getString(R.string.today)} ${store.today().size}"
         b.pfChipAll.text = "${getString(R.string.widget_all)} ${store.all().count { !it.done }}"

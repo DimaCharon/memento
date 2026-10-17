@@ -79,6 +79,18 @@ class AssistantFragment : Fragment() {
             } else false
         }
 
+        // Панель навигации плавает поверх экрана: оставляем ровно её высоту,
+        // чтобы микрофон и поле ввода никогда не прятались под ней.
+        androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(b.root) { v, insets ->
+            val bars = insets.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars())
+            val nav = resources.getDimensionPixelSize(R.dimen.nav_bottom) +
+                resources.getDimensionPixelSize(R.dimen.nav_height) +
+                resources.getDimensionPixelSize(R.dimen.s2)
+            v.setPadding(v.paddingLeft, v.paddingTop, v.paddingRight, nav + bars.bottom)
+            insets
+        }
+        androidx.core.view.ViewCompat.requestApplyInsets(b.root)
+
         buildExamples()
         refreshModelLabel()
         store.addListener(listener)
@@ -91,7 +103,7 @@ class AssistantFragment : Fragment() {
                 "agent",
                 "Привет! Скажите голосом: «напомни завтра в 9:00 встреча с командой» — я разберу фразу, " +
                     "создам напоминание и проверю результат по базе.",
-                "Memento Orchestrator",
+                "NORY Orchestrator",
             )
             store.save()
         }
@@ -193,7 +205,7 @@ class AssistantFragment : Fragment() {
         val clean = text.trim()
         if (clean.isEmpty()) return
         store.addMessage("user", clean)
-        store.addLog("Memento Orchestrator", if (store.ai.ready) store.ai.model else "локальный движок", "run", "Задача принята: «$clean»")
+        store.addLog("NORY Orchestrator", if (store.ai.ready) store.ai.model else "локальный движок", "run", "Задача принята: «$clean»")
         store.save()
         chat.submit(store.chat)
         b.aiChat.scrollToBottom()

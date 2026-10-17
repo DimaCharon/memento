@@ -44,7 +44,7 @@ object CrashGuard {
         val sw = StringWriter()
         PrintWriter(sw).use { error.printStackTrace(it) }
         val text = buildString {
-            appendLine("Memento ${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})")
+            appendLine("NORY ${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})")
             appendLine("время: ${SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US).format(Date())}")
             appendLine("телефон: ${Build.MANUFACTURER} ${Build.MODEL}, Android ${Build.VERSION.RELEASE} (API ${Build.VERSION.SDK_INT})")
             appendLine("поток: ${thread.name}")
@@ -59,7 +59,7 @@ object CrashGuard {
         }
         val p = prefs(context)
         runCatching { p.edit().putInt(KEY_COUNT, p.getInt(KEY_COUNT, 0) + 1).putBoolean(KEY_PENDING, true).apply() }
-        android.util.Log.e("Memento", "СБОЙ ПРИЛОЖЕНИЯ: ${error.javaClass.name}: ${error.message}", error)
+        android.util.Log.e("NORY", "СБОЙ ПРИЛОЖЕНИЯ: ${error.javaClass.name}: ${error.message}", error)
     }
 
     /** Не упал ли прошлый запуск. Если да — покажем текст ошибки человеку. */

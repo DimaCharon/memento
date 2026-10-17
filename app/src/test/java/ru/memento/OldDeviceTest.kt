@@ -73,7 +73,10 @@ class OldDeviceTest {
         val host = FrameLayout(ctx)
         listOf(
             R.layout.widget_today, R.layout.widget_today_initial, R.layout.widget_today_row,
-            R.layout.widget_progress, R.layout.notification_reminder, R.layout.notification_ai,
+            R.layout.widget_progress, R.layout.widget_next, R.layout.widget_week,
+            R.layout.widget_day, R.layout.widget_agent, R.layout.widget_quick,
+            R.layout.notification_reminder, R.layout.notification_ai,
+            R.layout.activity_welcome,
         ).forEach { layout ->
             val rv = RemoteViews(ctx.packageName, layout)
             val view = rv.apply(ctx, host)
@@ -93,8 +96,20 @@ class OldDeviceTest {
         val id2 = shadow.createWidget(ProgressWidgetProvider::class.java, R.layout.widget_progress)
         TodayWidgetProvider.update(ctx, manager, id)
         ProgressWidgetProvider.update(ctx, manager, id2)
-        TodayWidgetProvider.refresh(ctx)
-        ProgressWidgetProvider.refresh(ctx)
+
+        // Остальные виджеты: каждый собирается и наполняется на старых версиях
+        val extra = listOf<Triple<Class<out android.appwidget.AppWidgetProvider>, Int, (android.content.Context, AppWidgetManager, Int) -> Unit>>(
+            Triple(ru.memento.widget.NextWidgetProvider::class.java, R.layout.widget_next) { c, m, i -> ru.memento.widget.NextWidgetProvider.update(c, m, i) },
+            Triple(ru.memento.widget.WeekWidgetProvider::class.java, R.layout.widget_week) { c, m, i -> ru.memento.widget.WeekWidgetProvider.update(c, m, i) },
+            Triple(ru.memento.widget.DayWidgetProvider::class.java, R.layout.widget_day) { c, m, i -> ru.memento.widget.DayWidgetProvider.update(c, m, i) },
+            Triple(ru.memento.widget.AgentWidgetProvider::class.java, R.layout.widget_agent) { c, m, i -> ru.memento.widget.AgentWidgetProvider.update(c, m, i) },
+            Triple(ru.memento.widget.QuickWidgetProvider::class.java, R.layout.widget_quick) { c, m, i -> ru.memento.widget.QuickWidgetProvider.update(c, m, i) },
+        )
+        extra.forEach { (provider, layout, update) ->
+            val wid = shadow.createWidget(provider, layout)
+            update(ctx, manager, wid)
+        }
+        ru.memento.widget.Widgets.refreshAll(ctx)
         assertTrue("виджет должен обновиться без ошибок", manager.getAppWidgetIds(
             android.content.ComponentName(ctx, TodayWidgetProvider::class.java)).isNotEmpty())
 
@@ -167,7 +182,7 @@ class OldDeviceTest {
         TestSupport.seed()
         val lines = SelfTest.run(TestSupport.ctx())
         assertTrue("пунктов должно быть не меньше пяти", lines.size >= 5)
-        assertTrue("текст отчёта формируется", SelfTest.asText(lines).contains("Memento"))
+        assertTrue("текст отчёта формируется", SelfTest.asText(lines).contains("NORY"))
     }
 
     @Test

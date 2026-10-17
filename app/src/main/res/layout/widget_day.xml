@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_day_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_widget_card"
+    android:orientation="vertical"
+    android:padding="14dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:contentDescription="@string/widget_day"
+            android:src="@drawable/ic_calendar"
+            android:tint="@color/txt2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:text="@string/widget_day"
+            android:textColor="@color/txt"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/day_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text=""
+            android:textColor="@color/txt3"
+            android:textSize="11sp" />
+
+        <ImageView
+            android:id="@+id/day_plus"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:background="@drawable/bg_notif_icon"
+            android:contentDescription="@string/nav_add"
+            android:padding="6dp"
+            android:src="@drawable/ic_plus"
+            android:tint="@color/txt" />
+    </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/day_row0"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_widget_item_sel"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="10dp"
+            android:paddingEnd="8dp">
+
+            <TextView
+                android:id="@+id/day_time0"
+                android:layout_width="44dp"
+                android:layout_height="wrap_content"
+                android:text="09:00"
+                android:textColor="@color/txt"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/day_title0"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/widget_today"
+                android:textColor="@color/txt"
+                android:textSize="12.5sp" />
+
+            <ImageView
+                android:id="@+id/day_check0"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:background="@drawable/bg_ripple_round"
+                android:contentDescription="@string/mark_done"
+                android:padding="2dp"
+                android:src="@drawable/bg_check_off" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/day_row1"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_widget_item_sel"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="10dp"
+            android:paddingEnd="8dp">
+
+            <TextView
+                android:id="@+id/day_time1"
+                android:layout_width="44dp"
+                android:layout_height="wrap_content"
+                android:text="09:00"
+                android:textColor="@color/txt"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/day_title1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/widget_today"
+                android:textColor="@color/txt"
+                android:textSize="12.5sp" />
+
+            <ImageView
+                android:id="@+id/day_check1"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:background="@drawable/bg_ripple_round"
+                android:contentDescription="@string/mark_done"
+                android:padding="2dp"
+                android:src="@drawable/bg_check_off" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/day_row2"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_widget_item_sel"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="10dp"
+            android:paddingEnd="8dp">
+
+            <TextView
+                android:id="@+id/day_time2"
+                android:layout_width="44dp"
+                android:layout_height="wrap_content"
+                android:text="09:00"
+                android:textColor="@color/txt"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/day_title2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/widget_today"
+                android:textColor="@color/txt"
+                android:textSize="12.5sp" />
+
+            <ImageView
+                android:id="@+id/day_check2"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:background="@drawable/bg_ripple_round"
+                android:contentDescription="@string/mark_done"
+                android:padding="2dp"
+                android:src="@drawable/bg_check_off" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/day_row3"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_widget_item_sel"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="10dp"
+            android:paddingEnd="8dp">
+
+            <TextView
+                android:id="@+id/day_time3"
+                android:layout_width="44dp"
+                android:layout_height="wrap_content"
+                android:text="09:00"
+                android:textColor="@color/txt"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/day_title3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/widget_today"
+                android:textColor="@color/txt"
+                android:textSize="12.5sp" />
+
+            <ImageView
+                android:id="@+id/day_check3"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:background="@drawable/bg_ripple_round"
+                android:contentDescription="@string/mark_done"
+                android:padding="2dp"
+                android:src="@drawable/bg_check_off" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/day_row4"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_widget_item_sel"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="10dp"
+            android:paddingEnd="8dp">
+
+            <TextView
+                android:id="@+id/day_time4"
+                android:layout_width="44dp"
+                android:layout_height="wrap_content"
+                android:text="09:00"
+                android:textColor="@color/txt"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/day_title4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/widget_today"
+                android:textColor="@color/txt"
+                android:textSize="12.5sp" />
+
+            <ImageView
+                android:id="@+id/day_check4"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:background="@drawable/bg_ripple_round"
+                android:contentDescription="@string/mark_done"
+                android:padding="2dp"
+                android:src="@drawable/bg_check_off" />
+        </LinearLayout>
+</LinearLayout>

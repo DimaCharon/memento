@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
-            android:text="Memento Orchestrator"
+            android:text="NORY Orchestrator"
             android:textColor="@color/txt3"
             android:textSize="11sp" />
     </LinearLayout>

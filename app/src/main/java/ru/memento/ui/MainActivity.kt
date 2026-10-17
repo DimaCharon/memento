@@ -56,6 +56,14 @@ class MainActivity : AppCompatActivity() {
 
         runCatching { CrashGuard.install(applicationContext) }
 
+        // Регистрация ещё не пройдена — сначала знакомство, а не пустой экран
+        val registered = runCatching { Store.get(this).settings.onboarded }.getOrDefault(true)
+        if (!registered) {
+            startActivity(Intent(this, WelcomeActivity::class.java))
+            finish()
+            return
+        }
+
         try {
             buildUi(savedInstanceState)
         } catch (t: Throwable) {
@@ -70,7 +78,7 @@ class MainActivity : AppCompatActivity() {
     private fun describe(t: Throwable): String {
         val sw = java.io.StringWriter()
         t.printStackTrace(java.io.PrintWriter(sw))
-        return "Memento ${ru.memento.BuildConfig.VERSION_NAME}\n" +
+        return "NORY ${ru.memento.BuildConfig.VERSION_NAME}\n" +
             "Android ${Build.VERSION.RELEASE} (API ${Build.VERSION.SDK_INT}), ${Build.MANUFACTURER} ${Build.MODEL}\n\n" +
             sw.toString()
     }

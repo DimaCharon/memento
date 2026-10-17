@@ -18,7 +18,7 @@ import ru.memento.data.Priority
 import ru.memento.data.Reminder
 import ru.memento.data.Ru
 import ru.memento.data.Store
-import ru.memento.data.dotRes
+import ru.memento.data.dotDrawableRes
 import ru.memento.data.iconResFor
 import ru.memento.data.label
 import ru.memento.ui.MainActivity
@@ -141,14 +141,21 @@ object Notifier {
         return v
     }
 
-    private fun priorityDot(p: Priority): Int = p.dotRes()
+    private fun priorityDot(p: Priority): Int = p.dotDrawableRes()
 
-    /** Карточка напоминания — как в макете: «Memento · Через 23 мин», заголовок, время, кнопки. */
+    /**
+     * Карточка напоминания — как в макете: «NORY · Через 23 мин», заголовок, время, кнопки.
+     *
+     * Важно: кнопки живут внутри самой карточки (RemoteViews), а системные addAction не добавляем —
+     * иначе под чёрной карточкой появляется белая полоса с кнопками, и уведомление выглядит криво.
+     * В режиме «Чёрные» включаем colorized: система красит и внешний фон в чёрный.
+     */
     fun showReminder(context: Context, r: Reminder) {
         ensureChannels(context)
-        val n = NotificationCompat.Builder(context, CH_REMINDERS)
+        val black = Store.get(context).settings.notifStyle != "system"
+        val b = NotificationCompat.Builder(context, CH_REMINDERS)
             .setSmallIcon(R.drawable.ic_stat_memento)
-            .setColor(context.getColor(R.color.accentStrong))
+            .setColor(if (black) COLOR_BLACK else context.getColor(R.color.accentStrong))
             .setContentTitle(r.title)
             .setContentText(Ru.notifBody(r))
             .setStyle(NotificationCompat.DecoratedCustomViewStyle())
@@ -161,14 +168,14 @@ object Notifier {
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setCategory(NotificationCompat.CATEGORY_REMINDER)
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-            .addAction(R.drawable.ic_clock, context.getString(R.string.snooze_10), actionIntent(context, r, ActionReceiver.ACTION_SNOOZE, 10))
-            .addAction(R.drawable.ic_check, context.getString(R.string.mark_done), actionIntent(context, r, ActionReceiver.ACTION_COMPLETE))
-            .build()
-
+        if (black) b.setColorized(true)
         runCatching {
-            NotificationManagerCompat.from(context).notify(idOf(r), n)
+            NotificationManagerCompat.from(context).notify(idOf(r), b.build())
         }
     }
+
+    /** Чёрный цвет фона уведомления (colorized). */
+    private val COLOR_BLACK = 0xFF050608.toInt()
 
     fun cancelReminder(context: Context, r: Reminder) {
         runCatching { NotificationManagerCompat.from(context).cancel(idOf(r)) }
@@ -215,9 +222,10 @@ object Notifier {
             },
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
         )
-        val n = NotificationCompat.Builder(context, CH_AI)
+        val b = NotificationCompat.Builder(context, CH_AI)
             .setSmallIcon(R.drawable.ic_stat_memento)
-            .setColor(context.getColor(R.color.accentStrong))
+            .setColor(COLOR_BLACK)
+            .setColorized(true)
             .setStyle(NotificationCompat.DecoratedCustomViewStyle())
             .setCustomContentView(v)
             .setContentIntent(open)
@@ -226,7 +234,7 @@ object Notifier {
             .setShowWhen(false)
             .setPriority(NotificationCompat.PRIORITY_LOW)
             .setCategory(NotificationCompat.CATEGORY_PROGRESS)
-            .build()
+        val n = b.build()
         runCatching { NotificationManagerCompat.from(context).notify(ID_AI, n) }
         return n
     }
@@ -254,7 +262,8 @@ object Notifier {
         )
         val n = NotificationCompat.Builder(context, CH_AI)
             .setSmallIcon(R.drawable.ic_stat_memento)
-            .setColor(context.getColor(if (ok) R.color.ok else R.color.warn))
+            .setColor(COLOR_BLACK)
+            .setColorized(true)
             .setStyle(NotificationCompat.DecoratedCustomViewStyle())
             .setCustomContentView(v)
             .setContentIntent(open)

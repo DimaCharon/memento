@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Memento</string>
+    <string name="app_name">NORY</string>
     <string name="brand_sub">напоминания и ИИ-агенты</string>
 
     <!-- Нижняя навигация -->
@@ -43,9 +43,9 @@
     <string name="all_widgets">ВСЕ ВИДЖЕТЫ</string>
     <string name="widget_preview">Предпросмотр</string>
     <string name="to_home">На рабочий стол</string>
-    <string name="widget_hint">Удерживайте пустое место на рабочем столе → «Виджеты» → Memento</string>
+    <string name="widget_hint">Удерживайте пустое место на рабочем столе → «Виджеты» → NORY</string>
     <string name="widget_pin_ok">Виджет добавлен на рабочий стол</string>
-    <string name="widget_pin_unavailable">Ваш лаунчер не разрешил добавить виджет автоматически. Добавьте вручную: удерживайте рабочий стол → «Виджеты» → Memento.</string>
+    <string name="widget_pin_unavailable">Ваш лаунчер не разрешил добавить виджет автоматически. Добавьте вручную: удерживайте рабочий стол → «Виджеты» → NORY.</string>
     <string name="on">вкл</string>
     <string name="off">выкл</string>
 
@@ -194,20 +194,61 @@
     <string name="channel_agent">Агент</string>
     <string name="channel_agent_desc">Служебные сообщения ИИ-агентов</string>
     <string name="notif_now">сейчас</string>
-    <string name="notif_in">Memento · %1$s</string>
+    <string name="notif_in">NORY · %1$s</string>
     <string name="notif_startat">Начало в %1$s</string>
     <string name="notif_open">Нажми, чтобы открыть</string>
     <string name="notif_channel_off">Уведомления выключены в настройках системы</string>
-    <string name="ai_task_title">Ассистент выполняет задачу</string>
+    <string name="ai_task_title">NORY выполняет задачу</string>
     <string name="ai_task_text">«%1$s»</string>
     <string name="ai_task_done_title">Ассистент: готово</string>
+
+
+    <!-- Регистрация и аккаунт -->
+    <string name="welcome_title">Добро пожаловать в NORY</string>
+    <string name="welcome_sub">Напоминания, виджеты и голосовой ассистент. Создайте профиль — данные останутся только на этом телефоне.</string>
+    <string name="welcome_name">Как вас зовут?</string>
+    <string name="welcome_name_hint">Например: Александр</string>
+    <string name="welcome_email">Почта (необязательно)</string>
+    <string name="welcome_email_hint">name@example.com</string>
+    <string name="welcome_start">Создать профиль</string>
+    <string name="welcome_skip">Продолжить без имени</string>
+    <string name="welcome_empty_note">После регистрации профиль будет полностью пустым: ни одного напоминания, пока вы не добавите своё.</string>
+    <string name="welcome_loading">Готовим профиль…</string>
+    <string name="account">АККАУНТ</string>
+    <string name="account_email">Почта</string>
+    <string name="account_empty">Почта не указана</string>
+    <string name="logout">Выйти из профиля</string>
+    <string name="logout_q">Выйти и очистить данные?</string>
+    <string name="logout_q_text">Все напоминания и настройки этого профиля будут удалены с телефона. Действие необратимо.</string>
+    <string name="logout_yes">Выйти и очистить</string>
+    <string name="profile_empty">Профиль пуст. Добавьте первое напоминание кнопкой «+».</string>
+
+    <!-- Виджеты -->
+    <string name="widget_next_desc">Ближайшее напоминание крупным планом</string>
+    <string name="widget_week_desc">Семь дней и число дел в каждом</string>
+    <string name="widget_day_desc">Полное расписание дня с отметками</string>
+    <string name="widget_agent_desc">Последний ответ ассистента и кнопка «Спросить»</string>
+    <string name="widget_quick">Быстрое добавление</string>
+    <string name="widget_quick_desc">Одна кнопка «+» прямо на рабочем столе</string>
+    <string name="widget_add">Добавить</string>
+    <string name="widget_ask">Спросить</string>
+    <string name="widget_tap">Нажмите, чтобы отметить</string>
+    <string name="widget_no_agent">Скажите голосом на главном экране</string>
+    <string name="widget_add_hint">Размер виджета задаётся производителем лаунчера — его можно растянуть пальцем.</string>
+    <string name="widget_preview_sub">Так выглядит на рабочем столе</string>
+
+    <!-- Уведомления -->
+    <string name="setting_notif_style">Вид уведомлений</string>
+    <string name="setting_notif_style_sub">Чёрная карточка или системная</string>
+    <string name="notif_style_black">Чёрные</string>
+    <string name="notif_style_system">Как в системе</string>
 
     <!-- Служебное -->
     <string name="ok">ОК</string>
     <string name="close">Закрыть</string>
     <string name="retry">Повторить</string>
     <string name="error_network">Нет интернета</string>
-    <string name="about_text">Memento %1$s\nНапоминания, виджеты и голосовой ИИ-ассистент.\nДанные хранятся только на этом телефоне.</string>
+    <string name="about_text">NORY %1$s\nНапоминания, виджеты и голосовой ИИ-ассистент.\nДанные хранятся только на этом телефоне.</string>
 
     <string-array name="months_gen">
         <item>января</item><item>февраля</item><item>марта</item><item>апреля</item>

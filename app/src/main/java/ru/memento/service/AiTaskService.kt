@@ -103,8 +103,8 @@ class AiTaskService : Service() {
                 } else {
                     ok = false
                     reply = "Не удалось выполнить: ${result.exceptionOrNull()?.message ?: "неизвестная ошибка"}"
-                    store.addLog("Memento Orchestrator", "—", "err", reply)
-                    store.addMessage("agent", reply, "Memento Orchestrator")
+                    store.addLog("NORY Orchestrator", "—", "err", reply)
+                    store.addMessage("agent", reply, "NORY Orchestrator")
                 }
 
                 val seconds = (System.currentTimeMillis() - started) / 1000
@@ -118,7 +118,7 @@ class AiTaskService : Service() {
                     "$reply${if (seconds > 3) "\n· ${seconds} с" else ""}",
                 )
                 store.addLog(
-                    "Memento Orchestrator", if (store.ai.ready) store.ai.model else "локальный движок",
+                    "NORY Orchestrator", if (store.ai.ready) store.ai.model else "локальный движок",
                     if (ok) "ok" else "warn", "Задача из очереди закрыта за ${seconds}с",
                 )
                 store.changed()

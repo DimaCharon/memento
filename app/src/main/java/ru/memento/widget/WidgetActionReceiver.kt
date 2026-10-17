@@ -24,8 +24,7 @@ class WidgetActionReceiver : BroadcastReceiver() {
                     ru.memento.data.NotifKind.DONE,
                 )
                 store.changed()
-                TodayWidgetProvider.refresh(context)
-                ProgressWidgetProvider.refresh(context)
+                Widgets.refreshAll(context)
             }
 
             else -> {

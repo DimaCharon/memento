@@ -27,7 +27,7 @@ object SelfTest {
         out += Line(
             "Приложение",
             true,
-            "Memento ${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE}), Android ${Build.VERSION.RELEASE} (API ${Build.VERSION.SDK_INT}), ${Build.MANUFACTURER} ${Build.MODEL}",
+            "NORY ${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE}), Android ${Build.VERSION.RELEASE} (API ${Build.VERSION.SDK_INT}), ${Build.MANUFACTURER} ${Build.MODEL}",
         )
 
         val store = runCatching { Store.get(context) }.getOrNull()
@@ -88,7 +88,7 @@ object SelfTest {
     }
 
     fun asText(lines: List<Line>): String = buildString {
-        appendLine("Memento — самопроверка")
+        appendLine("NORY — самопроверка")
         appendLine("время: ${java.text.SimpleDateFormat("yyyy-MM-dd HH:mm", java.util.Locale.US).format(java.util.Date())}")
         appendLine()
         lines.forEach { appendLine("${if (it.ok) "[+]" else "[-]"} ${it.name}: ${it.detail}") }

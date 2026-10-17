@@ -17,7 +17,7 @@ object Pipeline {
     data class Result(val ok: Boolean, val reply: String, val usedAi: Boolean)
 
     fun steps(): List<Pair<String, String>> = listOf(
-        "Memento Orchestrator" to "ставит задачу и проверяет результат",
+        "NORY Orchestrator" to "ставит задачу и проверяет результат",
         "NLU · Парсер намерения" to "разбирает фразу: смысл, дата, время, повтор",
         "Планировщик" to "считает слоты и разрешает конфликты",
         "Редактор напоминаний" to "реально меняет данные приложения",
@@ -33,7 +33,7 @@ object Pipeline {
             onStep?.invoke(s)
         }
 
-        log("Memento Orchestrator", "run", "Понял: «${text.trim()}». Ставлю задачу парсеру.")
+        log("NORY Orchestrator", "run", "Понял: «${text.trim()}». Ставлю задачу парсеру.")
 
         // 1. NLU — локально
         var intent = Nlu.parse(text)
@@ -58,7 +58,7 @@ object Pipeline {
 
         if (intent.kind == Nlu.Kind.CHAT) {
             val reply = chatReply(store, text)
-            log("Memento Orchestrator", "ok", "Диалоговый ответ")
+            log("NORY Orchestrator", "ok", "Диалоговый ответ")
             return Result(true, reply, usedAi)
         }
 
@@ -96,8 +96,8 @@ object Pipeline {
             else -> note ?: "Готово."
         }
         val reply = polishWithAi(store, text, base) ?: base
-        store.addMessage("agent", reply, "Memento Orchestrator")
-        log("Memento Orchestrator", if (problems.isEmpty()) "ok" else "warn", "Проверено по ${store.logs.count()} шагам журнала. Задача закрыта.")
+        store.addMessage("agent", reply, "NORY Orchestrator")
+        log("NORY Orchestrator", if (problems.isEmpty()) "ok" else "warn", "Проверено по ${store.logs.count()} шагам журнала. Задача закрыта.")
 
         return Result(problems.isEmpty() && results.any { it.ok }, reply, usedAi)
     }

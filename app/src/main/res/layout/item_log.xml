@@ -30,7 +30,7 @@
             android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="Memento Orchestrator"
+            android:text="NORY Orchestrator"
             android:textColor="@color/txt2"
             android:textSize="12sp" />
 

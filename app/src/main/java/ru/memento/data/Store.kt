@@ -43,13 +43,18 @@ class Store private constructor(private val app: Context) {
     private fun load() {
         val json = runCatching { if (file.exists()) JSONObject(file.readText()) else null }.getOrNull()
         if (json == null) {
-            seed()
+            // Первый запуск: никаких демо-записей — человек проходит регистрацию,
+            // и профиль остаётся полностью пустым.
+            freshProfile()
             saveNow()
             return
         }
         runCatching {
             settings = Settings(
-                userName = json.optJSONObject("settings")?.optString("userName").takeUnless { it.isNullOrBlank() } ?: "Александр",
+                userName = json.optJSONObject("settings")?.optString("userName").orEmpty(),
+                email = json.optJSONObject("settings")?.optString("email").orEmpty(),
+                onboarded = json.optJSONObject("settings")?.optBoolean("onboarded", false) ?: false,
+                notifStyle = json.optJSONObject("settings")?.optString("notifStyle")?.ifBlank { "black" } ?: "black",
                 widgetLayout = json.optJSONObject("settings")?.optString("widgetLayout")?.ifBlank { "4x2" } ?: "4x2",
                 activeWidgets = (json.optJSONObject("settings")?.optJSONArray("activeWidgets")?.toStringList()
                     ?: listOf("today", "next", "progress")).toMutableSet(),
@@ -59,7 +64,7 @@ class Store private constructor(private val app: Context) {
                 verification = json.optJSONObject("settings")?.optBoolean("verification", true) ?: true,
                 backgroundTasks = json.optJSONObject("settings")?.optBoolean("backgroundTasks", true) ?: true,
                 offlineSpeech = json.optJSONObject("settings")?.optBoolean("offlineSpeech", true) ?: true,
-                activeProfileId = json.optJSONObject("settings")?.optString("activeProfileId")?.ifBlank { "p1" } ?: "p1",
+                activeProfileId = json.optJSONObject("settings")?.optString("activeProfileId").orEmpty(),
             )
             ai = AiConfig(
                 apiKey = json.optJSONObject("ai")?.optString("apiKey") ?: "",
@@ -93,8 +98,61 @@ class Store private constructor(private val app: Context) {
             }.toMutableList()
             lastAgentSummary = json.optString("lastAgentSummary", "")
         }.onFailure { seed() }
-        if (profiles.isEmpty()) profiles.add(Profile("p1", settings.userName))
-        if (reminders.isEmpty() && notifications.isEmpty() && logs.isEmpty()) seed()
+        if (profiles.isEmpty() && settings.onboarded) {
+            val pid = settings.activeProfileId.ifBlank { "p1" }
+            settings.activeProfileId = pid
+            profiles.add(Profile(pid, settings.userName))
+        }
+        if (!settings.onboarded) {
+            // анкета не заполнена — данных быть не должно
+            reminders = mutableListOf()
+            notifications = mutableListOf()
+            chat = mutableListOf()
+            logs = mutableListOf()
+            queue = mutableListOf()
+            profiles = mutableListOf()
+        }
+    }
+
+    /** Полностью пустой профиль (до регистрации). */
+    fun freshProfile() {
+        reminders = mutableListOf()
+        notifications = mutableListOf()
+        chat = mutableListOf()
+        logs = mutableListOf()
+        queue = mutableListOf()
+        profiles = mutableListOf()
+        lastAgentSummary = ""
+        settings = Settings()
+        ai = AiConfig()
+    }
+
+    /**
+     * Регистрация: имя (и, по желанию, почта). Профиль создаётся пустым —
+     * ни одного напоминания, пока человек не добавит своё.
+     */
+    fun register(name: String, email: String = "") {
+        val clean = name.trim().ifBlank { "Друг" }
+        val id = settings.activeProfileId.ifBlank { uid("prof") }
+        settings.onboarded = true
+        settings.userName = clean
+        settings.email = email.trim()
+        settings.activeProfileId = id
+        profiles = mutableListOf(Profile(id, clean))
+        reminders = mutableListOf()
+        notifications = mutableListOf()
+        chat = mutableListOf()
+        logs = mutableListOf()
+        queue = mutableListOf()
+        lastAgentSummary = ""
+        saveNow()
+    }
+
+    /** Выход: стираем данные профиля с телефона и возвращаемся к регистрации. */
+    fun logout() {
+        freshProfile()
+        saveNow()
+        emit()
     }
 
     /**
@@ -102,6 +160,8 @@ class Store private constructor(private val app: Context) {
      * Времена задаются относительно «сейчас», чтобы демо всегда выглядело живым.
      */
     fun seed() {
+        settings.onboarded = true
+        if (settings.userName.isBlank()) settings.userName = "Александр"
         val nowMin = java.time.LocalTime.now().let { it.hour * 60 + it.minute }
         fun at(offset: Int) = Ru.minutesToTime(nowMin + offset)
         val today = Ru.todayISO()
@@ -152,6 +212,7 @@ class Store private constructor(private val app: Context) {
 
     /** Только для тестов: полностью пустая база (без демо-записей). */
     fun clearForTests() {
+        settings.onboarded = true
         reminders = mutableListOf()
         notifications = mutableListOf()
         chat = mutableListOf()
@@ -180,6 +241,9 @@ class Store private constructor(private val app: Context) {
         root.put("version", 1)
         root.put("settings", JSONObject().apply {
             put("userName", settings.userName)
+            put("email", settings.email)
+            put("onboarded", settings.onboarded)
+            put("notifStyle", settings.notifStyle)
             put("widgetLayout", settings.widgetLayout)
             put("activeWidgets", JSONArray(settings.activeWidgets.toList()))
             put("theme", settings.theme)

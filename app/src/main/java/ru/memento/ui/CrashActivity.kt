@@ -54,7 +54,7 @@ class CrashActivity : AppCompatActivity() {
 
         root.addView(button(getString(R.string.crash_copy)) {
             val cm = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-            cm.setPrimaryClip(ClipData.newPlainText("Memento", report))
+            cm.setPrimaryClip(ClipData.newPlainText("NORY", report))
             Toast.makeText(this, R.string.crash_copied, Toast.LENGTH_SHORT).show()
         })
         root.addView(button(getString(R.string.crash_send)) {

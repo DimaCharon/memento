@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_week_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_widget_card"
+    android:orientation="vertical"
+    android:padding="14dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:contentDescription="@string/widget_week"
+            android:src="@drawable/ic_week"
+            android:tint="@color/txt2" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:layout_weight="1"
+            android:text="@string/widget_week"
+            android:textColor="@color/txt"
+            android:textSize="13.5sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/week_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/txt3"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <LinearLayout style="@style/WeekCell">
+            <TextView android:id="@+id/week_d0" style="@style/WeekDay" />
+            <TextView android:id="@+id/week_n0" style="@style/WeekNum" />
+            <TextView android:id="@+id/week_c0" style="@style/WeekCount" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/WeekCell">
+            <TextView android:id="@+id/week_d1" style="@style/WeekDay" />
+            <TextView android:id="@+id/week_n1" style="@style/WeekNum" />
+            <TextView android:id="@+id/week_c1" style="@style/WeekCount" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/WeekCell">
+            <TextView android:id="@+id/week_d2" style="@style/WeekDay" />
+            <TextView android:id="@+id/week_n2" style="@style/WeekNum" />
+            <TextView android:id="@+id/week_c2" style="@style/WeekCount" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/WeekCell">
+            <TextView android:id="@+id/week_d3" style="@style/WeekDay" />
+            <TextView android:id="@+id/week_n3" style="@style/WeekNum" />
+            <TextView android:id="@+id/week_c3" style="@style/WeekCount" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/WeekCell">
+            <TextView android:id="@+id/week_d4" style="@style/WeekDay" />
+            <TextView android:id="@+id/week_n4" style="@style/WeekNum" />
+            <TextView android:id="@+id/week_c4" style="@style/WeekCount" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/WeekCell">
+            <TextView android:id="@+id/week_d5" style="@style/WeekDay" />
+            <TextView android:id="@+id/week_n5" style="@style/WeekNum" />
+            <TextView android:id="@+id/week_c5" style="@style/WeekCount" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/WeekCell">
+            <TextView android:id="@+id/week_d6" style="@style/WeekDay" />
+            <TextView android:id="@+id/week_n6" style="@style/WeekNum" />
+            <TextView android:id="@+id/week_c6" style="@style/WeekCount" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

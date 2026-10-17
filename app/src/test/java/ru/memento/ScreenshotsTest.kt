@@ -8,6 +8,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
+import ru.memento.CrashGuard
 import ru.memento.ui.MainActivity
 import ru.memento.ui.ReminderSheetActivity
 import java.io.File
@@ -85,6 +86,17 @@ class ScreenshotsTest {
             ru.memento.widget.AgentWidgetProvider::class.java, R.layout.widget_agent,
             ru.memento.widget.AgentWidgetProvider.build(ctx), "16-виджет-агент.png", 160,
         )
+    }
+
+    @Test
+    fun `снимок пустого профиля после регистрации`() {
+        val store = TestSupport.store()
+        store.register("Мария", "maria@example.com")
+        runCatching { CrashGuard.markHealthy(TestSupport.ctx()) }
+        val a = main()
+        shot(a, MainActivity.TAB_HOME, "17-главная-после-регистрации.png")
+        shot(a, MainActivity.TAB_PROFILE, "18-профиль-новый.png")
+        assertTrue("после регистрации напоминаний быть не должно", store.all().isEmpty())
     }
 
     @Test

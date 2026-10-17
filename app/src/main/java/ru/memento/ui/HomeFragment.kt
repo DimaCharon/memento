@@ -135,7 +135,9 @@ class HomeFragment : Fragment() {
         (if (store.settings.widgetLayout == "4x4") dayAdapter else todayAdapter).submit(chronological)
         if (store.settings.widgetLayout == "4x4") b.homeTodayList.visibility = View.GONE else b.homeTodayList.visibility = View.VISIBLE
         b.homeTodayCount.text = if (today.isEmpty()) ctx.getString(R.string.no_reminders) else Ru.remindersWord(today.size)
-        b.homeTodayEmpty.visibility = if (today.isEmpty()) View.VISIBLE else View.GONE
+        // Если дел не было вовсе — зовём добавить; если все сделаны — хвалим
+        b.homeTodayEmpty.setText(if (today.isEmpty()) R.string.nothing_today else R.string.all_done_today)
+        b.homeTodayEmpty.visibility = if (today.isEmpty() || left == 0) View.VISIBLE else View.GONE
         b.homeDayTotal.text = Ru.remindersWord(left)
 
         // «Следующее»

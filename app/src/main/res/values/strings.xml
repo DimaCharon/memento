@@ -27,7 +27,8 @@
     <string name="widget_all">Все напоминания</string>
     <string name="no_reminders">Пока пусто</string>
     <string name="no_reminders_hint">Добавьте первое напоминание кнопкой «+»</string>
-    <string name="nothing_today">На сегодня всё выполнено</string>
+    <string name="nothing_today">Пока пусто — добавьте первое напоминание</string>
+    <string name="all_done_today">На сегодня всё выполнено</string>
     <string name="next_none">Свободное время — планов больше нет</string>
     <string name="open">Открыть</string>
     <string name="all_done">Всё сделано</string>

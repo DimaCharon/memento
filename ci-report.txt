@@ -1,24 +1,25 @@
-run: 38140243138
-commit: 2b161b1e1fc149eec2ee0b7c8519562c1ea243e9
-date: Sun Oct 11 12:43:00 UTC 2026
+run: 39021331062
+commit: 51ecce8a4cdf49c38a840ebe065d5dee8c533016
+date: Sat Oct 17 09:32:06 UTC 2026
 --- apk ---
-total 7324
--rw-r--r-- 1 runner runner 2630928 Oct 11 12:43 app-release.apk
--rw-r--r-- 1 runner runner 4865111 Oct 11 12:43 app-safe.apk
+total 7556
+-rw-r--r-- 1 runner runner 2747728 Oct 17 09:32 app-release.apk
+-rw-r--r-- 1 runner runner 4986783 Oct 17 09:32 app-safe.apk
 --- sha256 ---
-590e495dc2311e54d74cbe59d60827681d5b3bc14132e15910528dc10c7d8c77  apk/app-release.apk
-0e45a09c2288e82c01a0a3eb19c09c145dc04c211e0e4d54f5d5c1ee89f4a8bc  apk/app-safe.apk
+aafa11851d74712e4535be244f2a2c56e7b87d7c19d151d66b5e99ecc7e862d8  apk/app-release.apk
+cd41917aed7ffd76790fdffe586956c8eb250691239c32a6223305e3b9091a0c  apk/app-safe.apk
 --- screenshots ---
-total 2760
--rw-r--r-- 1 runner runner 480238 Oct 11 12:41 01-главная.png
--rw-r--r-- 1 runner runner 394654 Oct 11 12:41 02-виджеты.png
--rw-r--r-- 1 runner runner 403095 Oct 11 12:41 03-календарь.png
--rw-r--r-- 1 runner runner 456963 Oct 11 12:41 04-напоминания.png
--rw-r--r-- 1 runner runner 438325 Oct 11 12:41 05-профиль.png
--rw-r--r-- 1 runner runner 349867 Oct 11 12:41 06-ассистент.png
--rw-r--r-- 1 runner runner 176184 Oct 11 12:41 07-новое-напоминание.png
--rw-r--r-- 1 runner runner  23538 Oct 11 12:41 08-виджет.png
--rw-r--r-- 1 runner runner  45113 Oct 11 12:41 09-уведомление.png
--rw-r--r-- 1 runner runner  30807 Oct 11 12:41 10-уведомление-агента.png
+total 3124
+-rw-r--r-- 1 runner runner 480429 Oct 17 09:30 01-главная.png
+-rw-r--r-- 1 runner runner 442615 Oct 17 09:30 02-виджеты.png
+-rw-r--r-- 1 runner runner 404218 Oct 17 09:30 03-календарь.png
+-rw-r--r-- 1 runner runner 459908 Oct 17 09:30 04-напоминания.png
+-rw-r--r-- 1 runner runner 388165 Oct 17 09:30 05-профиль.png
+-rw-r--r-- 1 runner runner 347362 Oct 17 09:30 06-ассистент.png
+-rw-r--r-- 1 runner runner 176042 Oct 17 09:30 07-новое-напоминание.png
+-rw-r--r-- 1 runner runner  26326 Oct 17 09:30 08-виджет.png
+-rw-r--r-- 1 runner runner  49218 Oct 17 09:30 09-уведомление.png
+-rw-r--r-- 1 runner runner  31285 Oct 17 09:30 10-уведомление-агента.png
+-rw-r--r-- 1 runner runner 369881 Oct 17 09:30 11-регистрация.png
 --- tests ---
-тестов: 95, упало: 0, ошибок: 0, пропущено: 0
+тестов: 101, упало: 0, ошибок: 0, пропущено: 0

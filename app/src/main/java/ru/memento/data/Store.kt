@@ -50,10 +50,16 @@ class Store private constructor(private val app: Context) {
             return
         }
         runCatching {
+            // Старая база (до 1.0.2) не знает про регистрацию: если там уже есть данные,
+            // человек считается зарегистрированным — ничего не теряем при обновлении.
+            val st = json.optJSONObject("settings")
+            val legacy = st != null && !st.has("onboarded") &&
+                ((json.optJSONArray("reminders")?.length() ?: 0) > 0 ||
+                    (json.optJSONArray("profiles")?.length() ?: 0) > 0)
             settings = Settings(
                 userName = json.optJSONObject("settings")?.optString("userName").orEmpty(),
                 email = json.optJSONObject("settings")?.optString("email").orEmpty(),
-                onboarded = json.optJSONObject("settings")?.optBoolean("onboarded", false) ?: false,
+                onboarded = st?.optBoolean("onboarded", legacy) ?: false,
                 notifStyle = json.optJSONObject("settings")?.optString("notifStyle")?.ifBlank { "black" } ?: "black",
                 widgetLayout = json.optJSONObject("settings")?.optString("widgetLayout")?.ifBlank { "4x2" } ?: "4x2",
                 activeWidgets = (json.optJSONObject("settings")?.optJSONArray("activeWidgets")?.toStringList()
@@ -98,6 +104,9 @@ class Store private constructor(private val app: Context) {
             }.toMutableList()
             lastAgentSummary = json.optString("lastAgentSummary", "")
         }.onFailure { seed() }
+        if (settings.onboarded && settings.userName.isBlank() && profiles.isNotEmpty()) {
+            settings.userName = profiles.first().name
+        }
         if (profiles.isEmpty() && settings.onboarded) {
             val pid = settings.activeProfileId.ifBlank { "p1" }
             settings.activeProfileId = pid

@@ -48,35 +48,51 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:baselineAligned="false"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/row_plus10"
                 style="@style/MementoBtnGhost"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="36dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:minHeight="36dp"
-                android:text="@string/lead_10"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:text="@string/plus10_short"
                 android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/row_edit"
                 style="@style/MementoBtnGhost"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="36dp"
                 android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:minHeight="36dp"
-                android:text="@string/edit_reminder"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:text="@string/edit_short"
                 android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/row_done"
                 style="@style/MementoBtnGhost"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="36dp"
                 android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:minHeight="36dp"
-                android:text="@string/mark_done"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:text="@string/done_short"
                 android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>

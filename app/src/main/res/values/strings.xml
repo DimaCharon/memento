@@ -148,6 +148,9 @@
     <!-- Шторка напоминания -->
     <string name="new_reminder">Новое напоминание</string>
     <string name="edit_reminder">Изменить напоминание</string>
+    <string name="edit_short">Изменить</string>
+    <string name="done_short">Готово</string>
+    <string name="plus10_short">+10 мин</string>
     <string name="cancel">Отмена</string>
     <string name="ready">Готово</string>
     <string name="field_title">Название</string>

@@ -86,11 +86,11 @@ class ReminderAdapter(
                         append(Ru.relativeLabel(Ru.triggerMillis(r)))
                         if (r.place.isNotBlank()) append(" · ").append(r.place)
                     }
-                    b.rowPlus10.text = "+10 мин"
+                    b.rowPlus10.text = b.root.context.getString(R.string.plus10_short)
                     b.rowPlus10.setOnClickListener { onPlus10(r) }
-                    b.rowEdit.text = b.root.context.getString(R.string.edit_reminder)
+                    b.rowEdit.text = b.root.context.getString(R.string.edit_short)
                     b.rowEdit.setOnClickListener { onOpen(r) }
-                    b.rowDone.text = if (r.done) b.root.context.getString(R.string.undo) else b.root.context.getString(R.string.mark_done)
+                    b.rowDone.text = if (r.done) b.root.context.getString(R.string.undo) else b.root.context.getString(R.string.done_short)
                     b.rowDone.setOnClickListener { onToggle(r, !r.done) }
                 }
             }

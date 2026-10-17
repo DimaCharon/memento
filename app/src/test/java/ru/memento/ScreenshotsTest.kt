@@ -56,8 +56,8 @@ class ScreenshotsTest {
         val manager = android.appwidget.AppWidgetManager.getInstance(ctx)
         val shadow = org.robolectric.Shadows.shadowOf(manager)
 
-        fun shot(provider: Class<out android.appwidget.AppWidgetProvider>, rv: android.widget.RemoteViews, name: String, hDp: Int) {
-            shadow.createWidget(provider, 0)
+        fun shot(provider: Class<out android.appwidget.AppWidgetProvider>, layout: Int, rv: android.widget.RemoteViews, name: String, hDp: Int) {
+            shadow.createWidget(provider, layout)
             val view = rv.apply(ctx, android.widget.FrameLayout(ctx))
             assertTrue("виджет $name не развернулся", view != null)
             TestSupport.layoutAt(view!!, wDp = 320, hDp = hDp)
@@ -66,23 +66,23 @@ class ScreenshotsTest {
         }
 
         shot(
-            ru.memento.widget.NextWidgetProvider::class.java,
+            ru.memento.widget.NextWidgetProvider::class.java, R.layout.widget_next,
             ru.memento.widget.NextWidgetProvider.build(ctx), "12-виджет-следующее.png", 200,
         )
         shot(
-            ru.memento.widget.WeekWidgetProvider::class.java,
+            ru.memento.widget.WeekWidgetProvider::class.java, R.layout.widget_week,
             ru.memento.widget.WeekWidgetProvider.build(ctx), "13-виджет-неделя.png", 200,
         )
         shot(
-            ru.memento.widget.DayWidgetProvider::class.java,
+            ru.memento.widget.DayWidgetProvider::class.java, R.layout.widget_day,
             ru.memento.widget.DayWidgetProvider.build(ctx), "14-виджет-день.png", 300,
         )
         shot(
-            ru.memento.widget.QuickWidgetProvider::class.java,
+            ru.memento.widget.QuickWidgetProvider::class.java, R.layout.widget_quick,
             ru.memento.widget.QuickWidgetProvider.build(ctx), "15-виджет-быстро.png", 90,
         )
         shot(
-            ru.memento.widget.AgentWidgetProvider::class.java,
+            ru.memento.widget.AgentWidgetProvider::class.java, R.layout.widget_agent,
             ru.memento.widget.AgentWidgetProvider.build(ctx), "16-виджет-агент.png", 160,
         )
     }

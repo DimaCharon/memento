@@ -154,7 +154,7 @@ object Notifier {
         ensureChannels(context)
         val black = Store.get(context).settings.notifStyle != "system"
         val b = NotificationCompat.Builder(context, CH_REMINDERS)
-            .setSmallIcon(R.drawable.ic_stat_memento)
+            .setSmallIcon(R.drawable.ic_stat_nory)
             .setColor(if (black) COLOR_BLACK else context.getColor(R.color.accentStrong))
             .setContentTitle(r.title)
             .setContentText(Ru.notifBody(r))
@@ -223,7 +223,7 @@ object Notifier {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
         )
         val b = NotificationCompat.Builder(context, CH_AI)
-            .setSmallIcon(R.drawable.ic_stat_memento)
+            .setSmallIcon(R.drawable.ic_stat_nory)
             .setColor(COLOR_BLACK)
             .setColorized(true)
             .setStyle(NotificationCompat.DecoratedCustomViewStyle())
@@ -261,7 +261,7 @@ object Notifier {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
         )
         val n = NotificationCompat.Builder(context, CH_AI)
-            .setSmallIcon(R.drawable.ic_stat_memento)
+            .setSmallIcon(R.drawable.ic_stat_nory)
             .setColor(COLOR_BLACK)
             .setColorized(true)
             .setStyle(NotificationCompat.DecoratedCustomViewStyle())

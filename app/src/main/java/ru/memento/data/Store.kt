@@ -103,7 +103,7 @@ class Store private constructor(private val app: Context) {
                 AiTask(q.optString("id"), q.optString("text"), q.optLong("at"), q.optString("source").ifBlank { "Голос" })
             }.toMutableList()
             lastAgentSummary = json.optString("lastAgentSummary", "")
-        }.onFailure { seed() }
+        }.onFailure { freshProfile() }
         if (settings.onboarded && settings.userName.isBlank() && profiles.isNotEmpty()) {
             settings.userName = profiles.first().name
         }

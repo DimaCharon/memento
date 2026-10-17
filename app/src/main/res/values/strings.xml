@@ -93,9 +93,9 @@
     <string name="setting_background_sub">ИИ-задачи досчитываются в фоне и присылают результат</string>
     <string name="setting_offline_speech">Офлайн-распознавание речи</string>
     <string name="setting_offline_speech_sub">Не отправлять голос в облако, если доступен локальный движок</string>
-    <string name="reset_demo">Сбросить демо-данные</string>
-    <string name="reset_demo_sub">Вернуть стартовый набор напоминаний</string>
-    <string name="reset_ok">Демо-данные восстановлены</string>
+    <string name="reset_demo">Заполнить примерами</string>
+    <string name="reset_demo_sub">Добавить несколько напоминаний, чтобы посмотреть, как всё работает</string>
+    <string name="reset_ok">Примеры добавлены</string>
     <string name="ai_section">ИИ · XTROUTER</string>
     <string name="ai_section_sub">OpenAI-совместимый шлюз: api.xkiro.com/v1</string>
     <string name="api_key">API-ключ</string>

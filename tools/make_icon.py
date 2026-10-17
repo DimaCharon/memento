@@ -150,7 +150,11 @@ def icon(size, round_icon=False):
     return out.resize((size, size), Image.LANCZOS)
 
 def foreground(size):
-    """Знак без фона для adaptive icon (108dp)."""
+    """Знак без фона для adaptive icon (108dp).
+
+    Лаунчер обрезает adaptive-иконку по маске, поэтому знак рисуем уменьшенным
+    и строго по центру — тогда он целиком попадает в безопасную зону.
+    """
     ss = 4
     S = size * ss
     pts = glyph_points()
@@ -158,7 +162,16 @@ def foreground(size):
     gmask = draw_glyph_layer(S, pts, s)
     metal = metallic(S).convert("RGBA")
     metal.putalpha(gmask)
-    return metal.resize((size, size), Image.LANCZOS)
+    # уменьшаем знак до 74% и центрируем: bbox знака ~ (28..81) по X, (36..67) по Y
+    small = metal.resize((int(S * 0.74), int(S * 0.74)), Image.LANCZOS)
+    canvas = Image.new("RGBA", (S, S), (0, 0, 0, 0))
+    cx, cy = S // 2, S // 2
+    # знак в оригинале центрирован не идеально — сдвигаем по его центру масс
+    bbox = small.getbbox() or (0, 0, small.width, small.height)
+    dx = cx - (bbox[0] + bbox[2]) // 2
+    dy = cy - (bbox[1] + bbox[3]) // 2
+    canvas.alpha_composite(small, (dx, dy))
+    return canvas.resize((size, size), Image.LANCZOS)
 
 DENS = {"mdpi": 1, "hdpi": 1.5, "xhdpi": 2, "xxhdpi": 3, "xxxhdpi": 4}
 

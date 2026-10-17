@@ -236,6 +236,8 @@ class ProfileFragment : Fragment() {
             .setMessage(R.string.logout_q_text)
             .setPositiveButton(R.string.logout_yes) { _, _ ->
                 store.logout()
+                runCatching { Notifier.cancelAll(requireContext()) }
+                runCatching { ru.memento.data.Memento.sync(requireContext()) }
                 val intent = Intent(requireContext(), WelcomeActivity::class.java).apply {
                     flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 }

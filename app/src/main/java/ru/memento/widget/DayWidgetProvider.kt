@@ -66,8 +66,11 @@ class DayWidgetProvider : AppWidgetProvider() {
                     if (r.place.isNotBlank()) "${r.title} · ${r.place}" else r.title,
                 )
                 v.setImageViewResource(CHECK_IDS[i], if (r.done) R.drawable.bg_check_on else R.drawable.bg_check_off)
-                v.setOnClickPendingIntent(ROW_IDS[i], WidgetIntents.openReminder(context, 40 + i, r.id))
-                v.setOnClickPendingIntent(CHECK_IDS[i], WidgetIntents.toggleDone(context, 50 + i, r.id))
+                // Код запроса считаем от id напоминания: у разных дел он разный,
+                // иначе два виджета на столе перетирали бы друг другу действия.
+                val code = (r.id.hashCode() and 0x3FFF)
+                v.setOnClickPendingIntent(ROW_IDS[i], WidgetIntents.openReminder(context, 40_000 + code, r.id))
+                v.setOnClickPendingIntent(CHECK_IDS[i], WidgetIntents.toggleDone(context, 50_000 + code, r.id))
             }
             v.setOnClickPendingIntent(R.id.widget_day_root, WidgetIntents.openApp(context, 60))
             v.setOnClickPendingIntent(R.id.day_plus, WidgetIntents.newReminder(context, 61))

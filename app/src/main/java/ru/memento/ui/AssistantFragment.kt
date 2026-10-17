@@ -122,12 +122,12 @@ class AssistantFragment : Fragment() {
         val row = b.aiExamples
         row.removeAllViews()
         val examples = listOf(
-            getString(R.string.example_1),
-            getString(R.string.example_2),
-            getString(R.string.example_3),
-            getString(R.string.example_4),
-            "поставь виджет 4×4",
-            "что на неделе?",
+            "Напомни завтра в 9:00 встреча с командой",
+            "Каждый день в 8 утра зарядка",
+            "Что у меня сегодня?",
+            "Отложи тренировку на 30 минут",
+            "Поставь виджет 4×4",
+            "Что на неделе?",
         )
         val pad = resources.getDimensionPixelSize(R.dimen.s2)
         examples.forEach { text ->

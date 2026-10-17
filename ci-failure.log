@@ -1,4 +1,4 @@
-run: 39020719599 step failed
+run: 39020994585 step failed
 === ci-test.log ===
 To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.11.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
 Daemon will be stopped at the end of the build 
@@ -16,40 +16,33 @@ or from Android Studio, click: `Refactor` > `Migrate BuildConfig to Gradle Build
 > Task :app:preDebugBuild UP-TO-DATE
 > Task :app:dataBindingMergeDependencyArtifactsDebug
 > Task :app:generateDebugResValues FROM-CACHE
-> Task :app:generateDebugResources
-> Task :app:packageDebugResources
-> Task :app:generateDebugBuildConfig
-> Task :app:mapDebugSourceSetPaths
+> Task :app:generateDebugResources FROM-CACHE
+> Task :app:mergeDebugResources FROM-CACHE
+> Task :app:packageDebugResources FROM-CACHE
+> Task :app:parseDebugLocalResources FROM-CACHE
+> Task :app:dataBindingGenBaseClassesDebug FROM-CACHE
+> Task :app:generateDebugBuildConfig FROM-CACHE
 > Task :app:checkDebugAarMetadata
+> Task :app:mapDebugSourceSetPaths
 > Task :app:createDebugCompatibleScreenManifests
 > Task :app:extractDeepLinksDebug FROM-CACHE
-> Task :app:parseDebugLocalResources
-> Task :app:processDebugMainManifest
-> Task :app:mergeDebugResources
-> Task :app:processDebugManifest
-> Task :app:dataBindingGenBaseClassesDebug
+> Task :app:processDebugMainManifest FROM-CACHE
+> Task :app:processDebugManifest FROM-CACHE
+> Task :app:processDebugManifestForPackage FROM-CACHE
+> Task :app:processDebugResources FROM-CACHE
+> Task :app:compileDebugKotlin FROM-CACHE
 > Task :app:javaPreCompileDebug FROM-CACHE
+> Task :app:compileDebugJavaWithJavac FROM-CACHE
 > Task :app:preDebugUnitTestBuild UP-TO-DATE
 > Task :app:javaPreCompileDebugUnitTest FROM-CACHE
-> Task :app:processDebugManifestForPackage
+> Task :app:bundleDebugClassesToRuntimeJar
+> Task :app:bundleDebugClassesToCompileJar
 > Task :app:mergeDebugShaders
 > Task :app:compileDebugShaders NO-SOURCE
 > Task :app:generateDebugAssets UP-TO-DATE
 > Task :app:mergeDebugAssets
-> Task :app:processDebugResources
 > Task :app:packageDebugUnitTestForUnitTest
 > Task :app:generateDebugUnitTestConfig
-
-> Task :app:compileDebugKotlin
-w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ai/Nlu.kt:251:199 Condition is always 'true'.
-w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ui/MainActivity.kt:152:9 'fun overridePendingTransition(p0: Int, p1: Int): Unit' is deprecated. Deprecated in Java.
-w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/ui/WelcomeActivity.kt:57:9 'fun overridePendingTransition(p0: Int, p1: Int): Unit' is deprecated. Deprecated in Java.
-w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/widget/TodayWidgetProvider.kt:48:19 'fun setRemoteAdapter(p0: Int, p1: Intent!): Unit' is deprecated. Deprecated in Java.
-w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/widget/TodayWidgetProvider.kt:78:21 'fun notifyAppWidgetViewDataChanged(p0: Int, p1: Int): Unit' is deprecated. Deprecated in Java.
-
-> Task :app:compileDebugJavaWithJavac
-> Task :app:bundleDebugClassesToCompileJar
-> Task :app:bundleDebugClassesToRuntimeJar
 > Task :app:processDebugJavaRes
 > Task :app:compileDebugUnitTestKotlin
 > Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
@@ -57,58 +50,16 @@ w: file:///home/runner/work/memento/memento/app/src/main/java/ru/memento/widget/
 
 > Task :app:testDebugUnitTest
 
-OldDeviceTest > виджеты и уведомления собираются на старых версиях[26] FAILED
-    android.view.InflateException: Binary XML file line #10: Binary XML file line #10: Error inflating class android.widget.ScrollView
-
-        Caused by:
-        android.view.InflateException: Binary XML file line #10: Error inflating class android.widget.ScrollView
-
-            Caused by:
-            android.view.InflateException: Binary XML file line #10: Class not allowed to be inflated android.widget.ScrollView
-                at android.view.LayoutInflater.failNotAllowed(LayoutInflater.java:686)
-                at android.view.LayoutInflater.createView(LayoutInflater.java:612)
-                at com.android.internal.policy.PhoneLayoutInflater.onCreateView(PhoneLayoutInflater.java:58)
-                at android.view.LayoutInflater.onCreateView(LayoutInflater.java:720)
-                at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:788)
-                at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:730)
-                at android.view.LayoutInflater.inflate(LayoutInflater.java:492)
-                at android.view.LayoutInflater.inflate(LayoutInflater.java:423)
-                at android.widget.RemoteViews.inflateView(RemoteViews.java:3278)
-                at android.widget.RemoteViews.apply(RemoteViews.java:3255)
-                at android.widget.RemoteViews.apply(RemoteViews.java:3248)
-                at ru.memento.OldDeviceTest.виджеты и уведомления собираются на старых версиях(OldDeviceTest.kt:82)
-
-OldDeviceTest > виджеты и уведомления собираются на старых версиях FAILED
-    android.view.InflateException: Binary XML file line #10: Binary XML file line #10: Error inflating class android.widget.ScrollView
-
-        Caused by:
-        android.view.InflateException: Binary XML file line #10: Error inflating class android.widget.ScrollView
-
-            Caused by:
-            android.view.InflateException: Binary XML file line #10: Class not allowed to be inflated android.widget.ScrollView
-                at android.view.LayoutInflater.failNotAllowed(LayoutInflater.java:687)
-                at android.view.LayoutInflater.createView(LayoutInflater.java:612)
-                at com.android.internal.policy.PhoneLayoutInflater.onCreateView(PhoneLayoutInflater.java:58)
-                at android.view.LayoutInflater.onCreateView(LayoutInflater.java:720)
-                at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:788)
-                at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:730)
-                at android.view.LayoutInflater.inflate(LayoutInflater.java:492)
-                at android.view.LayoutInflater.inflate(LayoutInflater.java:423)
-                at android.widget.RemoteViews.inflateView(RemoteViews.java:3331)
-                at android.widget.RemoteViews.apply(RemoteViews.java:3304)
-                at android.widget.RemoteViews.apply(RemoteViews.java:3297)
-                at ru.memento.OldDeviceTest.виджеты и уведомления собираются на старых версиях(OldDeviceTest.kt:82)
-
 StoreTest > настройки и профили по умолчанию FAILED
     org.junit.ComparisonFailure: expected:<[Александр]> but was:<[]>
         at org.junit.Assert.assertEquals(Assert.java:117)
         at org.junit.Assert.assertEquals(Assert.java:146)
         at ru.memento.StoreTest.настройки и профили по умолчанию(StoreTest.kt:147)
 
-99 tests completed, 3 failed
+101 tests completed, 1 failed
 
 > Task :app:testDebugUnitTest FAILED
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_3-1792228834479.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_3-1792229096778.json
 
 FAILURE: Build failed with an exception.
 
@@ -285,8 +236,8 @@ Caused by: org.gradle.api.internal.exceptions.MarkedVerificationException: There
 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
 
 
-BUILD FAILED in 1m 11s
-30 actionable tasks: 26 executed, 4 from cache
+BUILD FAILED in 53s
+30 actionable tasks: 14 executed, 16 from cache
 
 === ci-build.log ===
 

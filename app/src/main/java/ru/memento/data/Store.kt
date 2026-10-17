@@ -212,13 +212,14 @@ class Store private constructor(private val app: Context) {
 
     /** Только для тестов: полностью пустая база (без демо-записей). */
     fun clearForTests() {
-        settings.onboarded = true
+        settings = Settings(onboarded = true)
+        ai = AiConfig()
         reminders = mutableListOf()
         notifications = mutableListOf()
         chat = mutableListOf()
         logs = mutableListOf()
         queue = mutableListOf()
-        profiles = mutableListOf(Profile("p1", settings.userName))
+        profiles = mutableListOf(Profile("p1", ""))
         lastAgentSummary = ""
         saveNow()
     }

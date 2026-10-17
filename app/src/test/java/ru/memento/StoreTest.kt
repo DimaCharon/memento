@@ -143,7 +143,8 @@ class StoreTest {
         assertEquals("graphite", s.settings.theme)
         assertEquals("4x2", s.settings.widgetLayout)
         assertTrue(s.settings.notificationsEnabled)
-        assertTrue(s.profiles.isNotEmpty())
-        assertEquals("Александр", s.settings.userName)
+        assertTrue("профиль-заготовка есть", s.profiles.isNotEmpty())
+        assertEquals("до регистрации имени нет", "", s.settings.userName)
+        assertEquals("стиль уведомлений по умолчанию — чёрный", "black", s.settings.notifStyle)
     }
 }

@@ -76,13 +76,22 @@ class OldDeviceTest {
             R.layout.widget_progress, R.layout.widget_next, R.layout.widget_week,
             R.layout.widget_day, R.layout.widget_agent, R.layout.widget_quick,
             R.layout.notification_reminder, R.layout.notification_ai,
-            R.layout.activity_welcome,
         ).forEach { layout ->
             val rv = RemoteViews(ctx.packageName, layout)
             val view = rv.apply(ctx, host)
             assertNotNull("разметка $layout не развернулась на API ${android.os.Build.VERSION.SDK_INT}", view)
             assertTrue(view.width >= 0)
         }
+    }
+
+    /** Экран регистрации — обычная разметка (не RemoteViews), должна разворачиваться на старых версиях. */
+    @Test
+    fun `экран регистрации разворачивается на старых версиях`() {
+        val ctx = androidx.appcompat.view.ContextThemeWrapper(TestSupport.ctx(), R.style.Theme_Memento)
+        val view = android.view.LayoutInflater.from(ctx).inflate(R.layout.activity_welcome, null, false)
+        TestSupport.layoutAt(view)
+        assertTrue("экран регистрации должен развернуться и разложиться", view.width > 0)
+        assertNotNull(view.findViewById<android.view.View>(R.id.wl_start))
     }
 
     @Test
